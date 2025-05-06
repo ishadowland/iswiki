@@ -26,7 +26,16 @@
 ##### 命令注入 ：
 攻击者通过应用程序的输入点，如表单、查询参数等，注入操作系统命令，如果应用程序未对输入进行严格过滤和验证，就可能执行这些恶意命令，导致敏感信息泄露、系统受损等。
 ##### 脚本注入 ：
-与 XSS 攻击类似，但脚本注入的恶意脚本通常存储在服务器端，如在动态生成的网页中嵌入恶意脚本文件，当用户访问该网页时，脚本被执行。
+例如
+```html
+GET /index.php?lang=../../../../../../../../usr/local/lib/php/pearcmd&+config-create+/&/<?echo(md5("hi"));?>+/tmp/index1.php HTTP/1.1
+Host: 182.140.209.42:443
+Accept: */*
+Upgrade-Insecure-Requests: 1
+User-Agent: Custom-AsyncHttpClient
+Connection: keep-alive
+```
+
 ## 扫描
 #### 针对常见接口的扫描 ：
 攻击者常对一些常见的 Web 接口进行扫描，如 wordpress 的 wp-admin、openapi 的 /openapi/、通用的 /admin/ /test/ /.env 等，以寻找可利用的漏洞或敏感信息。虽当前产品未使用，但此类扫描行为仍需关注，防止未来业务扩展后产生风险。
