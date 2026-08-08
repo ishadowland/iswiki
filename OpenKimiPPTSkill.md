@@ -4,6 +4,13 @@
 > 仓库: https://github.com/Binaryify/open-kimi-ppt-skill · npm: `open-kimi-ppt-skill`
 > License: MIT · 语言: Python / Node.js · ⭐ 1.5k · v1.3.0
 
+> [!WARNING]
+> **🚫 本笔记已失效（2026-08-08 标注）**
+> 原仓库 `Binaryify/open-kimi-ppt-skill` 已于 2026-08-07 被作者归档并清空所有源码，提交说明为 "Clear repository due to copyright reasons."，理由是版权原因。
+> 仓库状态：archived / read-only · 当前源码仅剩一个 README 占位："因版权原因，本仓库内容已全部清空。"
+> 因此下文所有安装命令、代码示例、版本号（v1.3.0）、npm 包路径、对比表都已过时，**不要按任何步骤执行**。
+> 正文作为历史快照保留，仅供了解"该项目存在过 + 当时的设计思路"。
+
 ## 一句话定位
 **逆向 Moonshot Kimi Slides 做的非官方 PPT 创作 skill**——让 AI Coding Agent（Codex / Claude Code / Cursor / WorkBuddy）能生成"可继续编辑"的 PPTD 项目 + "嵌字体带淡入淡出"的 PPTX，附本地浏览器编辑器。
 
