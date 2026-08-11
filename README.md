@@ -32,6 +32,9 @@
 
 - [fireside-sprint1](fireside-sprint1.md) — Fireside Sprint 1 完整
   复盘：REST + WebSocket + 刷新令牌 + Dashboard + 10 reviewer issues
+- [tier-1-housekeeping](tier-1-housekeeping.md) — Fireside Sprint 1.6
+  Tier 1 housekeeping: 2 ADRs + dashboard display_name modal + RFC
+  §2.3 reconciliation
 
 ## 风格
 
