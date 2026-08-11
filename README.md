@@ -19,6 +19,11 @@
 - [mapcn](mapcn.md) — shadcn 风格的 MapLibre 地图组件库（11.2k ⭐）
 - [StadiView](StadiView.md) — 3D 足球场可视化
 
+### 🖥️ macOS / 本地 AI
+
+- [Logue](Logue.md) — macOS 26+ 上完全本地（MLX）的 AI 会议笔记
+  + 写作助手（145 ⭐，1.0.1）
+
 ### 🔒 安全
 
 - [wafKnowledgeBase](wafKnowledgeBase.md) — WAF 知识库
