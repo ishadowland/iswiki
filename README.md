@@ -16,6 +16,13 @@
 - [codex-security](codex-security.md) — OpenAI 的 AI 安全扫描
   CLI（9.7k ⭐，GPT-5 驱动 + 验证漏洞）
 
+### 🛠️ 运维 / 排错思路
+
+- [OpsTroubleshootingDiskGhost](OpsTroubleshootingDiskGhost.md) —
+  df 说满、du 说没满 ——「幽灵空间」账本思维
+- [OpsTroubleshootingOOMCgroup](OpsTroubleshootingOOMCgroup.md) —
+  free 还有 8G，OOM 却杀了数据库 —— cgroup 账本思维
+
 ### 🌐 Web / 3D
 
 - [mapcn](mapcn.md) — shadcn 风格的 MapLibre 地图组件库（11.2k ⭐）
