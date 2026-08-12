@@ -13,6 +13,8 @@
 - [OpenKimiPPTSkill](OpenKimiPPTSkill.md) — Open Kimi PPT skill,
   Kimi 模型接入 PPT 生成的 Skill 体系
 - [Strix](Strix.md) — 用自主 AI Agent 集群做渗透测试（49.4k ⭐）
+- [codex-security](codex-security.md) — OpenAI 的 AI 安全扫描
+  CLI（9.7k ⭐，GPT-5 驱动 + 验证漏洞）
 
 ### 🌐 Web / 3D
 
