@@ -37,7 +37,7 @@
 - [MediaPipeTasksVision](MediaPipeTasksVision.md) — Google
   MediaPipe Tasks Vision 调研（浏览器/Node 端视觉 AI）
 
-### 💼 副业 / 私活
+### 💼 软件开发项目案例
 
 - [ProgramWangPrivateProjects](ProgramWangPrivateProjects.md) —
   程序汪的私活案例笔记
