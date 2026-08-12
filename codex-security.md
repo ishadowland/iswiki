@@ -147,7 +147,7 @@ docker pull openai/codex-security
 
 | 工具 | 厂商 | 形式 | 接入 |
 |---|---|---|---|
-| **Codex Security** | OpenAI | npm CLI + TS SDK | OpenAI / OpenRouter / Fireworks / Bedrock |
+| **Codex Security** | OpenAI | npm CLI + TS SDK | OpenAI / OpenRouter / Fireworks / Bedrock | see also [qoder-security](qoder-security.md) |
 | **Claude Code Security Guidance** | Anthropic | Claude Code 内置 | 写完代码 / 结束任务 / commit 时检查 |
 | **Qoder Security** | 阿里 | Qoder 插件 | Qoder IDE |
 | **Strix** | 开源 (usestrix) | CLI + Cloud | 49.4k ⭐, 自主 Agent 集群 |

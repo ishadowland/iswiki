@@ -15,6 +15,8 @@
 - [Strix](Strix.md) — 用自主 AI Agent 集群做渗透测试（49.4k ⭐）
 - [codex-security](codex-security.md) — OpenAI 的 AI 安全扫描
   CLI（9.7k ⭐，GPT-5 驱动 + 验证漏洞）
+- [qoder-security](qoder-security.md) — 阿里 Qoder 的 AI 安全能力
+  （L1/L2/L3 三层渐进扫描 + 一键修复）
 
 ### 🛠️ 运维 / 排错思路
 
