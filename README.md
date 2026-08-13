@@ -31,7 +31,10 @@
 
 - [mapcn](mapcn.md) — shadcn 风格的 MapLibre 地图组件库（11.4k ⭐）
 - [StadiView](StadiView.md) — 3D 足球场可视化
+<<<<<<< HEAD
 - [PascalEditor](PascalEditor.md) — 开源 3D 建筑 / 数字孪生编辑器，React Three Fiber + WebGPU + 原生 MCP 集成（21.3k ⭐）
+- [odometer](odometer.md) — HubSpot 的平滑数字过渡 JS/CSS 库
+  （7.3k ⭐，archived 2019，< 3kb）
 
 ### 🖥️ macOS / 本地 AI
 
