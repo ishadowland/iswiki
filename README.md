@@ -29,7 +29,7 @@
 
 ### 🌐 Web / 3D
 
-- [mapcn](mapcn.md) — shadcn 风格的 MapLibre 地图组件库（11.2k ⭐）
+- [mapcn](mapcn.md) — shadcn 风格的 MapLibre 地图组件库（11.4k ⭐）
 - [StadiView](StadiView.md) — 3D 足球场可视化
 - [PascalEditor](PascalEditor.md) — 开源 3D 建筑 / 数字孪生编辑器，React Three Fiber + WebGPU + 原生 MCP 集成（21.3k ⭐）
 
