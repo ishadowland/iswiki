@@ -19,6 +19,8 @@
   （L1/L2/L3 三层渐进扫描 + 一键修复）
 - [i-have-adhd](i-have-adhd.md) — 跨 8 个 AI 编程平台的
   ADHD-friendly 输出风格 skill（20k ⭐）
+- [remix-reference-video-prompt](remix-reference-video-prompt.md) —
+  爆款视频复刻 skill（拆解参考视频 + MiniMax H3 生成）
 - [LobeHub](LobeHub.md) — 首席 Agent 运营官，多 Agent 编排平台
   （81.6k ⭐，IM Gateway + 自部署，含飞书/微信/QQ adapter）
 
