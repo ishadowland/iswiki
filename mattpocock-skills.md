@@ -270,6 +270,31 @@ mattpocock/skills/
 - **Setup mandatory** — 必须先跑 `/setup-matt-pocock-skills` 才能用工程类
 - **Plugin vs editable** — 二选一不能并存
 
+## 安装到 Hermes (2026-08-18)
+
+实际安装到 Hermes coder profile (network recovered):
+
+```
+~/.hermes/profiles/coder/skills/productivity/
+├── grill-me/                  # user-invoked entry point
+│   ├── SKILL.md               # upstream + Hermes frontmatter
+│   ├── LICENSE                # MIT
+│   └── agents/openai.yaml     # Codex metadata
+└── grilling/                  # model-invoked primitive
+    ├── SKILL.md               # upstream + Hermes frontmatter
+    ├── LICENSE                # MIT
+    └── agents/openai.yaml
+```
+
+**关键 insight (发现后调整 install)**:
+- Matt 上游 `grill-me` 只有 **7 行**(只是 wrapper),真实逻辑在 `grilling` skill
+- 所以安装需要 **2 个 skills**(mirror 上游结构)
+
+**Hermes frontmatter 加在保留上游 OpenAI format 之上**:
+- `version` / `author` / `license` / `platforms`
+- `metadata.hermes.tags` / `related_skills` / `fallback_for_toolsets`
+- `upstream.{repo,path,license}` 引用来源
+
 ## 类似项目对比
 
 | 项目 | 哲学 | Scope | Stars |
