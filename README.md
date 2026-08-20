@@ -41,6 +41,8 @@
 - [PascalEditor](PascalEditor.md) — 开源 3D 建筑 / 数字孪生编辑器，React Three Fiber + WebGPU + 原生 MCP 集成（21.3k ⭐）
 - [odometer](odometer.md) — HubSpot 的平滑数字过渡 JS/CSS 库
   （7.3k ⭐，archived 2019，< 3kb）
+- [kage](kage.md) — MengTo 的 Kyoto 夜间寺庙交互式 Three.js
+  体验（1.25k ⭐，5 章 + cinematic generated imagery）
 
 ### 🖥️ macOS / 本地 AI
 
