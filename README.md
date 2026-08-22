@@ -23,6 +23,8 @@
   爆款视频复刻 skill（拆解参考视频 + MiniMax H3 生成）
 - [mattpocock-skills](mattpocock-skills.md) — Matt Pocock 的
   "Real Engineers" skills 集合（25 skills，218k ⭐）
+- [paseo](paseo.md) — 多 agent 编排器（Claude Code + Codex + Copilot +
+  OpenCode + Pi, desktop + mobile, 14.6k ⭐）
 - [LobeHub](LobeHub.md) — 首席 Agent 运营官，多 Agent 编排平台
   （81.6k ⭐，IM Gateway + 自部署，含飞书/微信/QQ adapter）
 
