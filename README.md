@@ -61,6 +61,8 @@
 ### 🔒 安全
 
 - [wafKnowledgeBase](wafKnowledgeBase.md) — WAF 知识库
+- [anthropic-cybersecurity-skills](anthropic-cybersecurity-skills.md) —
+  817 个结构化网络安全技能库（30.5k ⭐，Apache 2.0，可迁 Hermes/opencode）
 
 ### 🏗️ 项目复盘
 
