@@ -314,6 +314,142 @@ OpenOPC/
 - License: MIT
 - 团队姊妹项目: LightRAG / CLI-Anything / AI-Trader
 
+
+
+## 🔄 Paperclip vs OpenOPC 深度对比 (评论区热点补充)
+
+**评论区常有人问"OpenOPC 跟 Paperclip 是不是差不多"** — **不是!核心是不同类的东西**。
+
+### 数据规模对比
+
+| 维度 | Paperclip | OpenOPC | 倍数 |
+|---|---|---|---|
+| **Stars** | **79,264** | 1,456 | **54x** |
+| **Forks** | 14,531 | 253 | **57x** |
+| **Open issues** | **5,326** | 18 | **296x** |
+| **Repo size** | **206 MB** | 12 MB | **17x** |
+| **Language** | TypeScript | Python | - |
+| **Created** | 2026-03-02 (5.5 月前) | 2026-07-01 (1.5 月前) | - |
+
+### 一句话定位差异
+
+| 项目 | 一句话 |
+|---|---|
+| **Paperclip** | "The app people use to manage AI agents for work" |
+| **OpenOPC** | "Build Your Personal AI-Native Company" |
+
+**Paperclip 的金句**:
+> "**If OpenClaw is an _employee_, Paperclip is the _company_.**"
+> (OpenClaw 是员工,Paperclip 是公司)
+
+### 类别 vs 模拟 根本差异
+
+| 维度 | Paperclip | OpenOPC |
+|---|---|---|
+| **类别** | Agent orchestration platform | AI agent company framework |
+| **类比** | 真实公司 + 真实员工 | 角色扮演 RPG |
+| **目标用户** | 想**实际运行** agent 公司的 | 想**模拟体验** AI 公司的 |
+| **技术栈深度** | Full-stack web app (TS + React + DB) | CLI + Phaser + Python |
+| **部署形态** | Server + Web UI + Mobile | CLI + Office UI |
+| **Scale 能力** | 20+ agent 同时管理 | 8 角色 / 公司模板 |
+
+### Paperclip 12 大子系统
+
+```
+┌──────────────────────────────────────────────────┐
+│              PAPERCLIP SERVER (12 systems)        │
+├──────────────────────────────────────────────────┤
+│  Identity & Access  │  Work & Tasks              │
+│  Heartbeat Execution│  Governance & Approvals    │
+│  Org Chart & Agents │  Workspaces & Runtime      │
+│  Plugins            │  Budget & Costs            │
+│  Routines & Schedules│ Secrets & Storage         │
+│  Activity & Events  │  Company Portability       │
+└──────────────────────────────────────────────────┘
+   ↑           ↑           ↑           ↑
+ Claude Code  Codex    CLI agents  HTTP/web bots
+```
+
+### 4 大支柱 (Paperclip 自称)
+
+| Pillar | 含义 |
+|---|---|
+| **Agentic Task Manager** | 声明意图 → agent 干活 → 你 verify |
+| **Org Chart for Agents** | 角色 / 权限 / 边界 |
+| **Agent Employee Training** | Skill Studio / evals / quality metrics |
+| **Agentic OS** | 跨 provider runtime / sandboxing / GRC |
+
+### 12 大 feature 对比
+
+| Feature | Paperclip | OpenOPC |
+|---|---|---|
+| **Multi-provider** | ✅ Claude / Codex / Cursor / Bash / HTTP | ✅ LiteLLM 统一 |
+| **Goal Alignment** | ✅ 每个任务追溯公司使命 | ⚪ Self-Built |
+| **Heartbeats** | ✅ agent 周期唤醒 | ⚪ 一次性执行 |
+| **Cost Control** | ✅ 月度预算 + 自动 throttle | ⚪ 无 |
+| **Multi-Company** | ✅ 1 部署 N 公司 | ⚪ 1 公司 |
+| **Ticket System** | ✅ 全 ticket 化 + 审计日志 | ⚪ 状态机 |
+| **Governance** | ✅ 审批工作流 + 可回滚 | ⚪ 两级阻塞 |
+| **Org Chart** | ✅ 完整 org chart | ✅ 简化版(8 角色) |
+| **Mobile Ready** | ✅ iOS/Android | ⚪ 仅 Office UI |
+| **Plugins** | ✅ out-of-process worker | ⚪ MCP server |
+| **Budget per agent** | ✅ | ⚪ |
+| **Routines/Schedules** | ✅ cron / webhook / API | ⚪ |
+
+### 适用场景差异
+
+| 场景 | Paperclip | OpenOPC |
+|---|---|---|
+| **20+ Claude Code tabs 管理** | ✅ 完美 | ⚪ |
+| **跨 provider agent 协调** | ✅ | ⚪ |
+| **Cost tracking + throttle** | ✅ | ⚪ |
+| **One-person company simulation** | ⚪ | ✅ 完美 |
+| **AI 员工角色扮演** | ⚪ | ✅ 完美 |
+| **Phaser Office UI 游戏化** | ⚪ | ✅ |
+| **Plugin 生态扩展** | ✅ 完善 | ⚪ 早期 |
+| **企业合规 (RBAC/GRC)** | ✅ | ⚪ |
+| **手机管理 (Mobile)** | ✅ | ⚪ |
+| **早期红利(快速迭代)** | ⚪ (成熟) | ✅ (1.5k 早期) |
+
+### 🎯 "差不多" 误读纠正
+
+**评论区常说的"差不多"实际是 误读**:
+- ✅ 都是 multi-agent orchestration (类似:都是"管 agent 的")
+- ✅ 都有 org chart (类似:都是"角色卡")
+- ✅ 都有 task tracking (类似:都是"任务流")
+- ❌ 但 Paperclip 是 **production-grade 平台**,OpenOPC 是 **角色 prompt 集合**
+
+**核心差异**:
+- **Paperclip = Jira + Confluence + RBAC + Cost tracking** (管一群 agent 干活的**平台**)
+- **OpenOPC = 剧本 + 角色卡片 + 状态机** (让 LLM 演**AI 公司的话剧**)
+
+### 选哪个?
+
+| 需求 | 选 |
+|---|---|
+| **实际运行 10+ agent 干活** | Paperclip |
+| **想体验"AI 公司" / 写小说剧本** | OpenOPC |
+| **生产环境 + 审计 + RBAC** | Paperclip |
+| **早期红利 + Office UI 玩游戏** | OpenOPC |
+| **两个都用** | Paperclip 管基础设施,OpenOPC 当参考设计 |
+
+### Paperclip 关键资源
+
+- **仓库**: <https://github.com/paperclipai/paperclip> (79,264 ⭐)
+- **官网**: <https://paperclip.ing>
+- **Docs**: <https://docs.paperclip.ing>
+- **Discord**: <https://discord.gg/m4HZY7xNG3>
+- **License**: MIT
+- **Hermes 集成**: <https://github.com/NousResearch/hermes-paperclip-adapter> (1.8k ⭐)
+  - **作者 NousResearch 自家**!把 Hermes 当"managed employee"接入 Paperclip
+- **Plugin 生态**:
+  - <https://github.com/Wizarck/paperclip-mcp> (MCP server)
+  - <https://github.com/mvanhorn/paperclip-plugin-acp> (ACP runtime)
+  - <https://github.com/jackson-video-resources/paperclip-zero-human-trading-firm> (one-shot 5-agent 交易)
+  - <https://github.com/aronprins/paperclip-company-playbook> (公司模板 playbook)
+  - <https://github.com/webprismdevin/paperclip-plugin-chat> (chat plugin)
+
+
 ## 🎯 TL;DR
 
 **OpenOPC = "AI 员工 + 流程 + 经验"的三位一体**:
