@@ -67,6 +67,8 @@
 - [wafKnowledgeBase](wafKnowledgeBase.md) — WAF 知识库
 - [anthropic-cybersecurity-skills](anthropic-cybersecurity-skills.md) —
   817 个结构化网络安全技能库（30.5k ⭐，Apache 2.0，可迁 Hermes/opencode）
+- [overseas-youtube-security-channels](overseas-youtube-security-channels.md) —
+  8 个海外网络安全 YouTube 频道调研（NetworkChuck / IppSec / TCM 等）
 
 ### 🏗️ 项目复盘
 
