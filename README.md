@@ -27,6 +27,8 @@
   OpenCode + Pi, desktop + mobile, 14.6k ⭐）
 - [teamai-cli](teamai-cli.md) — 腾讯团队级 AI agent harness
   （Git-native skill/rule 同步 + 知识库 + 可借鉴到 fireside）
+- [wake](wake.md) — Mac 上所有 Coding Agent 会话的统一档案馆
+  （Rust + GPUI 原生，13+ agent 适配，全文搜索 + 一键恢复）
 - [LobeHub](LobeHub.md) — 首席 Agent 运营官，多 Agent 编排平台
   （81.6k ⭐，IM Gateway + 自部署，含飞书/微信/QQ adapter）
 
