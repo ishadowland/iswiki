@@ -51,6 +51,8 @@
   （7.3k ⭐，archived 2019，< 3kb）
 - [kage](kage.md) — MengTo 的 Kyoto 夜间寺庙交互式 Three.js
   体验（1.25k ⭐，5 章 + cinematic generated imagery）
+- [artemis-redradman](artemis-redradman.md) — Three.js 复刻 NASA
+  Artemis II（14 阶段 + 16 组件 + 3 主题，数据密度极高）
 
 ### 🖥️ macOS / 本地 AI
 
