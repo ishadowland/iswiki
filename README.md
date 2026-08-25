@@ -53,6 +53,8 @@
   体验（1.25k ⭐，5 章 + cinematic generated imagery）
 - [artemis-redradman](artemis-redradman.md) — Three.js 复刻 NASA
   Artemis II（14 阶段 + 16 组件 + 3 主题，数据密度极高）
+- [artemis-art-direction](artemis-art-direction.md) — Artemis
+  美术风格深度分析（pure black + warm cream + amber + wireframe 范式）
 
 ### 🖥️ macOS / 本地 AI
 
