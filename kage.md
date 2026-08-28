@@ -1,245 +1,183 @@
-# kage — Kyoto 夜间寺庙交互式 Three.js 体验
+# Kage (影) — MengTo 的 Three.js 京都夜行寺
 
-> 学习笔记 · 调研时间 2026-08-20
-> 仓库: <https://github.com/MengTo/kage>
-> 在线体验: <https://mengto.github.io/kage/>
-> 作者: MengTo (Twitter: <https://x.com/MengTo/status/2086023649526452265>)
-> ⭐ 1,250 · 230 forks · 1 issue · 23.7 MB repo · HTML · Created 2026-08-08 (10 天前)
-> License: **未声明** (third-party Three.js 是 MIT)
+> 学习笔记 · 调研时间 2026-08-28
+> GitHub: <https://github.com/MengTo/kage>
+> 在线演示: <https://mengto.github.io/kage/>
+> 介绍: <https://mp.weixin.qq.com/s/W1Bs63h3NPxNtL_SQH973w>
 
-## 一句话定位
+---
 
-**"5 章 Kyoto 山寺夜游,Three.js 实时渲染 + cinematic generated imagery 合成"** —— MengTo 写的一个**单文件 HTML** 交互式 editorial art book。一个 HTML 文件 = 整个站点,scroll 驱动相机穿越虚构京都山寺(门 / 灯笼 / 月 / 雾 / 雨 / 落叶 / 鸟居 / 楼梯 / 神道),配 4 张 GPT Image 2 生成的场景图 + 10 张 alpha-preserving WebP 前景元素。
+## 1. 一句话定位
 
-## 跟 iswiki 现有工具的关系
+**"一个 244 KB 的单 HTML 文件,带你走过京都山寺的 5 章夜行路"** —— 全部 Three.js 程序生成 + 7 张手绘 WebP 前景图 + 编辑级别的排版,scroll-driven 镜头推进,做出 1000+ star 的沉浸式网页艺术作品。
 
-| 工具 | 关系 |
+## 2. 核心数据
+
+| 字段 | 值 |
 |---|---|
-| [mattpocock-skills](mattpocock-skills.md) | 🟢 同为 "single-file" 美学 (本仓库是 HTML + Three.js 单文件)|
-| [i-have-adhd](i-have-adhd.md) | ⚪ 输出风格,无关 |
-| [codex-security](codex-security.md) | ⚪ 安全 |
-| [mapcn](mapcn.md) | ⚪ 地图组件 |
-| [StadiView](StadiView.md) | 🟢 都是 Three.js / 3D 可视化 |
+| **GitHub stars** | **1407** ⭐ (3 周前发布!) |
+| **Forks** | 261 |
+| **Size** | 23.7 MB (10 张 WebP + 1 个 608KB three.min.js + 1 个 244KB index.html) |
+| **Language** | HTML (no build!) |
+| **License** | **None** (no license granted — 不能复用) |
+| **Topics** | `creative-coding, generative-art, interactive-storytelling, japanese-design, threejs, webgl` |
+| **Homepage** | <https://mengto.github.io/kage/> |
+| **Created** | 2026-08-08 (3 weeks ago) |
+| **Updated** | 2026-08-28 (active) |
 
-## 5 章节 + 实时 3D 路径
-
-| 章节 | 内容 | Three.js 元素 |
-|---|---|---|
-| **1. Approach** (Hero) | 抵达,远处寺庙轮廓 | 远景寺庙 silhouette + 雾 + 鸟居 + 朱红月 |
-| **2. Sanmon** (山门) | 进入山门 | 寺院正面 + 灯笼 + 灯笼光暖光 |
-| **3. Lantern Court** (灯笼庭) | 灯笼庭院 | 灯笼群 + 灯笼光池 + 漂浮萤火 |
-| **4. Moonwater** (水月) | 月光水边 | 水面反射 + 月 + 落叶 + 雨 |
-| **5. Afterlight** (余光) | 余韵 | 暖色褪去 + 雾 + 镜头淡出 |
-
-**镜头驱动**: 单条 continuous 相机路径,scroll 控制位置
-
-## 文件结构 (1 个 HTML 文件 + assets)
+## 3. 文件结构 (27 files, 23.7 MB)
 
 ```
-kage/                              # 23.7 MB
-├── index.html                     # 244 KB - 完整站点(包含所有 CSS + JS + 场景构建)
-├── PROMPT.md                      # 2.6 KB - AI 重建 prompt (可 fork/remix 用)
-├── README.md                      # 3.9 KB
-├── .gitignore + .nojekyll         # GitHub Pages 配置
+kage/
+├── index.html                    # 244 KB — 文档结构 + CSS + Three.js scene + scroll 编排
+├── PROMPT.md                     # 2.6 KB — 生成此作品的 prompt(惊人!)
+├── README.md
 ├── assets/
-│   └── kage-preview.webp          # 101 KB - preview image
-└── secret-pathways-assets/        # vendor 资源
-    ├── fonts.css                  # 99 KB - 字体定义
-    ├── three.min.js               # 608 KB - Three.js r149 (vendored MIT)
-    ├── generated/                 # 4 张 cinematic 场景图 (~180 KB each)
-    │   ├── kage-approach.webp     # 176 KB
-    │   ├── kage-lantern-court.webp
-    │   ├── kage-moonwater.webp
-    │   └── kage-sanmon-preview.webp
-    └── foreground/png/            # 10 张 alpha-preserving WebP cutouts
-        ├── basalt-stones.webp     # 164 KB
-        ├── garden-bush.webp
-        ├── hill.webp
-        ├── maple-leaves.webp
-        ├── pine-tree.webp
-        └── ... (5 more)
+│   └── kage-preview.webp         # 101 KB cover image
+└── secret-pathways-assets/
+    ├── fonts.css                 # 99 KB — 字体定义
+    ├── three.min.js               # 608 KB — vendored Three.js r149 (MIT)
+    ├── generated/
+    │   ├── kage-approach.webp     # 180 KB
+    │   ├── kage-lantern-court.webp # 198 KB
+    │   ├── kage-moonwater.webp    # 102 KB
+    │   └── kage-sanmon-preview.webp # 186 KB
+    └── foreground/png/
+        ├── basalt-stones.webp     # 168 KB
+        ├── garden-bush.webp       # 286 KB
+        ├── hill.webp              # 84 KB
+        ├── maple-leaves.webp      # 178 KB
+        ├── pine-tree.webp         # 196 KB
+        ├── sakura-branch.webp     # 253 KB
+        ├── shrine-ruins.webp      # 146 KB
+        ├── stone-lantern.webp     # 150 KB
+        ├── tall-grass.webp        # 352 KB
+        └── temple-wall.webp       # 86 KB
 ```
 
-## 4 个核心特性
+**关键**:全部资产 **相对路径**,**GitHub Pages 子目录也能跑**;**无 build / 无 framework / 无外部字体 / 无 analytics**。
 
-### 1. 实时 Three.js 场景(过程化生成)
+## 4. 5 章叙事结构(从 live demo snapshot 抓取)
 
-`index.html` 在运行时构造:
-- 🏯 寺庙 / 鸟居 / 楼梯 / 灯笼 / 月 / 地形 / 树 / 雾 / 雨 / 落叶 / 萤火
-- 🎨 Restrained bloom + 颗粒 + 暗角 + 深度雾
-- 🌡️ 暖色 shoji 光 + 冷色月光 + 朱红月
-- 🎨 调色板:近黑 + 蓝炭 + 暖琥珀 + 骨白 + 朱红
+| Chapter | 日文 | 主题 | 时长 |
+|---|---|---|---|
+| **00** | — | THE HIDDEN GATE 影之道 | (hero) |
+| **01** | 山門 Sanmon | "Charred cypress, worn stone, one gate left open" | (开门) |
+| **02** | 庭園 Teien | STILL GARDENS (3 sub: The Long Climb / Lantern Court / The Wet Court) | (院子) |
+| **03** | 手業 Tegiwa | SACRED CRAFT — Five chapters. Ninety minutes. One quiet mind. (5 cards: Hidden Gate, Borrowed Scenery 借景 18min, Charred Cypress 焼杉 21min, Lantern Light 灯籠 17min, Vermilion Moon 朱月 22min) | (技艺) |
+| **04** | 残光 Zankou | AFTERLIGHT — closing | (余光) |
+| colophon | — | "A five-chapter night walk through a Kyoto mountain temple. Three illustrated garden field notes sit inside a live Three.js sanctuary." | (版权) |
 
-### 2. 编辑性排版 (Editorial Typography)
+**总时长**: 14 + 18 + 21 + 17 + 22 = **92 minutes** of reading time
 
-- **Hero**:超大左对齐英文标题
-- **垂直日语 display type**(large vertical Japanese)
-- **小技术 label** + chapter 编号 + 细分割线
-- **Generous negative space**
+## 5. 6 大核心特性
 
-### 3. Scroll-driven camera path
+1. **Scroll-driven camera path** — 1 连续 Three.js 镜头推进,每章 1 个 composited shot (不是 hard cut)
+2. **Procedural 3D scene** — 寺、鳥居、阶梯、石灯籠、月、地形、tree、雾、雨、飘叶、炭火、atmosphere 全部 runtime 构造
+3. **Editorial typography** — 超大 left-aligned English heading + 大号 vertical Japanese display + 小 technical labels + chapter numbers + fine rules + 大量留白
+4. **Layered assets** — 7 张 alpha-preserving WebP 前景(草、枫、樱、石、墙、废墟、bush、山、松、灯籠)在视口底部,**只在 section active 时显示并 pinned**
+5. **Restrained post-processing** — bloom / film grain / vignette / depth haze / warm shoji light / cold moonlight / vermilion moon
+6. **配色** — 接近黑 + blue-charcoal + warm amber + bone white + **vermilion(朱红)**
 
-- **单条 continuous camera path**(1 个相机跑完整旅程)
-- **每个 section 感觉像新合成 shot**(不是硬切)
-- **Eased interpolation**(慢、精确、subtle parallax)
+## 6. PROMPT.md 关键(他用 prompt 生成 prompt!)
 
-### 4. Cinematic layered collage
+> **PROMPT.md 就是生成此作品的 prompt 本身**。惊人 — MengTo 用 Claude / GPT 写出 design brief,然后 Claude 实际 implement。
 
-- **Generated scenes**(4 张 WebP 场景图)+ **alpha-preserving WebP cutouts**(10 张前景) + **live 3D** = collage-like 深度
-- **Foreground layers**:section 激活时全不透明,期间 fixed,handoff 时 fade + blur
-- **Play icon**:居中在图片框内,不在 caption 区
+设计约束:
+- **结构**: hero / temple threshold / still gardens / sacred craft chapters / afterlight / manifesto footer
+- **Motion**: word-by-word heading reveal + slow precise section transitions + parallax + eased camera interp
+- **Interaction**: working anchor nav / mobile nav / responsive / semantic landmarks / accessible labels
+- **Quality**: reduced-motion preserves full read experience / no frameworks / no remote fonts / no placeholder imagery / no glassmorphism / no excessive glow / no decorative motion
+- **Test**: desktop + 390×844 mobile / asset 404 check / inline script parse / console check / full scroll test
 
-## 5 大交互设计
+## 7. 跟 redradman/artemis 范式对比
 
-| 特性 | 实现 |
-|---|---|
-| **Chapter navigation** | 全场景导航 |
-| **Responsive mobile** | ~390×844 适配 |
-| **Reduced-motion** | 保留完整阅读体验 |
-| **Custom cursor** | 仅 fine pointer devices |
-| **Working anchor nav** | 锚点链接 |
-
-## 4 大原则 (README 明确)
-
-1. **Use Three.js as fixed full-viewport environmental layer**(不是 product landing page)
-2. **Drive one continuous camera path from page scroll**
-3. **Layer editorial typography + generated scenes + alpha-preserving WebP foreground**
-4. **No build step, no framework, no analytics, no remote fonts**
-
-## 设计哲学 (README 引述)
-
-> "Kage is an original, independent design study inspired by Japanese temple architecture and night gardens. **It is not affiliated with a specific temple, cultural institution, or tourism organization.**"
-
-> "The cinematic scene plates and foreground artwork were generated for this project using **GPT Image 2**, then art-directed and composed with the live Three.js scene."
-
-> "**No license is currently granted** for reuse or redistribution of the original Kage code or artwork."
-
-→ **半开放**:代码可读,可学习,PROMPT.md 可 fork-remix,**但 commercial reuse 需联系作者**。
-
-## 本地运行 (静态服务)
-
-```bash
-cd kage
-python3 -m http.server 4173 --bind 127.0.0.1
-# Visit http://127.0.0.1:4173/
-```
-
-**零依赖**:无 build step、无 env、无 analytics、无运行时网络
-
-## 与 MengTo 其他作品的关系 (同设计语言)
-
-| 项目 | 主题 | 链接 |
+| 维度 | redradman/artemis | MengTo/kage |
 |---|---|---|
-| **Kage** | Kyoto 山寺夜游 | <https://mengto.github.io/kage/> |
-| **Complete Shelf** | 7 本可交互 hardcovers | <https://mengto.github.io/complete-shelf/> |
-| **Sketchbook** | Singapore 翻页 sketchbook + magnifier | <https://mengto.com> |
-| **Agent Skills** | Reusable skill library(被 Kage 引用) | <https://github.com/MengTo/Skills> |
+| **Subject** | NASA Artemis II 火箭 | 京都夜行寺 |
+| **Camera** | OrbitControls (用户控制) | scroll-driven (自动推进) |
+| **Theme switch** | 3 themes (Blueprint/Space/Cinematic) | 无主题切换(单一 night) |
+| **Asset count** | 0 (纯 procedural) | **10 手绘 WebP 前景 + 4 生成 WebP 背景** |
+| **Size** | 51 KB (2000 行) | 244 KB HTML + 23 MB assets |
+| **Stars** | 44 | **1407** (30x) |
+| **License** | MIT | **None** |
+| **CDN usage** | jsDelivr three.js | Vendored three.min.js (608 KB) |
+| **Style** | Engineering diagram | Editorial art book |
+| **Mood** | Technical precision | Atmospheric poetry |
 
-→ **MengTo 的 "single-file experiment" 哲学**: 1 个 HTML = 1 个完整作品。
+**关键对比**: 都是 "single HTML + Three.js" 范式,但 Artemis 走 **data-density engineering**(3 主题切换 + select-to-isolate),Kage 走 **atmospheric storytelling**(scroll-driven 沉浸式 + hand-painted 艺术资产)。
 
-## 与 PROMPT.md 的关系 (重要!)
+## 8. 5 大技术亮点
 
-`PROMPT.md` (2.6 KB) **是一个"AI 重建 prompt"**:
-- 描述场景结构
-- 描述 layout 系统
-- 描述 motion language
-- 描述 quality constraints
-- **可以让任何 AI agent 重建/重新诠释这个体验**
+1. **Self-contained delivery** — `python3 -m http.server 4173` 就能跑,**无 build / 无 env var / 无 network dep**
+2. **GitHub Pages friendly** — 全部相对路径,子目录部署 OK
+3. **Generated + hand-painted mixed assets** — 程序生成大场景(gpt-image-2 生成的 scene plates)+ 真人手绘细节点缀(grass, maple, sakura)
+4. **Editorial typography system** — English + 日本語 display + 数字 + 留白 = 杂志排版感
+5. **PROMPT.md 公开** — 把 design brief 公开,展示 "AI 协助设计" 的元透明度(他让你能复刻)
 
-→ Kage 是 **"可重新诠释的体验"(reinterpretable experience)**,**不是唯一艺术品**。
+## 9. 8 大可借鉴元素
 
-## 技术栈细节
-
-| 层 | 选型 |
-|---|---|
-| 渲染 | **Three.js r149** (vendored, no npm) |
-| 文件 | **1 个 HTML** + assets(无 build) |
-| 服务 | 任意 (`python -m http.server` 就够) |
-| 网络 | **完全静态**(无 CDN、无 fonts、无 analytics) |
-| Generated imagery | **GPT Image 2** (4 张 cinematic scenes) |
-| Foreground cutouts | **alpha-preserving WebP** (10 张) |
-| Custom cursor | JS only |
-| Reduced-motion | JS query `@media (prefers-reduced-motion)` |
-
-## 性能 / 体积
-
-| 维度 | 数据 |
-|---|---|
-| index.html | 244 KB |
-| Three.js | 608 KB |
-| Generated scenes (4) | ~650 KB total |
-| Foreground (10) | ~1.5 MB total |
-| fonts.css | 99 KB |
-| **Total repo** | **23.7 MB** (含 LFS / untracked) |
-| **Initial load** | 估计 ~2-3 MB(gzip 后) |
-
-→ **单页面一次性加载,无 lazy / no streaming**。**fashion 单文件艺术作品**,不追求 100/100 Lighthouse。
-
-## vs 现代 Web 模式
-
-| 维度 | Kage | 现代 "best practice" |
+| Element | 借鉴难度 | 对 substation-blueprint 的价值 |
 |---|---|---|
-| 渲染 | Three.js r149 (1 年前 stable) | Latest r170 |
-| Bundler | 无 | Vite/Turbopack |
-| TypeScript | 无 | TS everywhere |
-| Testing | 无 | Playwright/Vitest |
-| Performance budget | 无 | LCP < 2.5s |
-| Image format | WebP | AVIF/WebP responsive |
-| Build step | 无 | Modern minify |
+| scroll-driven camera | ⭐⭐ | substation-blueprint 已经用 OrbitControls,可以加 scroll-driven chapter tour |
+| WebP foreground cutouts | ⭐ | 我们现在用纯 procedural,可加一些手绘点缀 |
+| Editorial typography (EN + JP) | ⭐⭐ | 我们的 HUD 可以加更多文化参考元素(cyberpunk 工程感) |
+| Single-file HTML + vendored three.min.js | ⭐ | 我们用 importmap,加 fallback vendor |
+| PROMPT.md 公开 | ⭐ | 可在 substation-blueprint README 加 "设计意图" 章节 |
+| No build / no framework | ⭐⭐⭐ | 我们的 substation-blueprint 已经符合(纯 vanilla) |
+| Chapter navigation + reduced-motion | ⭐⭐ | substation-blueprint 可以加分章(主题切换) |
+| Self-contained README | ⭐ | 学习他的 README structure |
 
-→ **Kage 反潮流** —— 它**故意不用**现代 web 工具链,**为了一个 editorial 艺术效果**。
+## 10. 设计对比 substation-blueprint
 
-## 适用 / 不适用
+substation-blueprint 我自己的项目是 **substation 3D visualization** with similar "blueprint + Three.js + single HTML" 哲学。Kage 是这个哲学的**更高级实现**:
 
-| ✅ 适合学习 | ❌ 不适合生产 |
-|---|---|
-| Three.js 场景构造 | 企业级 web app |
-| Scroll-driven camera | SEO 要求 |
-| Editorial typography | 多页面 |
-| Single-file art | 团队协作 |
-| Procedural generation | 性能关键场景 |
-| AI-generated imagery + 3D composition | 移动网络差 |
+| 维度 | substation-blueprint | Kage |
+|---|---|---|
+| 文件 size (HTML) | ~5 KB | **244 KB** (含 CSS + JS inline) |
+| 3D 内容 | 升压站 + 2376 光伏组串 | 京都寺 + 鸟居 + 月 + 树 + 雾 + 雨 + 飘叶 + 炭火 |
+| Asset 数量 | 0 (全 procedural) | **14 (4 背景 + 10 前景)** |
+| 交互模式 | OrbitControls (自由) | **scroll-driven (自动)** |
+| 主题切换 | 3 themes | 1 night scene |
+| 性能 | 49 LineSegments (merge) | 程序生成 3D (动态) |
+| Star (本仓库) | n/a | **1407** |
+| 定位 | Engineering | Editorial art book |
 
-## 风险与限制
+== **学习重点**: Kage 的 **"editorial typography" + "generative + hand-painted asset mix"** 是 substation-blueprint 升级方向。
 
-- **未声明 license** —商业用途需询问作者
-- **vendored Three.js r149** — 老版本(2023),可能有 newer GL features 缺失
-- **No build optimization** — 文件大,无 tree-shaking
-- **No accessibility audit** — README 说 reduced-motion + 语义 markup,但没 WCAG 检查
-- **No cross-browser testing** — README 提 desktop + mobile,~390×844
-- **Single-page hot reload 困难** — 必须重启 `python -m http.server`
-- **GPT Image 2 生成 scenes** — 受 OpenAI ToS 约束 (无法独立 redistribute)
+## 11. 其他 MengTo 项目 (相关 inspiration)
 
-## 设计灵感来源
+从 README 列出:
+- **[Complete Shelf](https://mengto.github.io/complete-shelf/)** — Three.js 7 本可交互精装书
+- **[Sketchbook](https://mengto.com)** — Singapore 翻页 sketchbook + 放大镜
+- **[Agent Skills](https://github.com/MengTo/Skills)** — 他用 Claude 写的 reusable skills lib,包括:
+  - `falling-leaves` (从 Kage 抽出来的技术)
+  - `pointer-trail-emitter` (从 Kage 抽出来的 cursor trail)
 
-- **京都清水寺 / 鹿苑 / 高山寺 / 银阁寺** (作者研究)
-- **茶道 / 怀石料理** 视觉美学
-- **Apple Pro Display XDR product page** (单页 editorial art book 模式)
-- **Stripe Sessions** (editorial typography)
-- **The Browser Company** (1 file = full app)
+**Kage 的 "agent skills"**: **他开源了他用来生成 Kage 的 skill 库**!
 
-## 跟 Hermes / iswiki 的关联
+## 12. 适用 substation-blueprint 的具体建议
 
-- **iswiki 索引化**:本仓库的"代码可读 + 不开源 reuse"哲学跟 iswiki "research notes"哲学相容
-- **Kage 是 MengTo 风格**: 跟 [mattpocock-skills](mattpocock-skills.md) 的 "small, easy to adapt, composable" 哲学类似,但 MengTo 是美学派,mattpocock 是工程派
+1. **加 scroll-driven camera tour** — Kage 风格的" 走过 substation " 5 章 tour
+2. **加 hand-painted accent layer** — 现在的纯 procedural 可加几张 WebP 资产 (substation 周边环境、装饰元素)
+3. **加 editorial typography** — 现在的 HUD 可加 EN + CN 混合 display typography
+4. **学习 PROMPT.md pattern** — substation-blueprint 可加 `DESIGN_INTENT.md` 解释 design choices
+5. **加 reduced-motion 支持** — Kage 强制要求 `prefers-reduced-motion: reduce` 仍能完整阅读
 
-## 类似 Three.js 单文件项目对比
+## 13. 相关 iswiki 项目
 
-| 项目 | 作者 | 主题 | LOC | ⭐ |
-|---|---|---|---|---|
-| **Kage** | MengTo | Kyoto 山寺夜游 | 1 HTML + Three.js | 1.25k |
-| [Three.js examples](https://threejs.org/examples/) | Three.js team | 通用 demo 集 | 各异 | - |
-| [Shadertoy](https://www.shadertoy.com/) | community | WebGL shader | GLSL only | - |
-| [100 Stunning WebGL Demos](https://100.stunningwebswebgl.com) | various | showcase | | - |
+- **[redradman/artemis](artemis-redradman.md)** (44 ⭐) — 同范式 NASA wireframe
+- **[artemis-art-direction](artemis-art-direction.md)** — Artemis 美术风格
+- **[kage](kage.md)** — 京都夜行寺 (本文)
+- **[mengto-skills](mengto-skills.md)** — MengTo Skills repo(待调研)
 
-## 关联资料
+## 14. TL;DR
 
-- 仓库: <https://github.com/MengTo/kage>
-- 在线体验: <https://mengto.github.io/kage/>
-- PROMPT.md: <https://github.com/MengTo/kage/blob/main/PROMPT.md>
-- 作者 Twitter: <https://x.com/MengTo/status/2086023649526452265>
-- 作者其他作品:
-  - <https://mengto.github.io/complete-shelf/>
-  - <https://mengto.com>
-  - <https://github.com/MengTo/Skills>
-- 本地运行: `python3 -m http.server 4173`
+**Kage = MengTo 用 Three.js + Three 周手画艺术资产 做的"京都夜行寺"沉浸式叙事网站**。1407 ⭐,244 KB HTML,无 build / 无 framework,scroll-driven camera + 程序生成 3D + WebP 前景层 + 编辑级排版。
+
+**最大启示**: **"single HTML + Three.js + hand-painted assets"** 是有真实用户基础的 production-quality 范式(1407 star 不是偶然),**substation-blueprint 的同范式项目完全有潜力走到类似高度**,关键差距在:
+- **Editorial typography** (我们现在是工程师字体)
+- **Asset depth** (我们 0 张手绘)
+- **Scroll-driven narrative** (我们是 free OrbitControls)
+
+== **下一步**:把 PROMPT.md 学到的方法学应用到 substation-blueprint 的 design intent 文档。
