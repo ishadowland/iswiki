@@ -30,6 +30,7 @@
 - [wake](wake.md) — Mac 上所有 Coding Agent 会话的统一档案馆
   （Rust + GPUI 原生，13+ agent 适配，全文搜索 + 一键恢复）
 - [openopc](openopc.md) — 港大 HKUDS 的"AI-Native Company"框架
+- [openclaw-awd-arena](openclaw-awd-arena.md) — Docker 编排的 LLM agent AWD 攻防对抗 (319 ⭐, Hermes backend)
   （Self-Built/Run/Grown，Phaser Office UI，1.45k ⭐）
 - [LobeHub](LobeHub.md) — 首席 Agent 运营官，多 Agent 编排平台
   （81.6k ⭐，IM Gateway + 自部署，含飞书/微信/QQ adapter）
