@@ -59,6 +59,11 @@
 - [artemis-art-direction](artemis-art-direction.md) — Artemis
   美术风格深度分析（pure black + warm cream + amber + wireframe 范式）
 
+### 🐧 Linux / 运维故障排查
+- [linux-permission-debug](linux-permission-debug.md) — chmod 777 翻车:
+  6 层访问链(身份/路径/挂载/SELinux/NFS/容器 namespace)的
+  完整定位思路 + read-only 排查命令
+
 ### 🖥️ macOS / 本地 AI
 
 - [Logue](Logue.md) — macOS 26+ 上完全本地（MLX）的 AI 会议笔记
