@@ -46,7 +46,6 @@
 
 - [mapcn](mapcn.md) — shadcn 风格的 MapLibre 地图组件库（11.4k ⭐）
 - [StadiView](StadiView.md) — 3D 足球场可视化
-<<<<<<< HEAD
 - [PascalEditor](PascalEditor.md) — 开源 3D 建筑 / 数字孪生编辑器，React Three Fiber + WebGPU + 原生 MCP 集成（21.3k ⭐）
 - [odometer](odometer.md) — HubSpot 的平滑数字过渡 JS/CSS 库
   （7.3k ⭐，archived 2019，< 3kb）
@@ -58,6 +57,7 @@
   Artemis II（14 阶段 + 16 组件 + 3 主题，数据密度极高）
 - [artemis-art-direction](artemis-art-direction.md) — Artemis
   美术风格深度分析（pure black + warm cream + amber + wireframe 范式）
+- [Netdata](Netdata.md) — AI-powered 全栈可观测性平台（80.4k ⭐，per-second + 自带 ML 异常 + NIDL 自动 dashboard；前端 NCUL1 闭源 CDN 交付）
 
 ### 🐧 Linux / 运维故障排查
 - [linux-permission-debug](linux-permission-debug.md) — chmod 777 翻车:
