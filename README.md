@@ -34,6 +34,8 @@
   （Self-Built/Run/Grown，Phaser Office UI，1.45k ⭐）
 - [LobeHub](LobeHub.md) — 首席 Agent 运营官，多 Agent 编排平台
   （81.6k ⭐，IM Gateway + 自部署，含飞书/微信/QQ adapter）
+- [Ponytail](Ponytail.md) — 给 AI agent 注入"最懒高级工程师"人格的跨 13 平台 skill 集
+  （117.9k ⭐，MIT，YAGNI 7 步梯子 + 三档强度 + 诚实 agentic benchmark + Hermes 原生适配）
 
 ### 🛠️ 运维 / 排错思路
 
