@@ -54,6 +54,7 @@
 - [kage](kage.md) — MengTo 的 Kyoto 夜间寺庙交互式 Three.js
   体验（1.25k ⭐，5 章 + cinematic generated imagery）
 - [vgpu](vgpu.md) — Vercel Labs 的 WebGPU 库（1.1k ⭐，25KB gzip，
+- [reverse-skill](reverse-skill.md) — zhaoxuya520 的安全/逆向技能路由包（33.7k ⭐！857 文件 / 55 skill / R0-R39 路由 / JSON SSoT / PS+Bash+Kali 跨平台）
   Typed WGSL，Browser/Node/CI 跨 runtime，Agent-ready + 内置 evals）
 - [artemis-redradman](artemis-redradman.md) — Three.js 复刻 NASA
   Artemis II（14 阶段 + 16 组件 + 3 主题，数据密度极高）
