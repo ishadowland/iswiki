@@ -1,13 +1,14 @@
 # i-have-adhd — AI 编程助手的 ADHD-friendly 输出 Skill
 
-> 学习笔记 · 调研时间 2026-08-12
+> 学习笔记 · 调研时间 2026-08-12 · 最近更新 2026-09-01
 > 仓库: <https://github.com/ayghri/i-have-adhd>
-> 文档: <INSTALL.md> · <SKILL.md> · License: MIT · ⭐ 20k (1.2k forks)
+> 文档: <INSTALL.md> · <SKILL.md> · License: MIT · ⭐ 26.1k (1.6k forks · 169 commits · v0.2.0)
 > 灵感来源: *The Adult ADHD Tool Kit* by J. Russell Ramsay & Anthony L. Rostain
+> 补充材料: 程序汪「一个SKILL.md拿下2.3万Star」深度解读 (2026-09-01)
 
 ## 一句话定位
 
-**一个 prompt-level 的输出风格 Skill** —— 教你的 AI coding agent (Claude Code / Codex / Cursor / Gemini CLI / Kimi / Qwen / Antigravity) 把回答写成 **"action-first、numbered、no-preamble"** 的形式,适合 ADHD 读者(以及所有人,因为信息密度更高)。**不需要 ADHD 诊断**。
+**一个 prompt-level 的输出风格 Skill** —— 教你的 AI coding agent (Claude Code / Codex / Cursor / Gemini CLI / Kimi / Qwen / Antigravity / OpenCode / Pi) 把回答写成 **"action-first、numbered、no-preamble"** 的形式,适合 ADHD 读者(以及所有人,因为信息密度更高)。**不需要 ADHD 诊断**。
 
 ## 跟其他 iswiki 工具的关系
 
@@ -68,7 +69,7 @@
 
 **最后 verify**: **如果读者只看首尾两行,知不知道(a)下一步做什么 (b)刚发生了什么?** 是 → 发。
 
-## 支持的平台(8 个)
+## 支持的平台(已扩到 9+ 个,版本 v0.2.0)
 
 | 平台 | 安装方式 | 路径 |
 |---|---|---|
@@ -76,12 +77,13 @@
 | **Claude Code** | `claude plugin marketplace add ayghri/i-have-adhd`<br>`claude plugin install i-have-adhd@i-have-adhd` | `.claude-plugin/` |
 | **Codex (OpenAI)** | Codex plugin | `.codex-plugin/` |
 | **Cursor** | npx skills add | `.cursor/skills/i-have-adhd/` |
-| **Gemini CLI** | extension | `gemini-extension.json` |
-| **Kimi** | plugin | `kimi.plugin.json` |
-| **Qwen Code** | extension | `qwen-extension.json` |
-| **Pi (pi-native)** | extension | `extensions/feat/pi-native-extension` |
+| **Gemini CLI** | extension (`gemini-extension.json`) | 仓库根 |
+| **Kimi** | plugin (`kimi.plugin.json`) | 仓库根 |
+| **Qwen Code** | extension (`qwen-extension.json`) | 仓库根 |
+| **OpenCode** | server plugin + command + always-on (`opencode.json`) | `.opencode/` |
+| **Pi (pi-native)** | extension (`extensions/feat/pi-native-extension`) + **`AdhdConfig` 配置** (alwaysOn / hideStatus) | `extensions/` |
 
-→ **一个 skill,8 个 AI coding agent 平台通吃**
+→ **一个 skill,9+ 个 AI coding agent 平台通吃**(v0.2.0 新增 Pi 的 `alwaysOn` / `hideStatus` 配置)
 
 ## Always-on mode (3 种方式)
 
@@ -158,6 +160,69 @@ claude plugin install i-have-adhd@i-have-adhd
 | **异步文档生成** | ✅ 比纯文档更高密度 |
 | **会议纪要 / changelog** | ✅ 强制 action-first |
 
+## 程序汪解读:为什么这个 skill 值得装 (2026-09-01 微信版)
+
+> 资料源: 「我是程序汪」公众号 2026-09-01「一个SKILL.md拿下2.3万Star:让Codex/ClaudeCode少说废话、先给答案」(作者小G,原发JavaGuide)
+
+### 解决的 3 个真实痛点 (作者原话)
+
+1. **第一屏先出现能执行的东西** — Agent 喜欢先证明自己懂了,"这是一个很好的问题"/"让我先分析一下" 把命令挤到屏幕外。`i-have-adhd` 强制第一行 = 答案或 next action
+2. **多轮任务不用猜做到哪** — 单轮问答结束就结束,但 Coding Agent 连续工作十几轮。前面的"改过什么/测试过没"散在不同消息里。Skill 要求每轮重新声明状态:「Step 3 of 5 done: schema 更新」
+3. **报错和完成状态都说具体** — "好像出了点问题" 改成 `auth.spec.ts:42: 预期 200, 实际 401。原因: 缺认证头。修复: 为请求添加 Authorization: Bearer ***`
+
+### 该解释和确认的时候不会硬压缩 (被低估的一条)
+
+短≠所有问题都三句话。**用户要求"详细解释"或"带我一步步理解"**,允许 Agent 正常展开。**大范围删除 / 强制推送 / 数据库迁移**这类破坏性操作,确认步骤不能省。**连续 3 轮修复没解决** → 停下,命名假设,问 1 个诊断问题,不盲改。
+
+### 实际安装命令 (Codex / Claude Code)
+
+**Codex:**
+
+```bash
+codex plugin marketplace add ayghri/i-have-adhd --ref main
+codex plugin add i-have-adhd@i-have-adhd
+codex plugin list                       # 验证安装
+
+# 会话内启用
+$i-have-adhd
+
+# Codex 不自动开启,需显式调用;想全会话默认 → 配官方常驻规则
+```
+
+**Claude Code:**
+
+```bash
+claude plugin marketplace add ayghri/i-have-adhd
+claude plugin install i-have-adhd@i-have-adhd
+
+# 会话内启用
+/i-have-adhd
+# 当前会话没识别到新插件时:
+/exit                                  # 重新加载
+
+# 常驻 (默认所有会话都用)
+touch ~/.claude/.i-have-adhd-always
+# → `SessionStart` hook 自动加载规则,无需 /i-have-adhd
+
+# 临时关闭
+"stop adhd mode" 或 "normal mode"
+# 恢复按需 → 删标记文件
+rm ~/.claude/.i-have-adhd-always
+```
+
+### 作者的使用策略 (重要)
+
+> "先保留按需启用。排错、执行修改和推进长任务时打开;需要讨论方案、讲源码或审文章时,再决定要不要保留更完整的解释。"
+> "用上一段时间,确定自己确实喜欢这种回答方式,再设成默认也不迟。"
+
+→ **反 install 教条** — 不要上来就 `touch ~/.claude/.i-have-adhd-always`,先按需用 1-2 周
+
+### 文章小结 (作者立场)
+
+- 优点: **prompt-level + 单文件 SKILL.md**,模型不变、读代码 / 改文件 / 执行命令的工具不变,**只调整回答顺序、步骤长度、进度表达、错误说明**
+- 局限: 名字里的 `adhd` 容易让人误以为是诊断或治疗,实际只管 Agent 怎么组织回答
+- 生态意义: **跨 9+ 平台通用**,对"哪个 Coding Agent 都让 Agent 答非所问"有共振价值
+
 ## 风险与限制
 
 - **不是 productivity 工具** — 只是输出风格,不会让你"做事"
@@ -165,7 +230,7 @@ claude plugin install i-have-adhd@i-have-adhd
 - **关闭词必须明确** — "stop adhd mode" / "normal mode",LLM 可能不听
 - **Dependency on platform plugin system** — 如果平台不更新 plugin schema,可能失效
 - **i18n** — README 有 6 种语言(英/中/葡/日/越/韩),但 SKILL.md 仅英文
-- **新项目** — 3 months ago 整体迁移到 plugin mode
+- **v0.2.0 (2026-08 中)** — 整体迁移到 plugin mode,新增 Pi 的 `alwaysOn` / `hideStatus` config + OpenCode server plugin
 
 ## 关键设计理念
 
@@ -179,6 +244,7 @@ claude plugin install i-have-adhd@i-have-adhd
 - 仓库: <https://github.com/ayghri/i-have-adhd>
 - 安装: <https://github.com/ayghri/i-have-adhd/blob/main/INSTALL.md>
 - SKILL.md: <https://github.com/ayghri/i-have-adhd/blob/main/skills/i-have-adhd/SKILL.md>
+- 程序汪解读 (2026-09-01): <https://mp.weixin.qq.com/s/rSJQHy1EIIHbDFljySVA2A>
 - Credits 灵感: *The Adult ADHD Tool Kit* (J. Russell Ramsay & Anthony L. Rostain)
 
 ## 跟 Hermes 的关系(bonus)
