@@ -50,6 +50,8 @@
 - [StadiView](StadiView.md) — 3D 足球场可视化
 - [PascalEditor](PascalEditor.md) — 开源 3D 建筑 / 数字孪生编辑器，React Three Fiber + WebGPU + 原生 MCP 集成（21.3k ⭐）
 - [ThreeUI](ThreeUI.md) — Meng To 出品的 Three.js 3D UI / Shader / Hero 组件目录（Community 4.9k ⭐，164 免费浏览结果）
+- [ShinjukuIndoorThreejsDemo](ShinjukuIndoorThreejsDemo.md) — 国交省新宿駅屋内地图数据的 Three.js 3D 可视化 demo（127 ⭐，未声明 License）
+- [PerformanceTriage](PerformanceTriage.md) — 性能告警定位思路：内存 / CPU / IO / 网络 四维通用方法论（基于 Linux 运维老兵胡哥 Page Cache 假满系列）
 - [odometer](odometer.md) — HubSpot 的平滑数字过渡 JS/CSS 库
   （7.3k ⭐，archived 2019，< 3kb）
 - [kage](kage.md) — MengTo 的 Kyoto 夜间寺庙交互式 Three.js
