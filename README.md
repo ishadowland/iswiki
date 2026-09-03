@@ -99,6 +99,10 @@
   Tier 1 housekeeping: 2 ADRs + dashboard display_name modal + RFC
   §2.3 reconciliation
 
+### 📦 开源产品 / SaaS 替代
+
+- [AgoraFlat](AgoraFlat.md) — 声网开源在线互动教室三件套（Web + Electron + Android + Fastify 后端，MIT，6.43k ⭐，CN/SG 双地域构建）
+
 ## 风格
 
 - 每个 `.md` 是 1 个独立主题
