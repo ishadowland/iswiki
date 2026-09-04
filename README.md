@@ -103,6 +103,9 @@
 
 - [AgoraFlat](AgoraFlat.md) — 声网开源在线互动教室三件套（Web + Electron + Android + Fastify 后端，MIT，6.43k ⭐，CN/SG 双地域构建）
 
+### 🎨 AI 3D / 生成式 3D
+- [Tripo](Tripo.md) — VAST 的 AI 3D 大模型（Tripo P2.0 原生四边面 + 语义分件；商用 Python SDK + CLI + MCP + 开源 TripoSR/SG/SF/Splat；已落地网易蛋仔工坊，半年融资 50 亿）
+
 ## 风格
 
 - 每个 `.md` 是 1 个独立主题
