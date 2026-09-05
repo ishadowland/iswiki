@@ -68,6 +68,9 @@
 - [Netdata](Netdata.md) — AI-powered 全栈可观测性平台（80.4k ⭐，per-second + 自带 ML 异常 + NIDL 自动 dashboard；前端 NCUL1 闭源 CDN 交付）
 
 ### 🐧 Linux / 运维故障排查
+- [recovery-sop](recovery-sop.md) — 误删 40GB 生产表 8 小时救回:通用
+  9 步恢复 SOP(止损→备份现场→定方案→验证→回放→校验)
+  + 5 大场景扩展(MySQL/文件/Git/K8s)
 - [linux-permission-debug](linux-permission-debug.md) — chmod 777 翻车:
   6 层访问链(身份/路径/挂载/SELinux/NFS/容器 namespace)的
   完整定位思路 + read-only 排查命令
