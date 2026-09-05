@@ -59,6 +59,7 @@
 - [vgpu](vgpu.md) — Vercel Labs 的 WebGPU 库（1.1k ⭐，25KB gzip，
 - [reverse-skill](reverse-skill.md) — zhaoxuya520 的安全/逆向技能路由包（33.7k ⭐！857 文件 / 55 skill / R0-R39 路由 / JSON SSoT / PS+Bash+Kali 跨平台）
 - [img2threejs](img2threejs.md) — AI 看图写 Three.js 代码（15k ⭐，8 阶段构建 + 视觉复核 + Spec before code + Token-efficient 架构）
+- [nova3d](nova3d.md) — RareSense 的「3D as Code」生成器（693 ⭐，先生成 Blender Python 构造程序，每个部件独立命名 + 完整层级 + 关节可动结构，输出结构化 GLB，可继续编辑）
   Typed WGSL，Browser/Node/CI 跨 runtime，Agent-ready + 内置 evals）
 - [artemis-redradman](artemis-redradman.md) — Three.js 复刻 NASA
   Artemis II（14 阶段 + 16 组件 + 3 主题，数据密度极高）
