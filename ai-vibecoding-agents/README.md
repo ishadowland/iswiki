@@ -19,10 +19,11 @@
 - [openopc](openopc.md)
 - [paseo](paseo.md)
 - [ponytail](ponytail.md)
+- [remix-reference-video-prompt](remix-reference-video-prompt.md)
 - [reverse-skill](reverse-skill.md)
 - [teamai-cli](teamai-cli.md)
 - [wake](wake.md)
 
 ---
 
-**共 14 个文档**。
+**共 15 个文档**。

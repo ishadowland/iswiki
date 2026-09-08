@@ -1,6 +1,6 @@
 # 🛠️ Ops / Cybersec / DBA
 
-> Linux 故障排查 / 数据恢复 / 性能 triage / WAF / 安全任务路由 / 渗透测试 / 漏洞研究
+> Linux 故障排查 / 数据恢复 / 性能 triage / 监控可观测 / WAF / 安全任务路由 / 渗透测试 / 漏洞研究
 
 ---
 
@@ -13,6 +13,7 @@
 - [disable-ipv6-multi-kernel](disable-ipv6-multi-kernel.md)
 - [kylinV10DisableIPv6](kylinV10DisableIPv6.md)
 - [linux-permission-debug](linux-permission-debug.md)
+- [netdata](netdata.md)
 - [opsTroubleshootingDiskGhost](opsTroubleshootingDiskGhost.md)
 - [opsTroubleshootingOOMCgroup](opsTroubleshootingOOMCgroup.md)
 - [overseas-youtube-security-channels](overseas-youtube-security-channels.md)
@@ -25,4 +26,4 @@
 
 ---
 
-**共 14 个文档**。
+**共 15 个文档**。
