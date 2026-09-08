@@ -72,7 +72,10 @@
   9 步恢复 SOP(止损→备份现场→定方案→验证→回放→校验)
   + 5 大场景扩展(MySQL/文件/Git/K8s)
 - [disable-ipv6-multi-kernel](disable-ipv6-multi-kernel.md) — 多内核禁用
-- [leaf-mlp1](leaf-mlp1.md) — Leaf: MLP1 掌机 custom firmware 部署编排器（35 ⭐，UMRK workspace 中央命令面，14+ sibling repos + uipad 合成手柄）
+### 🎮 Leaf / Miniloong 掌机二次开发
+专题目录: [`leaf-mlp1/`](leaf-mlp1/)
+
+- [leaf-mlp1/leaf-deploy](leaf-mlp1/leaf-deploy.md) — Leaf: MLP1 掌机 custom firmware 部署编排器（35 ⭐，UMRK workspace 中央命令面，14+ sibling repos + uipad 合成手柄）
   IPv6:给所有 audit=0 的 menuentry 加 ipv6.disable=1(5 秒成本换确定性)
 - [linux-permission-debug](linux-permission-debug.md) — chmod 777 翻车:
   6 层访问链(身份/路径/挂载/SELinux/NFS/容器 namespace)的
