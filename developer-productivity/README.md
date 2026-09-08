@@ -1,6 +1,6 @@
 # ⚡ 开发者生产力
 
-> 开发者日常工具 / 提效库 / 数字过渡 / 体验优化
+> 开发者日常工具 / 提效库 / 数字过渡 / 体验优化 / 个人项目
 
 ---
 
@@ -9,8 +9,8 @@
 | 文档 | 描述 |
 |------|------|
 - [odometer](odometer.md)
-
+- [programWangPrivateProjects](programWangPrivateProjects.md)
 
 ---
 
-**共 1 个文档**。
+**共 2 个文档**。

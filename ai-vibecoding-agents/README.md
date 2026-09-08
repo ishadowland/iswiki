@@ -1,6 +1,6 @@
-# 🤖 AI Coding Agents / 编排
+# 🤖 AI Vibecoding Agents / 编排
 
-> AI coding agent 工具 / 编排框架 / skill 集 / 多 agent 协作平台
+> AI coding agent 工具 / 编排框架 / skill 集 / 多 agent 协作平台 / AI 视频 prompt / macOS AI 工具
 
 ---
 
@@ -13,6 +13,7 @@
 - [i-have-adhd](i-have-adhd.md)
 - [img2threejs](img2threejs.md)
 - [lobeHub](lobeHub.md)
+- [logue](logue.md)
 - [mattpocock-skills](mattpocock-skills.md)
 - [openclaw-awd-arena](openclaw-awd-arena.md)
 - [openopc](openopc.md)
@@ -20,8 +21,8 @@
 - [ponytail](ponytail.md)
 - [reverse-skill](reverse-skill.md)
 - [teamai-cli](teamai-cli.md)
-
+- [wake](wake.md)
 
 ---
 
-**共 12 个文档**。
+**共 14 个文档**。
