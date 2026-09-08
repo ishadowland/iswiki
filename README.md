@@ -74,6 +74,8 @@
 - [linux-permission-debug](linux-permission-debug.md) — chmod 777 翻车:
   6 层访问链(身份/路径/挂载/SELinux/NFS/容器 namespace)的
   完整定位思路 + read-only 排查命令
+- [KylinV10DisableIPv6](KylinV10DisableIPv6.md) — 麒麟 V10 ARM 版彻底禁用 IPv6
+  5 步 SOP + 3 条验证命令 + 多网卡 IP 冲突 / grub 启动失败兜底
 
 ### 🖥️ macOS / 本地 AI
 
