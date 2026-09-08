@@ -71,6 +71,8 @@
 - [recovery-sop](recovery-sop.md) — 误删 40GB 生产表 8 小时救回:通用
   9 步恢复 SOP(止损→备份现场→定方案→验证→回放→校验)
   + 5 大场景扩展(MySQL/文件/Git/K8s)
+- [disable-ipv6-multi-kernel](disable-ipv6-multi-kernel.md) — 多内核禁用
+  IPv6:给所有 audit=0 的 menuentry 加 ipv6.disable=1(5 秒成本换确定性)
 - [linux-permission-debug](linux-permission-debug.md) — chmod 777 翻车:
   6 层访问链(身份/路径/挂载/SELinux/NFS/容器 namespace)的
   完整定位思路 + read-only 排查命令
