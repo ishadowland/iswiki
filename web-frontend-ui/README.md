@@ -1,6 +1,6 @@
-# 🌐 Web 前端 / UI 库
+# 🌐 Web 前端 / UI 库 / 前端可观测
 
-> Web 前端组件库 / 互动教室 / 地图 / 3D 编辑器
+> Web 前端组件库 / 互动教室 / 地图 / 3D 编辑器 / Google MediaPipe / DeepMind WeatherNext / Netdata
 
 ---
 
@@ -10,9 +10,11 @@
 |------|------|
 - [agoraFlat](agoraFlat.md)
 - [mapcn](mapcn.md)
+- [mediaPipeTasksVision](mediaPipeTasksVision.md)
+- [netdata](netdata.md)
 - [pascalEditor](pascalEditor.md)
-
+- [weatherNext](weatherNext.md)
 
 ---
 
-**共 3 个文档**。
+**共 6 个文档**。

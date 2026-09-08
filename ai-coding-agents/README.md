@@ -1,6 +1,6 @@
 # 🤖 AI Coding Agents / 编排
 
-> AI coding agent 工具 / 编排框架 / skill 集 / 多 agent 协作平台
+> AI coding agent 工具 / 编排框架 / skill 集 / 多 agent 协作平台 / AI 视频生成 prompt
 
 ---
 
@@ -18,10 +18,10 @@
 - [openopc](openopc.md)
 - [paseo](paseo.md)
 - [ponytail](ponytail.md)
+- [remix-reference-video-prompt](remix-reference-video-prompt.md)
 - [reverse-skill](reverse-skill.md)
 - [teamai-cli](teamai-cli.md)
 
-
 ---
 
-**共 12 个文档**。
+**共 13 个文档**。
