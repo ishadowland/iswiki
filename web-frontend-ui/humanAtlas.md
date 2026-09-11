@@ -4,6 +4,21 @@
 > 仓库: https://github.com/ashemag/human-atlas · 在线 demo: https://human-atlas-seven.vercel.app · 文档: README.md
 > License: MIT(应用代码) + CC BY 4.0(BodyParts3D 4.0 几何数据,二次发布须保留署名) · 语言: TypeScript 95.9% · ⭐ 3,104 · Fork 752 · 最近提交 2026-09-07
 
+## 界面速览
+
+| 场景 | 截图 |
+|---|---|
+| 全部系统总览 | ![](assets/humanAtlas/01-overview.webp) |
+| 只看骨骼(系统过滤)| ![](assets/humanAtlas/02-skeleton-only.webp) |
+| 系统面板特写 | ![](assets/humanAtlas/03-systems-panel.webp) |
+| 选中 Right Femur + 详情面板 | ![](assets/humanAtlas/04-femur-detail.webp) |
+| Isolate 后只显示单个结构 | ![](assets/humanAtlas/05-isolate-structure.webp) |
+| Explode 拖动中 | ![](assets/humanAtlas/06-explode-mid.webp) |
+| Explode 拖到底(2234 件散开)| ![](assets/humanAtlas/07-explode-full.webp) |
+| 只开骨架 + 爆炸图 | ![](assets/humanAtlas/08-skeleton-explode.webp) |
+| 爆炸图后骨骼细节 | ![](assets/humanAtlas/09-explode-skeleton-close.webp) |
+| 搜索 "heart" 概念下拉 | ![](assets/humanAtlas/10-search-heart.webp) |
+
 ## 一句话定位
 
 基于 BodyParts3D 4.0 + React + Three.js + shadcn/ui 的开源 3D 人体解剖浏览器:2234 个独立可点选 mesh、15 个人体系统、3432 个可搜索 FMA 概念,支持爆炸图拆解 + 系统分层 + 单结构隔离。
