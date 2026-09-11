@@ -103,7 +103,7 @@ iswiki/
 
 | 文档 | 一句话 |
 |---|---|
-| [leaf-deploy](misc/OS-gaming-console/leaf-deploy.md) | Miniloong Pocket 1 掌机的自定义 firmware 部署编排器 + UMRK workspace 中央命令面。 |
+| [leaf-deploy](misc/OS-gaming-console/leaf-deploy.md) | Miniloong Pocket 1 掌机的自定义固件,SD 卡安装 / OTA 升级 / recovery 回退(基于 v0.11.0)。 |
 
 ---
 

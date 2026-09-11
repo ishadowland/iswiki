@@ -1,19 +1,60 @@
-# Leaf — UMRK 游戏机的 custom firmware 部署编排器 (35 ⭐)
+# Leaf — Miniloong Pocket 1 掌机的自定义固件(SD 卡安装)
 
-> 学习笔记 · 调研时间 2026-09-07
-> 官网: <https://leaf.game>
-> GitHub: <https://github.com/Utility-Muffin-Research-Kitchen/Leaf>
-> 硬件: **Miniloong Pocket 1 (MLP1)** — Loongson 架构的国产开源掌机
+> 学习笔记 · 调研时间 2026-09-11(基于 v0.11.0 release)
+> 官网: <https://leaf.game> · GitHub: <https://github.com/Utility-Muffin-Research-Kitchen/Leaf>
+> 硬件: **Miniloong Pocket 1 (MLP1)** — 国产开源掌机,Loongson CPU
+> License: MIT · ⭐ 36 · 最新版 v0.11.0(2026-09-05)
 
----
+## 一句话定位
 
-## 0. 一句话定位
+Leaf 是 **Miniloong Pocket 1 掌机上的「自定义固件」**,通过 SD 卡启动,**叠加在 stock LoongOS 上(不替换)**,提供游戏库 + 多模拟器(RetroArch + 独立 PPSSPP / NDS / N64 / Dreamcast / Saturn / Amiga)+ 系统管理 + Central Scrutinizer Web 管理界面。device 永远可回退 stock。
 
-**Leaf = Miniloong Pocket 1 掌机的「自定义 firmware」部署编排器**(跟 stock LoongOS 共存,可回退)+ **UMRK workspace 的中央命令面**(负责 clone 14+ sibling repos / bootstrap / preflight / payload 装配 / SD-card 部署)。
+## 安装指南(基于 v0.11.0)
 
-==**核心哲学**:**在 stock OS 上叠加,不替换**(device 永远 recoverable)。
+### 三种安装场景
 
-## 1. 硬件 — Miniloong Pocket 1 (MLP1)
+| 场景 | 操作 |
+|---|---|
+| **升级现有安装**(推荐) | 在设备上:`Menu > Actions > System Update`。OTA 自动下载并应用 |
+| **全新安装** | 把 `leaf-mlp1-sd-v0.11.0.zip` 解压到 FAT32 或 ext4 SD 卡**根目录**,插卡开机。游戏 / 存档 / state / 设置**不会动** |
+| **回退 stock LoongOS** | 把 `leaf-mlp1-recovery-v0.11.0.zip` 解压到卡根,开机**一次**即可恢复出厂 stock |
+
+### 升级前注意
+
+- 之前用过 beta 通道的,在升级前把 **Update Channel** 切回 **Stable**,否则下次只会看到 beta 推送
+- 升级过程 games / saves / states / settings 都在原位,不会丢
+- v0.11.0 已包含 v0.10.0 及之前所有 release 的内容(plus unreleased 0.10.1 beta 的改进)
+
+### v0.11.0 主要变更(2026-09-05 发布)
+
+- **Fun DraStic** — 由 tenlevels 捐赠的 Nintendo DS 替代前端,DraStic 仍是默认;从 DS 游戏的 Core 选项切换
+- **游戏内 shader 选择** — In-game menu > Shader,可按 This game / This folder / All RetroArch 三个 scope 应用预设
+- **可配置游戏内快捷键** — Settings > Controls & Feedback > In-game Shortcuts 自定义 Game Switcher / Screenshot / Recording 的副键
+- **YabaSanshiro 独立 Saturn 模拟器** — 含 BIOS 选择(BIOS 放 `BIOS/SATURN/`,512 KiB),解决部分游戏 HLE 黑屏
+- **Amiga 支持** — PUAE 2021 默认 + PUAE 备选,Kickstart 放 `BIOS/puae/`
+- **Pak Rat 加系统** — 通过 content pak 加系统/模拟器,首个例子 ScummVM(游戏放 `Roms/SCUMMVM/` + `.scummvm` game-ID 文件)
+- **RetroArch 配置持久化** — Quit / 重启 / 关机后设置保留;每个 launch 独立 working config
+- **Appearance 改进** — System Icons 可选 Automatic / Flat / Photographic,独立于 home layout
+- **中文界面** — Thing-File 加审过的简体中文,共享 CJK 字体显示中日文文件名
+
+### 升完后第一次设置建议
+
+1. **Wi-Fi**:`Menu > Settings > Network` 连一次,之后会自动恢复
+2. **时区 / 显示**:`Menu > Settings > Display & Language`
+3. **BIOS**:Saturn / Amiga 需要的 BIOS 提前放进 `BIOS/SATURN/`、`BIOS/puae/`
+4. **ROM 库**:游戏按系统分目录放进 `Roms/<SYSTEM>/`(例:`Roms/AMIGA/`、`Roms/SCUMMVM/`)
+5. **Cover Flow 美术**:扫描 + 拉取由 Central Scrutinizer(Leaf 自带 Web 管理器)做
+
+### 故障兜底
+
+| 现象 | 处理 |
+|---|---|
+| 升级后无法启动 | 用 recovery ZIP 回退,boot 一次回 stock |
+| Beta 通道用户没看到 v0.11.0 | 先在 Update Channel 切回 Stable,再 System Update |
+| Saturn 游戏黑屏 | 用 YabaSanshiro 备选 core + 放外部 BIOS 到 `BIOS/SATURN/` |
+| RetroAchievements 连不上 | RetroArch 已内置 TLS,检查 Wi-Fi 与时间同步 |
+
+## 硬件 — Miniloong Pocket 1 (MLP1)
 
 | 项 | 规格 |
 |---|---|
@@ -23,27 +64,15 @@
 | **开源** | ✅ 完全开源硬件 + 软件 |
 | **掌机形态** | 模拟摇杆 + ABXY + L1/R1/L2/R2 + SELECT/START/MENU/STICK |
 
-== **关键**:**游戏手柄 bus=0x0019, vendor=0x9903, product=0x9913, version=0x0102, name="Loong Gamepad"** — SDL 从这些 GUID 派生,如果用错设备会被映射成 game controller 而非 raw joystick(face button A 会变 B)。
+== **核心数据**:36 ⭐,0 Fork(早期但已经在生产),MIT,size 695 KB。
 
-## 2. 核心数据
+## 项目结构 — UMRK workspace
 
-| 字段 | 值 |
-|---|---|
-| **Stars** | 35 ⭐(早期,但已经在生产)|
-| **Forks** | 0 |
-| **License** | MIT |
-| **Language** | Python(Makefile + bash orchestration)+ C(leaf 内核工具) |
-| **Size** | 676 KB / 115 文件 |
-| **Created** | 2026-06-04(3 个月)|
-| **Updated** | 2026-09-07(active,今天)|
-| **Topics** | `miniloong, retro-gaming, retrogaming` |
-| **Homepage** | <https://leaf.game> |
-
-## 3. UMRK Workspace 架构 — 14+ sibling repos
+Leaf 不是一个独立项目,它是 **UMRK workspace** 的中央 glue / 编排层,协调 14+ sibling repos:
 
 ```
 ~/dev/UMRK/
-├── Leaf/                       # ⭐ 部署编排器(本文)
+├── Leaf/                       # ⭐ 自定义固件 + 部署编排(本文)
 ├── Catastrophe/                # 模拟器核心 packaging
 ├── Jawaka/                     # Loong 设备 GUI launcher
 ├── Thing-File/                 # 文件管理器 app
@@ -51,262 +80,55 @@
 ├── CentralScrutinizer/         # Web 管理器 app
 ├── Fugazi/                     # Shader tuner app
 ├── PPSSPP-spruce/              # PSP emulator
-├── steward-fu-nds/             # NDS emulator
+├── steward-fu-nds/             # NDS emulator(含 Fun DraStic)
 ├── N64-standalone/             # N64 emulator
 ├── Flycast-standalone/         # Dreamcast emulator
+├── YabaSanshiro-standalone/    # Saturn emulator(v0.11.0 加)
 ├── retroarch-builds/           # RetroArch binary
 ├── Cores-spruce/               # RetroArch cores
 ├── mlp1-toolchain/             # LoongArch 交叉编译工具链
-├── miniloong-launcher-switcher/# Launcher 切换工具
-├── miniloong-adb-keeper/       # ADB keeper
-└── umrk-workspace/             # (可选,private internal docs/plans)
+└── miniloong-launcher-switcher/ # Launcher 切换工具
 ```
 
-==**关键设计**:**每个 repo 独立** + Leaf 是 **dispatcher**(不重新实现 product builds)— 见 Makefile 头部注释:
+**作为终端用户**,你只需要拿到 Leaf 安装 ZIP,**不需要 clone 这些 repo** — 它们是开发方内部的子模块。
 
-```
-This Makefile is a DISPATCHER over each sibling repo's own build/package/stage
-targets. It does not reimplement product builds.
-```
+## 5 大核心设计哲学(仍然适用)
 
-## 4. 4 大核心功能
+1. **「叠加,不替换」** — Leaf 不替换 stock LoongOS,而是叠加在它上面。device 永远 recoverable
+2. **「Dispatcher 不实现」** — Leaf 只调度 sibling repos 的 build/package/stage,不重新实现 product builds
+3. **「每个产品一个独立 repo」** — Jawaka/Catastrophe/RetroArch/cores/apps 都独立,Leaf 只是胶水
+4. **「Checksum-bound staging」** — `targeted-build-report.json` 必须经过校验才允许 stage
+5. **「Pre-flight gates before stage」** — read-only cache preflight 必须在 stage 前通过
 
-### 4.1 Bootstrap(workspace 启动)
+## 版本节奏
 
-```bash
-mkdir -p ~/dev/UMRK
-cd ~/dev/UMRK
-git clone https://github.com/Utility-Muffin-Research-Kitchen/Leaf.git
-cd Leaf
-
-make bootstrap      # clone 所有 public sibling repos
-make -C ../mlp1-toolchain image  # 交叉编译工具链镜像
-make doctor         # preflight: adb / docker / toolchain / device
-make stage DEVICE=mlp1  # 完整 stage
-```
-
-### 4.2 Stage(部署编排)
-
-| 命令 | 作用 |
-|---|---|
-| `make stage DEVICE=mlp1` | 完整 stage:launcher + 所有 apps |
-| `make stage-jawaka DEVICE=mlp1` | 只 stage launcher payload |
-| `make stage-retroarch DEVICE=mlp1` | RetroArch binary + cores + info + shaders |
-| `make stage-core-test CORE=np2kai DEVICE=mlp1` | 测试单个 core |
-| `make stage-emulator EMULATOR=ppsspp DEVICE=mlp1` | stage 独立模拟器 |
-| `make stage-app APP=ssh-server DEVICE=mlp1` | stage 单个 app |
-| `make stage-emulators DEVICE=mlp1` | PPSSPP + DraStic + N64 + Dreamcast |
-
-### 4.3 Release(发布)
-
-```bash
-make release-zips DEVICE=mlp1        # install + recovery ZIPs
-make release-sd-zip DEVICE=mlp1      # install ZIP only
-make release-recovery-zip DEVICE=mlp1# recovery ZIP only
-make beta-zips TAG=v0.8.0-beta.3 DEVICE=mlp1    # beta ZIPs from one tag
-make stable-zips TAG=v0.10.0 DEVICE=mlp1        # stable ZIPs from one tag
-```
-
-### 4.4 adb 工具(开发期间连接设备)
-
-```
-scripts/
-├── adb-install-wrapper.sh           # app 安装
-├── adb-large-library-fixture.sh     # 大 ROM 库压测
-├── adb-package-quiesce.sh           # 暂停 LoongOS package manager
-├── adb-portmaster-ota-fingerprint.sh # PortMaster OTA 指纹
-├── adb-resolve-umrk-sd.sh           # 解析 UMRK SD 卡路径
-├── adb-restart-loong.sh             # 重启 LoongOS
-├── adb-set-marker.sh                # 标记 deploy 状态
-├── adb-stage-app-package-smoke.sh   # stage app smoke test
-└── devtools/
-    └── uipad.c                     # ⭐ 合成手柄(input proxy)
-```
-
-## 5. ⭐ `uipad.c` — 关键技术细节(我要借鉴)
-
-### 5.1 用途
-**uipad** = 通过 adb 在设备上创建一个虚拟游戏手柄,**用于驱动 Leaf app UI 进行 UI 测试**。
-
-### 5.2 关键约束
-
-```
-约束 1: 设备必须在 app 启动前存在
-- SDL 在 init 时枚举 joystick,后来添加的 pad 看不见
-- 解决: --serve 模式: 创建 pad 一次,保持存活,从 fifo 读命令
-- 验证日志: "tracked (joystick)" ✅ / "tracked (gamecontroller+joystick)" ❌
-
-约束 2: 必须克隆真实 Loong Gamepad 身份
-- bus=0x0019, vendor=0x9903, product=0x9913, version=0x0102, name="Loong Gamepad"
-- SDL 从这些 GUID 派生设备类型
-- 用错身份 → "A" 变 "B" → app 退出
-```
-
-### 5.3 命令格式
-
-```bash
-uipad A                 # 按下 + 释放 A
-uipad LEFT LEFT A       # 序列执行
-uipad --hold 300 A      # 按住 300ms 再释放
-uipad --serve PATH      # 从 fifo 读按钮序列(space-separated),直到 "quit"
-
-# 12 个按钮: A B X Y L1 R1 L2 R2 SELECT START MENU STICK + 4 向 HAT
-```
-
-### 5.4 这是「跨设备 adb 控制掌机 UI」的典范
-
-== uipad 是**任何想要自动测试掌机 UI 的人**的标准答案** — 不需要物理手柄,可以编程驱动任意按钮序列。
-
-## 6. 5 大核心设计哲学
-
-1. **"叠加,不替换"** — Leaf 不替换 stock LoongOS,而是叠加在它上面。device 永远 recoverable
-2. **"Dispatcher 不实现"** — Leaf Makefile 只调度 sibling repos 的 build/package/stage,不重新实现 product builds
-3. **"每个产品一个独立 repo"** — Jawaka/Catastrophe/RetroArch/cores/apps 都独立,Leaf 只是胶水
-4. **"Checksum-bound staging"** — `targeted-build-report.json` 必须经过校验才允许 stage
-5. **"Pre-flight gates before stage"** — read-only cache preflight 必须在 stage 前通过
-
-## 7. 用户问题回答:**在 MLP1 上开发小工具,技术栈 + 如何开始**
-
-### 7.1 技术栈总览
-
-| 维度 | 技术栈 |
-|---|---|
-| **OS** | LoongOS(基于 Linux,LoongArch + aarch64)|
-| **GUI** | SDL2(Miniloong 启用了 SDL 摇杆枚举) |
-| **语言** | **C / C++**(原始,跟 SDL 集成最好)/ **Rust**(可选)/ **Go**(可选) |
-| **包管理** | `package-quiesce-v1` barrier(Leaf 自创的 staged package install)|
-| **部署** | **adb 推到设备**(Leaf 提供了 adb-install-wrapper.sh)|
-| **调试** | adb logcat + adb shell |
-| **构建工具链** | `mlp1-toolchain` (LoongArch 交叉编译)|
-| **版本控制** | 每个 app 一个 git repo(独立) |
-
-### 7.2 起步 7 步(具体可执行)
-
-```bash
-# Step 1: 准备 workspace + clone Leaf
-mkdir -p ~/dev/UMRK
-cd ~/dev/UMRK
-git clone https://github.com/Utility-Muffin-Research-Kitchen/Leaf.git
-cd Leaf
-
-# Step 2: Bootstrap(自动 clone 14+ sibling repos)
-make bootstrap
-# 这会 clone: Catastrophe / Jawaka / Thing-File / ssh-server / CentralScrutinizer / Fugazi 等
-
-# Step 3: 装交叉编译工具链
-make -C ../mlp1-toolchain image
-# 这会 build LoongArch cross-compiler(aarch64 + LoongArch 双架构支持)
-
-# Step 4: 跑 preflight,确认 adb / docker / toolchain / device 都 ok
-make doctor
-
-# Step 5: 连接你的 MLP1 设备
-adb devices   # 应该看到 Miniloong 设备
-
-# Step 6: 学习 sibling repos 的结构 — 找一个最像你的 app 模板
-ls ../ssh-server/   # 最小 app,适合学习结构
-ls ../Thing-File/   # 文件管理器,适合学习 GUI
-
-# Step 7: 开始开发
-# - 用 ../mlp1-toolchain 编译
-# - 推到设备: adb push your-binary /data/local/tmp/
-# - 调试: adb logcat
-```
-
-### 7.3 推荐技术栈组合
-
-== **「最简小工具」组合**:
-
-| 组件 | 推荐 |
-|---|---|
-| **语言** | **C99**(原始,跟 SDL 完美集成,工具链完整)|
-| **GUI**(可选)| SDL2(系统已带,Leaf 默认用)|
-| **构建** | `make`(Leaf 风格统一)|
-| **部署** | `adb push + adb shell + adb install-wrapper` |
-| **自动化测试** | `uipad`(合成手柄)|
-| **版本控制** | 独立 git repo,clone 到 `~/dev/UMRK/your-app/` |
-
-== **「想用现代语言」组合**:
-
-| 组件 | 推荐 |
-|---|---|
-| **Rust** | rustup + aarch64-loongson64-linux-gnu target |
-| **Go** | GOOS=linux GOARCH=arm64(LoongArch 支持还不完整)|
-| **C++** | g++ + SDL2 |
-
-### 7.4 不推荐的
-
-| 不推荐 | 原因 |
-|---|---|
-| 直接在设备上编译 | 资源受限,LoongArch 工具链交叉编译更快 |
-| 假设 device 永远是 USB 连接 | Leaf 提供 adb-install-wrapper.sh,优先 push 而不是 mount |
-| 自己写 GPU 驱动 | Leaf 已用 stock Mali 驱动 |
-
-### 7.5 5 大可立即用的工具
-
-| 工具 | 路径 | 作用 |
+| 版本 | 日期 | 主题 |
 |---|---|---|
-| **`make bootstrap`** | Leaf/ | 一键 clone 14+ sibling repos |
-| **`make doctor`** | Leaf/ | preflight 全套检查 |
-| **`make stage-app APP=xxx`** | Leaf/ | stage 一个 app 到 SD 卡 |
-| **`adb-install-wrapper.sh`** | scripts/ | adb 推送 app 到设备 |
-| **`uipad`** | scripts/devtools/ | 合成手柄驱动 UI(自动化测试) |
+| **v0.11.0** | 2026-09-05 | Fun DraStic / Shaders / Saturn / Amiga |
+| v0.10.0 | 2026-08-24 | Simplified Chinese / Multiplayer / New Systems |
+| v0.9.0 | 2026-08-07 | Recording / USB-C Audio / 32X Support |
+| v0.8.0 | 2026-07-29 | Rumble / Shaders |
+| v0.7.0 | 2026-07-24 | 5-Game Mode / Screenshots / Emulator Upgrades |
 
-## 8. 跟我已有项目的可借鉴性
+约 **每 2-3 周**一个稳定 release,active 维护中。
 
-### 8.1 跟 OpenOPC 对比
+## TL;DR
 
-| 维度 | Leaf | **OpenOPC (我 fork)** |
-|---|---|---|
-| **Orchestration** | Makefile dispatcher | Python orchestrator |
-| **Sibling repos** | 14+ 独立 repo | ❌ 没分 |
-| **Bootstrap** | `make bootstrap` 一键 clone | ❌ 没 |
-| **Doctor / preflight** | `make doctor` | ❌ 没 |
-| **Checksum gate** | `targeted-build-report.json` | ❌ 没 |
+**Leaf = MLP1 掌机的用户级自定义固件**(不是开发工具),通过 SD 卡安装 / OTA 升级 / recovery 回退,36 ⭐,MIT。
 
-### 8.2 跟 img2threejs 对比
+== **用户怎么用**:
+1. **升级**:设备上 `Menu > Actions > System Update`(从已装的旧版升到 v0.11.0)
+2. **新装**:下载 `leaf-mlp1-sd-v0.11.0.zip`,解压到 FAT32/ext4 SD 卡根目录,插卡开机
+3. **回退**:下载 `leaf-mlp1-recovery-v0.11.0.zip`,解压到卡根,开机一次
 
-| 维度 | Leaf | img2threejs |
-|---|---|---|
-| 跨产品集成 | 多 sibling repos | 单一 repo |
-| 部署目标 | 真实硬件(掌机)| 软件(Three.js 代码)|
-| 工具链 | 交叉编译 | Python stdlib |
+== **v0.11.0 必玩 3 件事**:
+1. 试 **Fun DraStic**(DS 游戏的 Core 选项里切) — tenlevels 捐赠,全新界面
+2. In-game menu > **Shader** — 给当前游戏挑 CRT / LCD 滤镜
+3. **Pak Rat** 加 ScummVM,玩经典冒险游戏
 
-### 8.3 5 大可借鉴到 OpenOPC
+## 参考链接
 
-1. **Sibling repo 架构** — 每个 OPC task type 独立 repo,Leaf 只 orchestration
-2. **Makefile dispatcher** — OpenOPC 可以有 `Makefile` 调度各个 task 的 build/run
-3. **`make doctor` preflight** — OpenOPC 启动前检查工具链 / API key / MCP
-4. **Checksum gate** — 任务 artifact 必须经过校验才能 commit
-5. **`uipad` 思路** — OpenOPC task 可以加自动化 UI / interaction test(不只是 LLM call)
-
-### 8.4 4 大可借鉴到 substation-blueprint
-
-1. **Sibling 主题配置** — 每个 theme 独立 json
-2. **Pre-flight gate** — 启动前检查 WebGL / three.js / device pixel ratio
-3. **adb-style 部署** — substation-blueprint 已经用 GitHub Pages,这是天然的「推送 + 部署」
-
-## 9. 5 大相关参考
-
-- **Miniloong Pocket 1 硬件**: 国产开源掌机,Loongson CPU
-- **LoongOS**: 基于 Linux,LoongArch 架构
-- **Jawaka**: Leaf 自家 launcher(GUI)
-- **Catastrophe**: 模拟器核心 packaging 系统
-- **Cores-spruce**: RetroArch cores 管理
-
-## 10. TL;DR
-
-**Leaf = MLP1 掌机的 custom firmware 部署编排器**,**不是替代 stock OS 的 CFW,而是叠加**,35 ⭐,MIT,Python + C + bash。
-
-== **用户问题回答**:**在 MLP1 上开发小工具**:
-- **技术栈**: **C99 / C++ / Rust / Go**(推荐 C99),**SDL2 GUI**(可选),**adb 部署**
-- **起步 7 步**:
-  1. `mkdir -p ~/dev/UMRK && cd ~/dev/UMRK`
-  2. `git clone https://github.com/Utility-Muffin-Research-Kitchen/Leaf.git`
-  3. `cd Leaf && make bootstrap`(clone 14+ sibling repos)
-  4. `make -C ../mlp1-toolchain image`(装工具链)
-  5. `make doctor`(preflight)
-  6. `adb devices`(连接设备)
-  7. 学习 `../ssh-server/`(最小 app 模板)+ `../Thing-File/`(GUI 模板)
-
-==**最值得学的 1 点**:**`uipad.c`** — 用 Linux uinput 合成真实 gamepad 身份(bus/vendor/product 严格克隆),**自动化测试掌机 UI 不需要物理手柄**。
+- 官网: <https://leaf.game>
+- GitHub 仓: <https://github.com/Utility-Muffin-Research-Kitchen/Leaf>
+- v0.11.0 release notes: <https://github.com/Utility-Muffin-Research-Kitchen/Leaf/releases/tag/v0.11.0>
+- Central Scrutinizer 文档(子项目): <https://github.com/Utility-Muffin-Research-Kitchen/CentralScrutinizer>
