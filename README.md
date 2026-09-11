@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 47 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 48 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -14,7 +14,7 @@ iswiki/
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(15)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(1)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(15)
-├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(15)
+├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(16)
 └── misc/
     └── OS-gaming-console/        🎮 掌机 / 自定义 firmware(1)
 ```
@@ -78,6 +78,7 @@ iswiki/
 | [nova3d](web-frontend-ui/nova3d.md) | AI 不直接生成网格而写 Blender Python 构造程序,输出结构化 GLB。 |
 | [odometer](web-frontend-ui/odometer.md) | HubSpot 的 JS/CSS 数字动画库,< 3kb,翻牌式数字滚动过渡。 |
 | [pascalEditor](web-frontend-ui/pascalEditor.md) | R3F + WebGPU 的开源 3D 建筑/BIM/数字孪生编辑器,自带 MCP server。 |
+| [humanAtlas](web-frontend-ui/humanAtlas.md) | React + Three.js + BodyParts3D 4.0 的 3D 人体解剖浏览器,2234 mesh + 3432 概念 + 爆炸图。 |
 | [shinjukuIndoorThreejsDemo](web-frontend-ui/shinjukuIndoorThreejsDemo.md) | 日本国土交通省新宿站室内 GIS 数据丢进 Three.js 做 3D 分层楼栋 + 流光行人。 |
 | [stadiView](web-frontend-ui/stadiView.md) | 纯过程化生成的 3D 足球场座位预览 demo,Three.js + GSAP 飞进任一座位。 |
 | [threeui](web-frontend-ui/threeui.md) | Meng To 出品的 Three.js 3D UI / Shader / Hero 组件目录(Community 版 164 个)。 |
@@ -111,12 +112,12 @@ iswiki/
 |---|---|
 | 🤖 ai-vibecoding-agents | 15 |
 | 🛠️ ops-cybersec-dba | 15 |
-| 🌐 web-frontend-ui | 15 |
+| 🌐 web-frontend-ui | 16 |
 | ⚡ developer-productivity | 1 |
 | 📌 misc/OS-gaming-console | 1 |
-| **总计** | **47** |
+| **总计** | **48** |
 
-(47 个被分类的 doc + 1 个根 README.md)
+(48 个被分类的 doc + 1 个根 README.md)
 
 ---
 

@@ -11,6 +11,7 @@
 - [agoraFlat](agoraFlat.md)
 - [artemis-art-direction](artemis-art-direction.md)
 - [artemis-redradman](artemis-redradman.md)
+- [humanAtlas](humanAtlas.md)
 - [kage](kage.md)
 - [mapcn](mapcn.md)
 - [mediaPipeTasksVision](mediaPipeTasksVision.md)
@@ -24,6 +25,4 @@
 - [vgpu](vgpu.md)
 - [weatherNext](weatherNext.md)
 
----
-
-**共 15 个文档**。
+**共 16 个文档**。
