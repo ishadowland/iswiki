@@ -8,6 +8,7 @@
 
 | 文档 | 描述 |
 |------|------|
+- [awesome-agent-skills](awesome-agent-skills.md)
 - [OpenKimiPPTSkill](OpenKimiPPTSkill.md)
 - [fireside-sprint1](fireside-sprint1.md)
 - [i-have-adhd](i-have-adhd.md)
@@ -26,4 +27,4 @@
 
 ---
 
-**共 15 个文档**。
+**共 16 个文档**。

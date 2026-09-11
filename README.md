@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 48 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 49 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -40,6 +40,7 @@ iswiki/
 | [remix-reference-video-prompt](ai-vibecoding-agents/remix-reference-video-prompt.md) | SKILL.md 级 prompt skill,按参考视频拆解运镜 + 生成结构化视频提示词。 |
 | [reverse-skill](ai-vibecoding-agents/reverse-skill.md) | AI Agent 的安全/逆向/渗透任务路由,857 文件 / 55 skill 模块 / R0-R39 路由。 |
 | [teamai-cli](ai-vibecoding-agents/teamai-cli.md) | 腾讯开源的 Git-native 团队 AI 工具 CLI,push/MR/pull 同步 skill 给各 agent。 |
+| [awesome-agent-skills](ai-vibecoding-agents/awesome-agent-skills.md) | VoltAgent 维护的 1497+ agent skill 官方合集索引,70+ 真实工程团队出品,适配 8 个 AI 编程工具。 |
 | [wake](ai-vibecoding-agents/wake.md) | Mac 上 Rust+GPUI 写的 multi-agent 会话档案馆,统一浏览本地历史。 |
 
 ---
@@ -113,14 +114,14 @@ iswiki/
 
 | 分类 | 文档数 |
 |---|---|
-| 🤖 ai-vibecoding-agents | 15 |
+| 🤖 ai-vibecoding-agents | 16 |
 | 🛠️ ops-cybersec-dba | 15 |
 | 🌐 web-frontend-ui | 16 |
 | ⚡ developer-productivity | 1 |
 | 📌 misc/OS-gaming-console | 1 |
-| **总计** | **48** |
+| **总计** | **49** |
 
-(48 个被分类的 doc + 1 个根 README.md)
+(49 个被分类的 doc + 1 个根 README.md)
 
 ---
 
