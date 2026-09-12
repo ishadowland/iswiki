@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 49 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 50 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -11,9 +11,9 @@
 ```
 iswiki/
 ├── README.md
-├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(15)
+├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(16)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(1)
-├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(15)
+├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(16)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(16)
 └── misc/
     └── OS-gaming-console/        🎮 掌机 / 自定义 firmware(1)
@@ -58,6 +58,7 @@ iswiki/
 - [remote-obd-deep-analysis](remote-obd-deep-analysis.md) — 远程 OBD USB 诊断方案的深度技术分析(12 节,含 USB over IP 协议 / XTCP 打洞 / HEX-V2 VCDS 协议栈 / 车载恶劣环境生存策略)
 | [netdata](ops-cybersec-dba/netdata.md) | 开箱即用的 per-second 实时监控平台,自带 ML 异常检测 + 告警。 |
 | [opsTroubleshootingDiskGhost](ops-cybersec-dba/opsTroubleshootingDiskGhost.md) | df 说满、du 说没满 ——「幽灵空间」排查(fd 还指向的 inode)。 |
+| [opsTroubleshootingNginx502vs504](ops-cybersec-dba/opsTroubleshootingNginx502vs504.md) | 502/504 不是严重程度而是故障域 —— 5 小时翻车教训 + 三招排查顺序。 |
 | [opsTroubleshootingOOMCgroup](ops-cybersec-dba/opsTroubleshootingOOMCgroup.md) | free 还有 8G 但 OOM 杀进程 —— cgroup 账本思维排查。 |
 | [overseas-youtube-security-channels](ops-cybersec-dba/overseas-youtube-security-channels.md) | 8 个海外网络安全 YouTube 频道,覆盖入门到高级研究的完整自学路径。 |
 | [performanceTriage](ops-cybersec-dba/performanceTriage.md) | 性能告警 70% 是假象,基于"快照 vs 趋势 / 用户态 vs 内核态"的四维定位骨架。 |
@@ -115,7 +116,7 @@ iswiki/
 | 分类 | 文档数 |
 |---|---|
 | 🤖 ai-vibecoding-agents | 16 |
-| 🛠️ ops-cybersec-dba | 15 |
+| 🛠️ ops-cybersec-dba | 16 |
 | 🌐 web-frontend-ui | 16 |
 | ⚡ developer-productivity | 1 |
 | 📌 misc/OS-gaming-console | 1 |
