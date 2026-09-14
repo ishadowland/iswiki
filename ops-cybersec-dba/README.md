@@ -16,6 +16,7 @@
 - [netdata](netdata.md)
 - [opsTroubleshootingDiskGhost](opsTroubleshootingDiskGhost.md)
 - [opsTroubleshootingOOMCgroup](opsTroubleshootingOOMCgroup.md)
+- [opsTroubleshootingStealTime](opsTroubleshootingStealTime.md) — 云上 CPU 30% 却卡:steal time 排查三板斧 + 工单取证话术
 - [overseas-youtube-security-channels](overseas-youtube-security-channels.md)
 - [performanceTriage](performanceTriage.md)
 - [qoder-security](qoder-security.md)
@@ -26,4 +27,4 @@
 
 ---
 
-**共 15 个文档**。
+**共 16 个文档**。
