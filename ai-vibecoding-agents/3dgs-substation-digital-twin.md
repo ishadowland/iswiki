@@ -22,7 +22,7 @@
 
 ### 官方图:3DGS vs NeRF 速度对比(原论文 teaser)
 
-![](assets/3dgs-substation-digital-twin/3dgs-vs-nerf.png)
+![](3dgs-substation-digital-twin/3dgs-vs-nerf.png)
 
 == **来源**:[3DGS 原论文](https://github.com/graphdeco-inria/gaussian-splatting) / [INRIA GraphDeco](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/) / SIGGRAPH 2023==
 
@@ -565,9 +565,9 @@ Step 4: 部署
 
 ## 10. 相关 iswiki 项目
 
-- **[kage](kage.md)** — Three.js + 美术资产渲染
-- **[img2threejs](img2threejs.md)** — AI 图转 Three.js 代码
-- **[nova3d](nova3d.md)** — 3D as Code (Blender Python)
+- **[kage](../web-frontend-ui/kage.md)** — Three.js + 美术资产渲染
+- **[img2threejs](../web-frontend-ui/img2threejs.md)** — AI 图转 Three.js 代码
+- **[nova3d](../web-frontend-ui/nova3d.md)** — 3D as Code (Blender Python)
 - **[3d-web-visualization](../web-frontend-ui/)** — 3D / Web 可视化项目集合
 
 ## 11. 5 大可借鉴元素(给我自己)

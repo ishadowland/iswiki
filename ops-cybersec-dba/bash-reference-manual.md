@@ -1034,7 +1034,7 @@ WantedBy=multi-user.target
 | 项目 | 关联 |
 |---|---|
 | **[opc.md](opc.md)** | Bash 写 OpenOPC shell scripts + 安装脚本 |
-| **[fireside-sprint1.md](fireside-sprint1.md)** | Bash 测试脚本 + 部署脚本 |
+| **[fireside-sprint1.md](../ai-vibecoding-agents/fireside-sprint1.md)** | Bash 测试脚本 + 部署脚本 |
 | **[substation-blueprint.md](../web-frontend-ui/)** | Bash 部署到 GitHub Pages |
 | **[recovery-sop.md](recovery-sop.md)** | Bash 数据恢复 SOP(用 grep/awk/sed) |
 | **[disable-ipv6-multi-kernel.md](disable-ipv6-multi-kernel.md)** | sed 修改 grub.cfg |

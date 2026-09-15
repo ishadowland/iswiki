@@ -8,23 +8,24 @@
 
 | 文档 | 描述 |
 |------|------|
-- [awesome-agent-skills](awesome-agent-skills.md)
-- [OpenKimiPPTSkill](OpenKimiPPTSkill.md)
-- [fireside-sprint1](fireside-sprint1.md)
-- [i-have-adhd](i-have-adhd.md)
-- [img2threejs](img2threejs.md)
-- [lobeHub](lobeHub.md)
-- [logue](logue.md)
-- [mattpocock-skills](mattpocock-skills.md)
-- [openclaw-awd-arena](openclaw-awd-arena.md)
-- [openopc](openopc.md)
-- [paseo](paseo.md)
-- [ponytail](ponytail.md)
-- [remix-reference-video-prompt](remix-reference-video-prompt.md)
-- [reverse-skill](reverse-skill.md)
-- [teamai-cli](teamai-cli.md)
-- [wake](wake.md)
+| [3dgs-substation-digital-twin](3dgs-substation-digital-twin.md)
+| [awesome-agent-skills](awesome-agent-skills.md)
+| [OpenKimiPPTSkill](OpenKimiPPTSkill.md)
+| [fireside-sprint1](fireside-sprint1.md)
+| [i-have-adhd](i-have-adhd.md)
+| [img2threejs](img2threejs.md)
+| [lobeHub](lobeHub.md)
+| [logue](logue.md)
+| [mattpocock-skills](mattpocock-skills.md)
+| [openclaw-awd-arena](openclaw-awd-arena.md)
+| [openopc](openopc.md)
+| [paseo](paseo.md)
+| [ponytail](ponytail.md)
+| [remix-reference-video-prompt](remix-reference-video-prompt.md)
+| [reverse-skill](reverse-skill.md)
+| [teamai-cli](teamai-cli.md)
+| [wake](wake.md)
 
 ---
 
-**共 16 个文档**。
+**共 17 个文档**。
