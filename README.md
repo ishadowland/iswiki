@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 54 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 55 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -12,7 +12,7 @@
 iswiki/
 ├── README.md
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(17)
-├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(3)
+├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(4)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(17)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(16)
 └── misc/
@@ -97,6 +97,7 @@ iswiki/
 | 文档 | 一句话 |
 |---|---|
 | [programWangPrivateProjects](developer-productivity/programWangPrivateProjects.md) | 程序汪公众号私活案例集,按文章为单位 append(技术栈 / 商业模式分析)。 |
+| [ReArk](developer-productivity/ReArk.md) | HarmonyOS + Android 桌面逆向与 AI 辅助分析工作台(静态分析 + 真机投屏 + LLM Agent 三合一)。 |
 | [remote-obd-usb-over-ip](developer-productivity/remote-obd-usb-over-ip.md) | 车载 OBD 远程 USB 透传(N1 + VirtualHere + FRP/XTCP),27 节文章 + 6 大实际坑 + 8 大可迁移场景。 |
 | [remote-obd-deep-analysis](developer-productivity/remote-obd-deep-analysis.md) | 远程 OBD USB 诊断方案的深度技术分析(12 节,含 USB over IP 协议 / XTCP 打洞 / HEX-V2 VCDS 协议栈 / 车载恶劣环境生存策略)。 |
 
@@ -119,11 +120,11 @@ iswiki/
 | 🤖 ai-vibecoding-agents | 17 |
 | 🛠️ ops-cybersec-dba | 17 |
 | 🌐 web-frontend-ui | 16 |
-| ⚡ developer-productivity | 3 |
+| ⚡ developer-productivity | 4 |
 | 📌 misc/OS-gaming-console | 1 |
-| **总计** | **54** |
+| **总计** | **55** |
 
-(54 个被分类的 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(55 个被分类的 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 

@@ -9,9 +9,10 @@
 | 文档 | 描述 |
 |------|------|
 | [programWangPrivateProjects](programWangPrivateProjects.md)
+| [ReArk](ReArk.md) — HarmonyOS + Android 桌面逆向与 AI 辅助分析工作台
 | [remote-obd-deep-analysis](remote-obd-deep-analysis.md)
 | [remote-obd-usb-over-ip](remote-obd-usb-over-ip.md)
 
 ---
 
-**共 3 个文档**。
+**共 4 个文档**。
