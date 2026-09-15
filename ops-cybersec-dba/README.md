@@ -22,12 +22,10 @@
 | [performanceTriage](performanceTriage.md)
 | [qoder-security](qoder-security.md)
 | [recovery-sop](recovery-sop.md)
-| [remote-obd-deep-analysis](remote-obd-deep-analysis.md)
-| [remote-obd-usb-over-ip](remote-obd-usb-over-ip.md)
 | [strix](strix.md)
 | [tier-1-housekeeping](tier-1-housekeeping.md)
 | [wafKnowledgeBase](wafKnowledgeBase.md)
 
 ---
 
-**共 19 个文档**。
+**共 17 个文档**。

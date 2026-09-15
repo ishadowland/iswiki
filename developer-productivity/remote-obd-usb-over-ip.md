@@ -460,9 +460,9 @@ VirtualHere 看到远端 USB 设备,**右键 → "Use this device"** → 设备�
 
 ## 8. 相关 iswiki 项目
 
-- **[recovery-sop](recovery-sop.md)** — 数据恢复 SOP(含「先备份现场再动」哲学)
+- **[recovery-sop](../ops-cybersec-dba/recovery-sop.md)** — 数据恢复 SOP(含「先备份现场再动」哲学)
 - **[ops-troubleshooting-disk-ghost](../ops-cybersec-dba/opsTroubleshootingDiskGhost.md)** — Linux 故障排查
-- **[3dgs-substation-digital-twin](3dgs-substation-digital-twin.md)** — 数字孪生 + 物理设备(类似「远程物理设备」)
+- **[3dgs-substation-digital-twin](../ai-vibecoding-agents/3dgs-substation-digital-twin.md)** — 数字孪生 + 物理设备(类似「远程物理设备」)
 - **[performanceTriage](../ops-cybersec-dba/performanceTriage.md)** — 性能 triage 法
 
 ---

@@ -12,8 +12,8 @@
 iswiki/
 ├── README.md
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(17)
-├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(1)
-├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(18)
+├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(3)
+├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(17)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(16)
 └── misc/
     └── OS-gaming-console/        🎮 掌机 / 自定义 firmware(1)
@@ -45,7 +45,7 @@ iswiki/
 
 ---
 
-## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(19)
+## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(17)
 
 | 文档 | 一句话 |
 |---|---|
@@ -55,8 +55,6 @@ iswiki/
 | [kylinV10DisableIPv6](ops-cybersec-dba/kylinV10DisableIPv6.md) | 麒麟 V10 ARM 版通过 GRUB 内核参数彻底关闭 IPv6 的 5 步操作流程。 |
 | [linux-permission-debug](ops-cybersec-dba/linux-permission-debug.md) | `chmod 777` 成功但服务仍 Permission denied 的 6 层访问链调试。 |
 | [bash-reference-manual](ops-cybersec-dba/bash-reference-manual.md) | Bash Reference Manual 完整学习(10 章 + 4 附录,含 8 大展开 / 13 类重定向 / 80+ 内建命令 / 12 大陷阱 / 5 大最佳实践)。 |
-| [remote-obd-usb-over-ip](ops-cybersec-dba/remote-obd-usb-over-ip.md) | 车载 OBD 远程 USB 透传(N1 + VirtualHere + FRP/XTCP),27 节文章 + 6 大实际坑 + 8 大可迁移场景。 |
-| [remote-obd-deep-analysis](ops-cybersec-dba/remote-obd-deep-analysis.md) | 远程 OBD USB 诊断方案的深度技术分析(12 节,含 USB over IP 协议 / XTCP 打洞 / HEX-V2 VCDS 协议栈 / 车载恶劣环境生存策略)。 |
 | [netdata](ops-cybersec-dba/netdata.md) | 开箱即用的 per-second 实时监控平台,自带 ML 异常检测 + 告警。 |
 | [opsTroubleshootingDiskGhost](ops-cybersec-dba/opsTroubleshootingDiskGhost.md) | df 说满、du 说没满 ——「幽灵空间」排查(fd 还指向的 inode)。 |
 | [opsTroubleshootingOOMCgroup](ops-cybersec-dba/opsTroubleshootingOOMCgroup.md) | free 还有 8G 但 OOM 杀进程 —— cgroup 账本思维排查。 |
@@ -99,6 +97,8 @@ iswiki/
 | 文档 | 一句话 |
 |---|---|
 | [programWangPrivateProjects](developer-productivity/programWangPrivateProjects.md) | 程序汪公众号私活案例集,按文章为单位 append(技术栈 / 商业模式分析)。 |
+| [remote-obd-usb-over-ip](developer-productivity/remote-obd-usb-over-ip.md) | 车载 OBD 远程 USB 透传(N1 + VirtualHere + FRP/XTCP),27 节文章 + 6 大实际坑 + 8 大可迁移场景。 |
+| [remote-obd-deep-analysis](developer-productivity/remote-obd-deep-analysis.md) | 远程 OBD USB 诊断方案的深度技术分析(12 节,含 USB over IP 协议 / XTCP 打洞 / HEX-V2 VCDS 协议栈 / 车载恶劣环境生存策略)。 |
 
 ---
 
@@ -117,9 +117,9 @@ iswiki/
 | 分类 | 文档数 |
 |---|---|
 | 🤖 ai-vibecoding-agents | 17 |
-| 🛠️ ops-cybersec-dba | 19 |
+| 🛠️ ops-cybersec-dba | 17 |
 | 🌐 web-frontend-ui | 16 |
-| ⚡ developer-productivity | 1 |
+| ⚡ developer-productivity | 3 |
 | 📌 misc/OS-gaming-console | 1 |
 | **总计** | **54** |
 
