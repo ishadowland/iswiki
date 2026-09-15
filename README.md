@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 55 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 56 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -13,7 +13,7 @@ iswiki/
 ├── README.md
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(17)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(4)
-├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(17)
+├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(18)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(16)
 └── misc/
     └── OS-gaming-console/        🎮 掌机 / 自定义 firmware(1)
@@ -46,7 +46,7 @@ iswiki/
 
 ---
 
-## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(17)
+## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(18)
 
 | 文档 | 一句话 |
 |---|---|
@@ -55,6 +55,7 @@ iswiki/
 | [disable-ipv6-multi-kernel](ops-cybersec-dba/disable-ipv6-multi-kernel.md) | 多内核 Linux 引导菜单批量加 `ipv6.disable=1` 的完整 SOP。 |
 | [kylinV10DisableIPv6](ops-cybersec-dba/kylinV10DisableIPv6.md) | 麒麟 V10 ARM 版通过 GRUB 内核参数彻底关闭 IPv6 的 5 步操作流程。 |
 | [linux-permission-debug](ops-cybersec-dba/linux-permission-debug.md) | `chmod 777` 成功但服务仍 Permission denied 的 6 层访问链调试。 |
+| [frpc-desktop](ops-cybersec-dba/frpc-desktop.md) | FRP 内网穿透跨平台桌面客户端(Electron + Vue 3),可视化配 frpc 代理,6,875⭐ 头部项目。 |
 | [bash-reference-manual](ops-cybersec-dba/bash-reference-manual.md) | Bash Reference Manual 完整学习(10 章 + 4 附录,含 8 大展开 / 13 类重定向 / 80+ 内建命令 / 12 大陷阱 / 5 大最佳实践)。 |
 | [netdata](ops-cybersec-dba/netdata.md) | 开箱即用的 per-second 实时监控平台,自带 ML 异常检测 + 告警。 |
 | [opsTroubleshootingDiskGhost](ops-cybersec-dba/opsTroubleshootingDiskGhost.md) | df 说满、du 说没满 ——「幽灵空间」排查(fd 还指向的 inode)。 |
@@ -119,13 +120,13 @@ iswiki/
 | 分类 | 文档数 |
 |---|---|
 | 🤖 ai-vibecoding-agents | 17 |
-| 🛠️ ops-cybersec-dba | 17 |
+| 🛠️ ops-cybersec-dba | 18 |
 | 🌐 web-frontend-ui | 16 |
 | ⚡ developer-productivity | 4 |
 | 📌 misc/OS-gaming-console | 1 |
-| **总计** | **55** |
+| **总计** | **56** |
 
-(55 个被分类的 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(56 个被分类的 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 

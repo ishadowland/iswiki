@@ -6,12 +6,13 @@
 
 ## 索引
 
-| 文档 | 描述 |
-|------|------|
+| 文档 | 一句话 |
+|---|---|
 | [anthropic-cybersecurity-skills](anthropic-cybersecurity-skills.md)
 | [bash-reference-manual](bash-reference-manual.md)
 | [codex-security](codex-security.md)
 | [disable-ipv6-multi-kernel](disable-ipv6-multi-kernel.md)
+| [frpc-desktop](frpc-desktop.md) — FRP 内网穿透跨平台桌面客户端(Electron + Vue 3),可视化配 frpc 代理,6,875⭐ 头部项目
 | [kylinV10DisableIPv6](kylinV10DisableIPv6.md)
 | [linux-permission-debug](linux-permission-debug.md)
 | [netdata](netdata.md)
@@ -28,4 +29,4 @@
 
 ---
 
-**共 17 个文档**。
+**共 18 个文档**。
