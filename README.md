@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 56 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 57 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -13,7 +13,7 @@ iswiki/
 ├── README.md
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(17)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(4)
-├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(18)
+├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(19)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(16)
 └── misc/
     └── OS-gaming-console/        🎮 掌机 / 自定义 firmware(1)
@@ -46,7 +46,7 @@ iswiki/
 
 ---
 
-## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(18)
+## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(19)
 
 | 文档 | 一句话 |
 |---|---|
@@ -61,6 +61,7 @@ iswiki/
 | [opsTroubleshootingDiskGhost](ops-cybersec-dba/opsTroubleshootingDiskGhost.md) | df 说满、du 说没满 ——「幽灵空间」排查(fd 还指向的 inode)。 |
 | [opsTroubleshootingOOMCgroup](ops-cybersec-dba/opsTroubleshootingOOMCgroup.md) | free 还有 8G 但 OOM 杀进程 —— cgroup 账本思维排查。 |
 | [opsTroubleshootingStealTime](ops-cybersec-dba/opsTroubleshootingStealTime.md) | 云上 CPU 30% 却卡:steal time 排查三板斧 + 工单取证话术。 |
+| [opsTroubleshootingTCPPortExhaustion](ops-cybersec-dba/opsTroubleshootingTCPPortExhaustion.md) | 调大 ulimit 反而雪崩:出站 TCP 端口耗尽 `EADDRNOTAVAIL` 三层修复 + 自查清单。 |
 | [overseas-youtube-security-channels](ops-cybersec-dba/overseas-youtube-security-channels.md) | 8 个海外网络安全 YouTube 频道,覆盖入门到高级研究的完整自学路径。 |
 | [performanceTriage](ops-cybersec-dba/performanceTriage.md) | 性能告警 70% 是假象,基于"快照 vs 趋势 / 用户态 vs 内核态"的四维定位骨架。 |
 | [qoder-security](ops-cybersec-dba/qoder-security.md) | 阿里 Qoder 平台内嵌的 AI 安全工程师,IDE/CLI 原生三阶段扫描(L1/L2/L3)。 |
@@ -120,13 +121,13 @@ iswiki/
 | 分类 | 文档数 |
 |---|---|
 | 🤖 ai-vibecoding-agents | 17 |
-| 🛠️ ops-cybersec-dba | 18 |
+| 🛠️ ops-cybersec-dba | 19 |
 | 🌐 web-frontend-ui | 16 |
 | ⚡ developer-productivity | 4 |
 | 📌 misc/OS-gaming-console | 1 |
-| **总计** | **56** |
+| **总计** | **57** |
 
-(56 个被分类的 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(57 个被分类的 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
