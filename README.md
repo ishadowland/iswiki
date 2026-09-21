@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 57 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 58 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -28,6 +28,7 @@ iswiki/
 | [fireside-sprint1](ai-vibecoding-agents/fireside-sprint1.md) | Fireside 异步圆桌会议平台的 Sprint 1 闭环笔记(REST 建房 → WebSocket 广播 → EndRoom)。 |
 | [i-have-adhd](ai-vibecoding-agents/i-have-adhd.md) | 让 AI coding agent 用 action-first / numbered / no-preamble 风格输出,适合 ADHD 读者。 |
 | [img2threejs](ai-vibecoding-agents/img2threejs.md) | AI 看图后按 8 阶段写 Three.js 代码,产物是可继续编辑的 TS,不是网格。 |
+| [MiceInTheMuseum](ai-vibecoding-agents/MiceInTheMuseum.md) | Google Arts & Culture 的 Gemini 多模态 + Google AI Audio 实时音频导览实验(2024-11 上线),架构可平移到儿童讲解 / 景点导览。 |
 | [3dgs-substation-digital-twin](ai-vibecoding-agents/3dgs-substation-digital-twin.md) | 3DGS 在变电站数字孪生的深度分析(去除营销,技术原理 + 5 大真实优势 + 7 大不足 + 6 大工程挑战 + 成本估算)。 |
 - [armorpaint-tech-selection](armorpaint-tech-selection.md) — ArmorPaint 开源 PBR 纹理绘制工具(给初级前端 + PM 的技术选型参考,12 节,含 9 年时间线 / 5 大方案对比 / 6 大限制 / 借鉴到自己的项目)
 | [lobeHub](ai-vibecoding-agents/lobeHub.md) | 把零散 LLM Agent 统一纳管的"首席 Agent 运营官"产品(招聘/排班/IM 网关)。 |
@@ -120,14 +121,14 @@ iswiki/
 
 | 分类 | 文档数 |
 |---|---|
-| 🤖 ai-vibecoding-agents | 17 |
+| 🤖 ai-vibecoding-agents | 18 |
 | 🛠️ ops-cybersec-dba | 19 |
 | 🌐 web-frontend-ui | 16 |
 | ⚡ developer-productivity | 4 |
 | 📌 misc/OS-gaming-console | 1 |
-| **总计** | **57** |
+| **总计** | **58** |
 
-(57 个被分类的 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(58 个被分类的 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 

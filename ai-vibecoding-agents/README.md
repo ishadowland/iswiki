@@ -14,6 +14,7 @@
 | [fireside-sprint1](fireside-sprint1.md)
 | [i-have-adhd](i-have-adhd.md)
 | [img2threejs](img2threejs.md)
+| [MiceInTheMuseum](MiceInTheMuseum.md) | Google Arts & Culture 的 Gemini 多模态 + Google AI Audio 实时音频导览实验(2024-11 上线),架构可平移到儿童讲解 / 景点导览。 |
 | [lobeHub](lobeHub.md)
 | [logue](logue.md)
 | [mattpocock-skills](mattpocock-skills.md)
@@ -28,4 +29,4 @@
 
 ---
 
-**共 17 个文档**。
+**共 18 个文档**。
