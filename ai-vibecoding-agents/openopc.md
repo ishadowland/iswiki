@@ -324,12 +324,14 @@ OpenOPC/
 
 | 维度 | Paperclip | OpenOPC | 倍数 |
 |---|---|---|---|
-| **Stars** | **79,264** | 1,456 | **54x** |
-| **Forks** | 14,531 | 253 | **57x** |
-| **Open issues** | **5,326** | 18 | **296x** |
-| **Repo size** | **206 MB** | 12 MB | **17x** |
+| **Stars** | **92,766** | 1,456 | **64x** |
+| **Forks** | 15,889 | 253 | **63x** |
+| **Open issues** | **5,998** | 18 | **333x** |
+| **Repo size** | **286 MB** | 12 MB | **24x** |
 | **Language** | TypeScript | Python | - |
-| **Created** | 2026-03-02 (5.5 月前) | 2026-07-01 (1.5 月前) | - |
+| **Created** | 2026-03-02 (6.9 月前) | 2026-07-01 (2.9 月前) | - |
+
+> 📌 **数据已于 2026-09-29 刷新**,详见 [paperclip](paperclip.md) 调研笔记。上一版(2026-08-24)记录的是 79,264 ⭐ / 14,531 forks / 5,326 issues / 206 MB —— 一个月涨了 3,500 stars。**结论不变**(Paperclip 是 production-grade 平台,OpenOPC 是角色扮演模拟器),但倍率又拉大了一档。
 
 ### 一句话定位差异
 
@@ -435,7 +437,7 @@ OpenOPC/
 
 ### Paperclip 关键资源
 
-- **仓库**: <https://github.com/paperclipai/paperclip> (79,264 ⭐)
+- **仓库**: <https://github.com/paperclipai/paperclip> (92,766 ⭐ · 2026-09-29) · [完整调研笔记](paperclip.md)
 - **官网**: <https://paperclip.ing>
 - **Docs**: <https://docs.paperclip.ing>
 - **Discord**: <https://discord.gg/m4HZY7xNG3>

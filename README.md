@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 60 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 61 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -11,7 +11,7 @@
 ```
 iswiki/
 ├── README.md
-├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(17)
+├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(20)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(5)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(19)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(16)
@@ -38,6 +38,7 @@ iswiki/
 | [OpenKimiPPTSkill](ai-vibecoding-agents/OpenKimiPPTSkill.md) | 逆向 Moonshot Kimi Slides 的非官方 PPT 创作 skill,生成可继续编辑的 PPTD 项目。 |
 | [openclaw-awd-arena](ai-vibecoding-agents/openclaw-awd-arena.md) | Docker 编排的 LLM Agent 攻防对抗平台,容器隔离网络里多 agent 互打 + 实时计分大屏。 |
 | [openopc](ai-vibecoding-agents/openopc.md) | HKUDS 开源的"个人 AI 原生公司"模拟器,Phaser 像素办公室可视化 AI 员工。 |
+| [paperclip](ai-vibecoding-agents/paperclip.md) | 92,766⭐ 的 agent 公司级控制平面:org chart + 原子任务 checkout + 预算硬停 + 审批门 + 审计日志,**内置 Hermes adapter**(`hermes_local` / `hermes_gateway`)。 |
 | [paseo](ai-vibecoding-agents/paseo.md) | 跨平台多 agent 编排器,统一管理 Claude Code / Codex / Copilot / OpenCode / Pi。 |
 | [ponytail](ai-vibecoding-agents/ponytail.md) | 给 AI coding agent 注入"老员工 + YAGNI"人格的跨 13 平台 skill 集。 |
 | [remix-reference-video-prompt](ai-vibecoding-agents/remix-reference-video-prompt.md) | SKILL.md 级 prompt skill,按参考视频拆解运镜 + 生成结构化视频提示词。 |
@@ -123,14 +124,14 @@ iswiki/
 
 | 分类 | 文档数 |
 |---|---|
-| 🤖 ai-vibecoding-agents | 18 |
+| 🤖 ai-vibecoding-agents | 20 |
 | 🛠️ ops-cybersec-dba | 19 |
 | 🌐 web-frontend-ui | 16 |
 | ⚡ developer-productivity | 5 |
 | 📌 misc/OS-gaming-console | 1 |
-| **总计** | **59** |
+| **总计** | **61** |
 
-(59 个被分类的 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(61 个被分类的 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
