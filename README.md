@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 68 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 69 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -29,6 +29,7 @@ iswiki/
 | [i-have-adhd](ai-vibecoding-agents/i-have-adhd.md) | 让 AI coding agent 用 action-first / numbered / no-preamble 风格输出,适合 ADHD 读者。 |
 | [img2threejs](ai-vibecoding-agents/img2threejs.md) | AI 看图后按 8 阶段写 Three.js 代码,产物是可继续编辑的 TS,不是网格。 |
 | [MiceInTheMuseum](ai-vibecoding-agents/MiceInTheMuseum.md) | Google Arts & Culture 的 Gemini 多模态 + Google AI Audio 实时音频导览实验(2024-11 上线),架构可平移到儿童讲解 / 景点导览。 |
+| [mythicalManMonthVibeCoding](ai-vibecoding-agents/mythicalManMonthVibeCoding.md) | 《人月神话》在 vibe coding 时代还剩什么:解读 + 4 处商榷,指出文章漏掉第二系统效应与进度追踪幻觉,并把 Brooks 定律重新锚定到 agent 编排。 |
 | [bagidea-office](ai-vibecoding-agents/bagidea-office.md) | Claude Code 当引擎、脑子可换的桌面像素小人办公室:20 模型混搭 / agent 自发开会 / 自提案 plugin / 真·桌面壁纸模式 / WorkerW 监督 / 三层预算 / 5 套团队模板。228⭐,3 个月增长。 |
 | [3dgs-substation-digital-twin](ai-vibecoding-agents/3dgs-substation-digital-twin.md) | 3DGS 在变电站数字孪生的深度分析(去除营销,技术原理 + 5 大真实优势 + 7 大不足 + 6 大工程挑战 + 成本估算)。 |
 - [armorpaint-tech-selection](armorpaint-tech-selection.md) — ArmorPaint 开源 PBR 纹理绘制工具(给初级前端 + PM 的技术选型参考,12 节,含 9 年时间线 / 5 大方案对比 / 6 大限制 / 借鉴到自己的项目)
@@ -130,14 +131,14 @@ iswiki/
 
 | 分类 | 文档数 |
 |---|---|
-| 🤖 ai-vibecoding-agents | 22 |
+| 🤖 ai-vibecoding-agents | 23 |
 | 🛠️ ops-cybersec-dba | 19 |
 | 🌐 web-frontend-ui | 17 |
 | ⚡ developer-productivity | 7 |
 | 📌 misc/OS-gaming-console | 2 |
-| **总计** | **67** |
+| **总计** | **68** |
 
-(67 个被分类的 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(68 个被分类的 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
