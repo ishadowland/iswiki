@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 62 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 63 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -14,7 +14,7 @@ iswiki/
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(20)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(6)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(19)
-├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(16)
+├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(17)
 └── misc/
     └── OS-gaming-console/        🎮 掌机 / 自定义 firmware(1)
 ```
@@ -88,6 +88,7 @@ iswiki/
 | [nova3d](web-frontend-ui/nova3d.md) | AI 不直接生成网格而写 Blender Python 构造程序,输出结构化 GLB。 |
 | [odometer](web-frontend-ui/odometer.md) | HubSpot 的 JS/CSS 数字动画库,< 3kb,翻牌式数字滚动过渡。 |
 | [pascalEditor](web-frontend-ui/pascalEditor.md) | R3F + WebGPU 的开源 3D 建筑/BIM/数字孪生编辑器,自带 MCP server。 |
+| [scDatav](web-frontend-ui/scDatav.md) | Three.js + React 19 数据大屏:一张四川地图做出地形纹理/热力起伏/蓝色电力风/GLB 拆解 4 种风格,Apache-2.0 可商用。 |
 | [humanAtlas](web-frontend-ui/humanAtlas.md) | React + Three.js + BodyParts3D 4.0 的 3D 人体解剖浏览器,2234 mesh + 3432 概念 + 爆炸图。 |
 | [shinjukuIndoorThreejsDemo](web-frontend-ui/shinjukuIndoorThreejsDemo.md) | 日本国土交通省新宿站室内 GIS 数据丢进 Three.js 做 3D 分层楼栋 + 流光行人。 |
 | [stadiView](web-frontend-ui/stadiView.md) | 纯过程化生成的 3D 足球场座位预览 demo,Three.js + GSAP 飞进任一座位。 |

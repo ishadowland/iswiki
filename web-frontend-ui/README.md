@@ -18,6 +18,7 @@
 - [nova3d](nova3d.md)
 - [odometer](odometer.md)
 - [pascalEditor](pascalEditor.md)
+- [scDatav](scDatav.md)
 - [shinjukuIndoorThreejsDemo](shinjukuIndoorThreejsDemo.md)
 - [stadiView](stadiView.md)
 - [threeui](threeui.md)
@@ -25,4 +26,4 @@
 - [vgpu](vgpu.md)
 - [weatherNext](weatherNext.md)
 
-**共 16 个文档**。
+**共 17 个文档**。
