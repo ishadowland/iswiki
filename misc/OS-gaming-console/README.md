@@ -9,7 +9,8 @@
 | 文档 | 描述 |
 |------|------|
 - [leaf-deploy](leaf-deploy.md)
+- [Mindustry](Mindustry.md)
 
 ---
 
-**共 1 个文档**。
+**共 2 个文档**。

@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 63 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 64 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -16,7 +16,7 @@ iswiki/
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(19)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(17)
 └── misc/
-    └── OS-gaming-console/        🎮 掌机 / 自定义 firmware(1)
+    └── OS-gaming-console/        🎮 掌机 / 自定义 firmware(2)
 ```
 
 ---
@@ -118,6 +118,7 @@ iswiki/
 
 | 文档 | 一句话 |
 |---|---|
+| [Mindustry](misc/OS-gaming-console/Mindustry.md) | 一人开发 9 年的 GPL-3.0 开源工厂塔防:四渠道分层定价(itch 自愿付费 / Play+F-Droid 免费 / iOS $1.99 / Steam $9.99),零广告零内购零 DLC,约 130 万份 / $630 万。 |
 | [leaf-deploy](misc/OS-gaming-console/leaf-deploy.md) | Miniloong Pocket 1 掌机的自定义固件,SD 卡安装 / OTA 升级 / recovery 回退(基于 v0.11.0)。 |
 
 ---
@@ -128,12 +129,12 @@ iswiki/
 |---|---|
 | 🤖 ai-vibecoding-agents | 20 |
 | 🛠️ ops-cybersec-dba | 19 |
-| 🌐 web-frontend-ui | 16 |
+| 🌐 web-frontend-ui | 17 |
 | ⚡ developer-productivity | 6 |
-| 📌 misc/OS-gaming-console | 1 |
-| **总计** | **62** |
+| 📌 misc/OS-gaming-console | 2 |
+| **总计** | **64** |
 
-(62 个被分类的 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(64 个被分类的 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
