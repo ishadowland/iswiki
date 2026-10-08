@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 61 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 62 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -12,7 +12,7 @@
 iswiki/
 ├── README.md
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(20)
-├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(5)
+├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(6)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(19)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(16)
 └── misc/
@@ -107,6 +107,7 @@ iswiki/
 | [remote-obd-deep-analysis](developer-productivity/remote-obd-deep-analysis.md) | 远程 OBD USB 诊断方案的深度技术分析(12 节,含 USB over IP 协议 / XTCP 打洞 / HEX-V2 VCDS 协议栈 / 车载恶劣环境生存策略)。 |
 | [remote-obd-usb-over-ip](developer-productivity/remote-obd-usb-over-ip.md) | 车载 OBD 远程 USB 透传(N1 + VirtualHere + FRP/XTCP),27 节文章 + 6 大实际坑 + 8 大可迁移场景。 |
 | [sdrangel](developer-productivity/sdrangel.md) | SDRangel 开源软件无线电「全家桶」工作台(87 插件 / 10 硬件 / Rx+Tx, NOAA / AIS / FT8 / LoRa, 4059⭐) |
+| [press-fit-guard](developer-productivity/press-fit-guard.md) | 新能源三电压装上位机:全行程位移-压力包络线判定替代只看峰值,Modbus 从站仿真 + SQLite WAL 追溯(⚠️ 仓库空仓,内容来自公众号文章) |
 
 ---
 
@@ -127,11 +128,11 @@ iswiki/
 | 🤖 ai-vibecoding-agents | 20 |
 | 🛠️ ops-cybersec-dba | 19 |
 | 🌐 web-frontend-ui | 16 |
-| ⚡ developer-productivity | 5 |
+| ⚡ developer-productivity | 6 |
 | 📌 misc/OS-gaming-console | 1 |
-| **总计** | **61** |
+| **总计** | **62** |
 
-(61 个被分类的 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(62 个被分类的 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
