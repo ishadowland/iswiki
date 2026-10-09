@@ -8,6 +8,7 @@
 |------|------|
 | [3dgs-substation-digital-twin](3dgs-substation-digital-twin.md) | 3DGS 在变电站数字孪生的深度分析(去除营销,技术原理 + 5 大真实优势 + 7 大不足 + 6 大工程挑战 + 成本估算)。 |
 | [awesome-agent-skills](awesome-agent-skills.md) | VoltAgent 维护的 1497+ agent skill 官方合集索引,70+ 真实工程团队出品,适配 8 个 AI 编程工具。 |
+| [awesome-design-md](awesome-design-md.md) | VoltAgent 维护的 74 份大厂设计系统 `DESIGN.md` 单文件合集(Google Stitch 2026-04-21 开源 spec); Stripe / Linear / Claude / Vercel 等的色板/字体/组件/Do's-and-Don'ts 写进 YAML+md,丢项目根目录 AI 写 UI 就有据可依。⚠️ 仓内**没有 preview.html**,实测子 README 自述"已迁到 getdesign.md",真预览在站上。120,017★ / MIT / 313 issues。 |
 | [awesomeOpus55Videos](awesomeOpus55Videos.md) | 476 位 X 创作者用 Claude Opus 5.5「让 AI 把动画写成代码」产出的 513 条爆款视频 + 原始 prompt 语料库,MIT 开源;一手统计出 motion 占 62% / Canvas 是地基 / prompt 中位仅 180 字 / **近一半 `prompt_partial` 标记为残缺**。 |
 | [CnDemSkill](CnDemSkill.md) | 「说个地名就下载中国 30 米 DEM」的 WorkBuddy skill 拆解 + 一手核验:GLO-30 免 Key 桶实测、TIFF 头逐标签解析,并推翻原文 2 处技术错误(multi-polygon bug 真实根因是 `_full` 端点选错、GCJ-02 纠偏存疑)。 |
 | [bagidea-office](bagidea-office.md) | Claude Code 当引擎、脑子可换的桌面像素小人办公室:20 模型混搭 / agent 自发开会 / 自提案 plugin / 真·桌面壁纸模式 / WorkerW 监督 / 三层预算 / 5 套团队模板。228⭐,3 个月增长。 |
@@ -34,4 +35,4 @@
 | [teamai-cli](teamai-cli.md) | 腾讯开源的 Git-native 团队 AI 工具 CLI,push/MR/pull 同步 skill 给各 agent。 |
 | [wake](wake.md) | Mac 上 Rust+GPUI 写的 multi-agent 会话档案馆,统一浏览本地历史。 |
 
-**共 27 个文档**。
+**共 28 个文档**。

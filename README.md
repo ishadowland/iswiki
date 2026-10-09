@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 74 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 75 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -11,7 +11,7 @@
 ```
 iswiki/
 ├── README.md
-├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(27)
+├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(28)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(19)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(17)
@@ -50,6 +50,7 @@ iswiki/
 | [semantica](ai-vibecoding-agents/semantica.md) | ⭐13,856 的图原生 AI 可解释基础设施:决策变一等可查询对象 + W3C PROV-O 溯源 + Rete/Datalog/SPARQL 确定性推理,面向金融医疗法律合规。⚠️ 实测推翻 README 4 处(advanced_analytics 裸装即崩 / trace 只对下游有效 / 语义检索喂关键词无结果 / 规则门禁缺字段返假阴性),且 bus factor = 1。 |
 | [teamai-cli](ai-vibecoding-agents/teamai-cli.md) | 腾讯开源的 Git-native 团队 AI 工具 CLI,push/MR/pull 同步 skill 给各 agent。 |
 | [awesome-agent-skills](ai-vibecoding-agents/awesome-agent-skills.md) | VoltAgent 维护的 1497+ agent skill 官方合集索引,70+ 真实工程团队出品,适配 8 个 AI 编程工具。 |
+| [awesome-design-md](ai-vibecoding-agents/awesome-design-md.md) | VoltAgent 维护的 74 份大厂设计系统 `DESIGN.md` 单文件合集(Google Stitch 2026-04-21 开源 spec); Stripe / Linear / Claude / Vercel 的色板/字体/组件/Do's-and-Don'ts 写进 YAML+md,丢项目根目录 AI 写 UI 就有据可依。⚠️ README 说"含 preview.html"但实测仓内不存在,真预览在 getdesign.md 站。120,017★ / MIT / 313 issues。 |
 | [awesomeOpus55Videos](ai-vibecoding-agents/awesomeOpus55Videos.md) | 476 位创作者用 Claude Opus 5.5「让 AI 把动画写成代码」产出的 513 条爆款视频 + prompt 语料库,MIT;一手统计 motion 占 62% / Canvas 是地基 / prompt 中位仅 180 字 / 近一半标记为残缺。 |
 | [CnDemSkill](ai-vibecoding-agents/CnDemSkill.md) | 「说个地名就下载中国 30 米 DEM」的 WorkBuddy skill 拆解 + 一手核验:GLO-30 免 Key 桶实测、TIFF 头逐标签解析,并推翻原文 2 处技术错误(multi-polygon bug 真实根因是 `_full` 端点选错、GCJ-02 纠偏存疑)。 |
 | [wake](ai-vibecoding-agents/wake.md) | Mac 上 Rust+GPUI 写的 multi-agent 会话档案馆,统一浏览本地历史。 |
