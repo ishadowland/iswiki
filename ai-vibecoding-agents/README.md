@@ -15,6 +15,7 @@
 | [fireside-sprint1](fireside-sprint1.md) | Fireside 异步圆桌会议平台的 Sprint 1 闭环笔记(REST 建房 → WebSocket 广播 → EndRoom)。 |
 | [i-have-adhd](i-have-adhd.md) | 让 AI coding agent 用 action-first / numbered / no-preamble 风格输出,适合 ADHD 读者。 |
 | [img2threejs](img2threejs.md) | AI 看图后按 8 阶段写 Three.js 代码,产物是可继续编辑的 TS,不是网格。 |
+| [ipAsLogoSkill](ipAsLogoSkill.md) | 把"极简圆润 IP logo"设计语言写成 17KB SKILL 级硬约束,装到 Codex/Coze/Doubao/YouMind/Manus/Gemini Apps/Replit Agent 7 家,3 方向 × 2 变体 = 6 张候选(3 LL + 3 LR,三色封顶,永不降级 SVG)。5,867★ / MIT。 |
 | [MiceInTheMuseum](MiceInTheMuseum.md) | Google Arts & Culture 的 Gemini 多模态 + Google AI Audio 实时音频导览实验(2024-11 上线),架构可平移到儿童讲解 / 景点导览。 |
 | [mythicalManMonthVibeCoding](mythicalManMonthVibeCoding.md) | 解读「都2026年了《人月神话》还值得看吗」并商榷:文章无事实错误但漏了原书里对 AI 最危险的两条(第二系统效应 / 进度追踪幻觉),并把 Brooks 定律的 n(n-1)/2 重新锚定到 agent 编排(并行单元从人头换成 agent,公式仍成立)。 |
 | [lobeHub](lobeHub.md) | 把零散 LLM Agent 统一纳管的"首席 Agent 运营官"产品(招聘/排班/IM 网关)。 |
@@ -33,4 +34,4 @@
 | [teamai-cli](teamai-cli.md) | 腾讯开源的 Git-native 团队 AI 工具 CLI,push/MR/pull 同步 skill 给各 agent。 |
 | [wake](wake.md) | Mac 上 Rust+GPUI 写的 multi-agent 会话档案馆,统一浏览本地历史。 |
 
-**共 26 个文档**。
+**共 27 个文档**。
