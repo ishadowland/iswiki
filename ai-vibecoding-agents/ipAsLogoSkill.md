@@ -7,6 +7,18 @@
 > 调研来源: 公众号「史莱克learner」《5.1k 星的开源项目,把 AI 调教成了"logo 设计师"》(已用远端 SKILL.md/README.md 全文核验,数据校正见末段)
 > **类别**: Agent Skill · 图片生成约束 · 多平台兼容(7 家)
 
+---
+
+## 0.5 配图速览
+
+| 场景 | 截图 | 内容 takeaway |
+|---|---|---|
+| 项目官方 showcase | ![ip-as-logo-skill 实生成样例(35 张 logo 墙)](assets/ipAsLogoSkill/01-source-showcase.webp) | 直接感受"约束塑可爱"长什么样:每个 logo 都圆润、极简、三色封顶。35 个 logo 全部遵循 §4 规则——这就是"SKILL.md 把规则写死后, agent 每次生成的样子"。|
+
+> 配图规范:WebP 优先(q85),2560×2200,源自上游 `assets/ip-as-logo-wall.webp`(2 个月前已被作者手动压缩)。本人不二次合成 logo,避免偏离事实,只用原仓库的样例展示作 §4 的视觉引子。
+
+---
+
 ## TL;DR
 
 仓库根目录就一个 `SKILL.md` 17KB 的 **纯文档型 Agent Skill**,把"圆润可爱、可商用、可缩到 32×32" 的 IP logo 设计语言,写成 GPT Image 2 / Seedance 5.0 Pro / Nano Banana Pro 等顶级图模型能稳定执行的 prompt 级 hard constraints。`npx skills@latest add s1dashu/ip-as-logo-skill` 一行装到 Codex / Coze / Doubao / **YouMind** / **Manus** / Gemini Apps / Replit Agent 7 家。下次跟 AI 说"画个 logo" 自动套规则 → 3 个方向 → 6 张候选(3 左下 + 3 右下, 永远 2 IP 色 + 1 背景色 = 三色)。核心范式:"**约束塑可爱**", 可与 [i-have-adhd](i-have-adhd.md)、[img2threejs](img2threejs.md)、[awesome-agent-skills](awesome-agent-skills.md) 对照阅读。
@@ -55,6 +67,8 @@
 ---
 
 ## 4. 核心设计约束(技术原理)
+
+> 上图墙(§0.5)里的 35 个 logo 已把 §4 的结果呈现在你眼前。下面用 §4 拆解"为什么会出这种样子"——不是凭空描述,是从 SKILL.md 17KB 原文里抽出的硬约束。
 
 ### 4.1 七段完整 Prompt 骨架(SKILL.md 全文给出,模式可抄)
 
@@ -296,3 +310,4 @@ npx skills@latest add s1dashu/ip-as-logo-skill --global
 - 调研来源(公众号原文): <https://mp.weixin.qq.com/s/TJ_iMV-EQMgApQ9UQ_pNgA>
 - 同类 Agent Skill 参考: [i-have-adhd](i-have-adhd.md) · [img2threejs](img2threejs.md) · [awesome-agent-skills](awesome-agent-skills.md) · [OpenKimiPPTSkill](OpenKimiPPTSkill.md) · [CnDemSkill](CnDemSkill.md) · [reverse-skill](reverse-skill.md)
 - Agent Skill 开放格式(本 skill 实例): <https://officialskills.sh>
+- 配图资产(展示样例): `assets/ipAsLogoSkill/01-source-showcase.webp` — 源自上游 `assets/ip-as-logo-wall.webp`,WebP 2560×2200,2 个月前已被作者压缩
