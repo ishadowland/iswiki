@@ -28,7 +28,8 @@
 | [rea](rea.md) | 20,918⭐ 的逆向 MCP 项目:106+ 工具把 Hopper/Ghidra/IDA 封装成带证据链的接口。最大亮点是 **Evidence ID + unknowns 台账**(`record_unknown` / `verify_unknown_resolution`)——强制每条结论挂证据。⚠️ clone 必须 `--recursive`(5 个 submodule),原生分析需 Hopper/Ghidra/IDA 之一。 |
 | [remix-reference-video-prompt](remix-reference-video-prompt.md) | SKILL.md 级 prompt skill,按参考视频拆解运镜 + 生成结构化视频提示词。 |
 | [reverse-skill](reverse-skill.md) | AI Agent 的安全/逆向/渗透任务路由,857 文件 / 55 skill 模块 / R0-R39 路由。 |
+| [semantica](semantica.md) | ⭐13,856 的图原生 AI 可解释基础设施:决策变一等可查询对象 + W3C PROV-O 溯源 + Rete/Datalog/SPARQL 确定性推理,面向金融医疗法律合规。⚠️ **实测推翻 README 4 处**(`advanced_analytics=True` 裸装即崩 / trace 只对下游有效 / 语义检索喂关键词无结果 / 规则门禁缺字段返假阴性),且 bus factor = 1。 |
 | [teamai-cli](teamai-cli.md) | 腾讯开源的 Git-native 团队 AI 工具 CLI,push/MR/pull 同步 skill 给各 agent。 |
 | [wake](wake.md) | Mac 上 Rust+GPUI 写的 multi-agent 会话档案馆,统一浏览本地历史。 |
 
-**共 24 个文档**。
+**共 25 个文档**。

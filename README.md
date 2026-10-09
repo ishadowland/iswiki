@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 70 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 72 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -11,8 +11,8 @@
 ```
 iswiki/
 ├── README.md
-├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(21)
-├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(6)
+├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(25)
+├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(19)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(17)
 └── misc/
@@ -45,6 +45,7 @@ iswiki/
 | [rea](ai-vibecoding-agents/rea.md) | 20,918⭐ 的逆向 MCP:106+ 工具封装 Hopper/Ghidra/IDA,强制每条结论挂 Evidence ID 并记录 unknowns。 |
 | [remix-reference-video-prompt](ai-vibecoding-agents/remix-reference-video-prompt.md) | SKILL.md 级 prompt skill,按参考视频拆解运镜 + 生成结构化视频提示词。 |
 | [reverse-skill](ai-vibecoding-agents/reverse-skill.md) | AI Agent 的安全/逆向/渗透任务路由,857 文件 / 55 skill 模块 / R0-R39 路由。 |
+| [semantica](ai-vibecoding-agents/semantica.md) | ⭐13,856 的图原生 AI 可解释基础设施:决策变一等可查询对象 + W3C PROV-O 溯源 + Rete/Datalog/SPARQL 确定性推理,面向金融医疗法律合规。⚠️ 实测推翻 README 4 处(advanced_analytics 裸装即崩 / trace 只对下游有效 / 语义检索喂关键词无结果 / 规则门禁缺字段返假阴性),且 bus factor = 1。 |
 | [teamai-cli](ai-vibecoding-agents/teamai-cli.md) | 腾讯开源的 Git-native 团队 AI 工具 CLI,push/MR/pull 同步 skill 给各 agent。 |
 | [awesome-agent-skills](ai-vibecoding-agents/awesome-agent-skills.md) | VoltAgent 维护的 1497+ agent skill 官方合集索引,70+ 真实工程团队出品,适配 8 个 AI 编程工具。 |
 | [awesomeOpus55Videos](ai-vibecoding-agents/awesomeOpus55Videos.md) | 476 位创作者用 Claude Opus 5.5「让 AI 把动画写成代码」产出的 513 条爆款视频 + prompt 语料库,MIT;一手统计 motion 占 62% / Canvas 是地基 / prompt 中位仅 180 字 / 近一半标记为残缺。 |
