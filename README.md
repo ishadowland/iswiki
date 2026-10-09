@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 72 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 73 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -11,7 +11,7 @@
 ```
 iswiki/
 ├── README.md
-├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(25)
+├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(26)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(19)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(17)
@@ -39,6 +39,7 @@ iswiki/
 | [OpenKimiPPTSkill](ai-vibecoding-agents/OpenKimiPPTSkill.md) | 逆向 Moonshot Kimi Slides 的非官方 PPT 创作 skill,生成可继续编辑的 PPTD 项目。 |
 | [openclaw-awd-arena](ai-vibecoding-agents/openclaw-awd-arena.md) | Docker 编排的 LLM Agent 攻防对抗平台,容器隔离网络里多 agent 互打 + 实时计分大屏。 |
 | [openopc](ai-vibecoding-agents/openopc.md) | HKUDS 开源的"个人 AI 原生公司"模拟器,Phaser 像素办公室可视化 AI 员工。 |
+| [openviking](ai-vibecoding-agents/openviking.md) | ⭐39,514 火山引擎的 Agent 上下文数据库:`viking://` 虚拟文件系统 + L0/L1/L2 三层渐进加载 + 会话提交抽长期记忆。⚠️ AGPL-3.0 主仓(CLI/examples Apache 2.0、Hermes 插件 MIT);v0.5.0 破坏性变更(peer 改用 git origin、WM 默认关闭);**Hermes 是官方 Built-in 集成**,LoCoMo 记忆 33.38% → 82.86%。 |
 | [paperclip](ai-vibecoding-agents/paperclip.md) | 92,766⭐ 的 agent 公司级控制平面:org chart + 原子任务 checkout + 预算硬停 + 审批门 + 审计日志,**内置 Hermes adapter**(`hermes_local` / `hermes_gateway`)。 |
 | [paseo](ai-vibecoding-agents/paseo.md) | 跨平台多 agent 编排器,统一管理 Claude Code / Codex / Copilot / OpenCode / Pi。 |
 | [ponytail](ai-vibecoding-agents/ponytail.md) | 给 AI coding agent 注入"老员工 + YAGNI"人格的跨 13 平台 skill 集。 |

@@ -22,6 +22,7 @@
 | [mattpocock-skills](mattpocock-skills.md) | Matt Pocock 从 `.agents/` 开源的 Real Engineering skills,2×2 分类。 |
 | [openclaw-awd-arena](openclaw-awd-arena.md) | Docker 编排的 LLM Agent 攻防对抗平台,容器隔离网络里多 agent 互打 + 实时计分大屏。 |
 | [openopc](openopc.md) | HKUDS 开源的"个人 AI 原生公司"模拟器,Phaser 像素办公室可视化 AI 员工。 |
+| [openviking](openviking.md) | ⭐39,514 火山引擎的 Agent 上下文数据库:`viking://` 虚拟文件系统 + L0/L1/L2 三层渐进加载 + 会话提交抽长期记忆。⚠️ **AGPL-3.0**(CLI/examples Apache 2.0、Hermes 插件 MIT);v0.5.0 有破坏性变更(peer 改用 git origin 推导、WM 默认关闭);**Hermes 是官方标注 Built-in 的集成**(Partner Projects 点名),benchmark 里 Hermes 原生记忆 33.38% → 82.86%。 |
 | [paperclip](paperclip.md) | 92,766⭐ 的 agent 公司级控制平面:org chart + 原子任务 checkout + 预算硬停 + 审批门 + 审计日志,内置 Hermes adapter(`hermes_local` / `hermes_gateway`)。 |
 | [paseo](paseo.md) | 跨平台多 agent 编排器,统一管理 Claude Code / Codex / Copilot / OpenCode / Pi。 |
 | [ponytail](ponytail.md) | 给 AI coding agent 注入"老员工 + YAGNI"人格的跨 13 平台 skill 集。 |
@@ -32,4 +33,4 @@
 | [teamai-cli](teamai-cli.md) | 腾讯开源的 Git-native 团队 AI 工具 CLI,push/MR/pull 同步 skill 给各 agent。 |
 | [wake](wake.md) | Mac 上 Rust+GPUI 写的 multi-agent 会话档案馆,统一浏览本地历史。 |
 
-**共 25 个文档**。
+**共 26 个文档**。
