@@ -374,6 +374,71 @@ npm i three
 
 ---
 
+## 11. 下一步行动(若 sanfine.art 真要落地)
+
+按本仓 `armorpaint-tech-selection` / `semantica` 的"调研→选型→落地"3 步拆,落地前要先做 3 件 prototype 工作:
+
+### 11.1 树摇验证(1 个工作日)
+
+**目标**:确认 `import { animate, stagger } from 'animejs'` 在 sanfine.art 构建产物里**真的 tree-shake 出只剩 2 个子模块**,而不是被打成全量 17KB。
+
+**做法**:
+- 装 `rollup-plugin-visualizer` 或 `vite-plugin-bundle-visualizer`
+- 在 sanfine.art 真实生产构建里跑一次,看 animejs 进哪个 chunk
+- 期望结果:`animejs/animation` + `animejs/stagger` 两个子模块打包,gzip 后 ≤ 8KB
+- **不通过**:全量 17KB+,可能是 `@types/three` 误把 peer 引进来,需要改用 `<script>` CDN UMD 兜底
+
+**联系人**:前端 / 构建工具 owner
+
+### 11.2 写一个 hero stagger demo(2-3 个工作日)
+
+**目标**:在 sanfine.art 首页(假设 Astro / Next.js 任选)做一个 hero stagger 动画,**实测端到端体验**。
+
+**最小 demo 设计**:
+- 标题 / 副标题 / CTA 按钮三个元素 `stagger(100, { from: 'center' })`
+- `duration: 800`、`ease: 'outQuint'`、`loop: false`
+- 容器元素 `scope.add(self => { ... }).revert()` 包裹,路由切换时释放
+
+**验证维度**:
+- Chrome DevTools Performance 看 raf 占用 ≤ 5%
+- Safari 4+ 移动端 ≤ 360px viewport 测试
+- `prefers-reduced-motion: reduce` 时禁用非必要动效(`@media (prefers-reduced-motion: no-preference)` 包住动效触发)
+- SSR 框架(Astro `client:load` / Next `'use client'`)实测避免 hydration mismatch
+
+**产物**:`assets/animeJs/demo-hero-stagger.html`(单文件 HTML 引用 CDN,可直接打开看效果)+ 性能截图
+
+### 11.3 三件 SVG 描边动效 prototyping(1-2 个工作日)
+
+**目标**:验证 sanfine.art 品牌页 / 艺术家签名 / 收藏家 logo 用 SVG 描边的视觉效果是否达到设计稿。
+
+**做法**:
+- 拿 3 个真 SVG 资源(艺术家签名 1 个 + 品牌 mark 1 个 + 装饰元素 1 个)
+- 跑 `anime.setDashoffset` 自动算描边长度,`strokeDashoffset: [anime.setDashoffset, 0]` 一行
+- 对比 CSS `stroke-dasharray` + `stroke-dashoffset` 手动算长度的旧方案,看是否真的省 50% 代码
+
+**潜在风险**:路径太长(> 1000 字符)时 `setDashoffset` 计算会卡顿;准备 fallback 到手算长度。
+
+**产物**:`assets/animeJs/demo-svg-stroke.html`
+
+---
+
+### 11.4 时间预算与决策点
+
+```
+Week 1:    11.1 树摇验证(1 day)+ 11.2 hero demo 起手(2 days)
+Week 1.5:  11.2 hero demo 收尾(1 day)+ 11.3 SVG 描边起手(1 day)
+Week 2:    11.3 SVG 描边收尾 + 三件 demo 集成到 staging
+Decision:  Week 2 末 4 选项 →
+    A. 全量 Anime.js(若 tree-shake 通过 + demo 效果 OK)
+    B. 仅 SVG / 描边用 Anime.js,主页动效用 CSS(混合方案)
+    C. 弃 Anime.js 改 Framer Motion(若 sanfine.art 主栈最终定 React)
+    D. 弃 Anime.js 改 GSAP(若 ScrollTrigger 这种重量级功能必需)
+```
+
+**决策 anchor**:**先跑 11.1(树摇),看 bundle 是否真的小**;如果树摇失败,直接走 B 或 D,不要在 C 路径上耗。
+
+---
+
 ## 参考链接
 
 - 仓库: <https://github.com/juliangarnier/anime>
