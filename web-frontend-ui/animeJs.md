@@ -4,8 +4,13 @@
 > 仓库: https://github.com/juliangarnier/anime · 官网: https://animejs.com · 文档: https://animejs.com/documentation
 > License: MIT · 主语言: JavaScript(ESM-first) · ⭐ 73.4k · 5k forks · 907 commits · v4.5.0
 > 39 tags · 19 branches · 102 open issues · 21 open PRs · 最近 commit 2 个月前
-> 调研来源: 公众号「前端之神」《Github 70k Star 爆火动画库!几行代码实现复杂3D动画!》(已用远端 README / package.json / GitHub 主页核验,数据校正见 §9)
+> **npm 下载量**(2026-09-09 → 2026-10-08): **4,999,623 次/月 ≈ 500 万 DL/月** · 全年 ~3,650 万
+> 调研来源: 公众号「前端之神」《Github 70k Star 爆火动画库!几行代码实现复杂3D动画!》(已用远端 README / package.json / GitHub 主页 / npm registry / HN Show 核验,数据校正见 §9,多源报告见 [assets/animeJs/sources-report.md](assets/animeJs/sources-report.md))
 > **类别**: web-frontend-ui · 动画引擎 · GSAP 替代 · Three.js 适配
+
+## 0.5 配图速览
+
+本笔记无样例图(animejs 官方未在仓库 `assets/` 暴露高质量静态配图,且 iswiki CONTRIBUTING §4 禁止自造图)。**研究档案副产物**:[assets/animeJs/sources-report.md](assets/animeJs/sources-report.md)(5 源 + 失败项说明,7.3KB),支撑 §2 核心数据表的「npm 下载量」字段与 §9 数据校正段的 HN 973 分独立验证。
 
 ## TL;DR
 
@@ -353,6 +358,11 @@ npm i three
 | WAAPI 底层 | "底层自动适配浏览器性能" | **WAAPI 是独立子路径 `animejs/waapi`,非自动底层** | 源文小吹,需校正为"可选子模块,需显式 import" |
 | v4 API 命名 | `animate / timeline / stagger` | package.json + README 一致 | ✓ 对的 |
 | peer Three.js | "原生适配" | **可选 peer `three >=0.150.0`,走 `animejs/adapters/three` 子路径** | ✓ 对的,但源文未说"可选 peer / 子路径",需补 |
+| **npm 下载量**(权威值) | 未提 | **500 万 DL/月**(2026-09 → 2026-10),独立 API:https://api.npmjs.org/downloads/point/last-month/animejs | 新增维度,横向比较 GSAP 商业版不计 / Framer Motion ~1.5M / Popmotion ~1M 后,属于头部公共池 |
+| **社区反响** | 未提 | HN Show 2025-04-03「AnimeJs v4 Is Here」**973 分 / 155 评论**,同日 = v4.0.0 发布日(2025-04-03T14:29:45Z) | 新增维度,HN 史上 Anime.js 系列三段:Show HN 2016-06-27 (283 pts) → v3 (2019-01-14) → v4 (2025-04-03, 973 pts) |
+| v4 架构变化描述 | 未提 | v4.0.0 release meta 原文:**"A complete rewrite of Anime.js, with a modular, ESM-first API, improved performance, and TONS of new features"** | 源文只字未提 v4 是重写,补充 |
+
+> 多源研究档案:[assets/animeJs/sources-report.md](assets/animeJs/sources-report.md)(5 源:官方文档 / v3→v4 迁移指南 / GitHub Releases v4.0.0+v4.5 / HN Show / npm registry + downloads API)。
 
 ## 10. 一句话哲学
 
