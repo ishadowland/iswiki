@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 75 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 76 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -11,7 +11,7 @@
 ```
 iswiki/
 ├── README.md
-├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(28)
+├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(29)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(19)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(17)
@@ -44,6 +44,7 @@ iswiki/
 | [paperclip](ai-vibecoding-agents/paperclip.md) | 92,766⭐ 的 agent 公司级控制平面:org chart + 原子任务 checkout + 预算硬停 + 审批门 + 审计日志,**内置 Hermes adapter**(`hermes_local` / `hermes_gateway`)。 |
 | [paseo](ai-vibecoding-agents/paseo.md) | 跨平台多 agent 编排器,统一管理 Claude Code / Codex / Copilot / OpenCode / Pi。 |
 | [ponytail](ai-vibecoding-agents/ponytail.md) | 给 AI coding agent 注入"老员工 + YAGNI"人格的跨 13 平台 skill 集。 |
+| [redisAIAgentStack](ai-vibecoding-agents/redisAIAgentStack.md) | Redis 8 把 Vector Set + 向量检索 + Agent Memory + 语义缓存收进一个内核。一手核验推翻公众号原文 3 处代码错误 + 2 处版本号;⚠️ 8.0 起 tri-license RSALv2/SSPLv1/AGPLv3,Iris 是托管服务本地拿不到。 |
 | [rea](ai-vibecoding-agents/rea.md) | 20,918⭐ 的逆向 MCP:106+ 工具封装 Hopper/Ghidra/IDA,强制每条结论挂 Evidence ID 并记录 unknowns。 |
 | [remix-reference-video-prompt](ai-vibecoding-agents/remix-reference-video-prompt.md) | SKILL.md 级 prompt skill,按参考视频拆解运镜 + 生成结构化视频提示词。 |
 | [reverse-skill](ai-vibecoding-agents/reverse-skill.md) | AI Agent 的安全/逆向/渗透任务路由,857 文件 / 55 skill 模块 / R0-R39 路由。 |

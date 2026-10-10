@@ -28,6 +28,7 @@
 | [paperclip](paperclip.md) | 92,766⭐ 的 agent 公司级控制平面:org chart + 原子任务 checkout + 预算硬停 + 审批门 + 审计日志,内置 Hermes adapter(`hermes_local` / `hermes_gateway`)。 |
 | [paseo](paseo.md) | 跨平台多 agent 编排器,统一管理 Claude Code / Codex / Copilot / OpenCode / Pi。 |
 | [ponytail](ponytail.md) | 给 AI coding agent 注入"老员工 + YAGNI"人格的跨 13 平台 skill 集。 |
+| [redisAIAgentStack](redisAIAgentStack.md) | Redis 8 把 Vector Set + 向量检索 + Agent Memory + 语义缓存收进一个内核。**一手核验推翻公众号原文 3 处**(`SemanticSessionManager` 包路径不存在 / `SemanticCache.Builder` 无 `redisUrl()` 必传 client+vectorizer / `check(q,1)` 应为 `checkTopK`)+ 2 处版本(Java artifactId 实为 `redisvl` 0.13.1、`langchain4j-redis` 已停更迁 `langchain4j-community-redis`)。⚠️ **8.0 起 tri-license RSALv2/SSPLv1/AGPLv3**;Iris 是托管服务,本地 Docker 拿不到。 |
 | [rea](rea.md) | 20,918⭐ 的逆向 MCP 项目:106+ 工具把 Hopper/Ghidra/IDA 封装成带证据链的接口。最大亮点是 **Evidence ID + unknowns 台账**(`record_unknown` / `verify_unknown_resolution`)——强制每条结论挂证据。⚠️ clone 必须 `--recursive`(5 个 submodule),原生分析需 Hopper/Ghidra/IDA 之一。 |
 | [remix-reference-video-prompt](remix-reference-video-prompt.md) | SKILL.md 级 prompt skill,按参考视频拆解运镜 + 生成结构化视频提示词。 |
 | [reverse-skill](reverse-skill.md) | AI Agent 的安全/逆向/渗透任务路由,857 文件 / 55 skill 模块 / R0-R39 路由。 |
@@ -35,4 +36,4 @@
 | [teamai-cli](teamai-cli.md) | 腾讯开源的 Git-native 团队 AI 工具 CLI,push/MR/pull 同步 skill 给各 agent。 |
 | [wake](wake.md) | Mac 上 Rust+GPUI 写的 multi-agent 会话档案馆,统一浏览本地历史。 |
 
-**共 28 个文档**。
+**共 29 个文档**。
