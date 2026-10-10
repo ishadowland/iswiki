@@ -14,7 +14,7 @@ iswiki/
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(29)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(19)
-├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(17)
+| 🌐 web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(18) |
 └── misc/
     └── OS-gaming-console/        🎮 掌机 / 自定义 firmware(2)
 ```
@@ -89,6 +89,7 @@ iswiki/
 | 文档 | 一句话 |
 |---|---|
 | [agoraFlat](web-frontend-ui/agoraFlat.md) | 声网开源的 Web/Desktop/Android 全端在线互动教室。 |
+| [animeJs](web-frontend-ui/animeJs.md) | juliangarnier/anime 的 v4 动画引擎(73.4k★ MIT),一套 `animate()` API 同时驱动 CSS / SVG / DOM / JS 对象 / Three.js 物体;零运行时依赖,ESM tree-shake 子路径(animation / timeline / stagger / svg / waapi / adapters/three);和 GSAP 对照下适合 sanfine.art 首页 hero / 卡片 stagger / SVG 描边动效。 |
 | [artemis-art-direction](web-frontend-ui/artemis-art-direction.md) | Artemis 的视觉风格 = Blueprint × 太空电影 × 琥珀橙焦点色的工程解读。 |
 | [artemis-redradman](web-frontend-ui/artemis-redradman.md) | Three.js 在浏览器里复刻 NASA Artemis II 载人登月任务(14 阶段 / 16 飞行器组件)。 |
 | [kage](web-frontend-ui/kage.md) | Meng To 的 244 KB 单 HTML 文件 Three.js 京都夜行寺(scroll-driven 镜头推进)。 |
