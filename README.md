@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 76 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 77 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -65,6 +65,7 @@ iswiki/
 | [anthropic-cybersecurity-skills](ops-cybersec-dba/anthropic-cybersecurity-skills.md) | 817 个结构化网络安全技能 + 6 框架映射,让 AI agent 像资深安全分析师工作。 |
 | [codex-security](ops-cybersec-dba/codex-security.md) | OpenAI 开源的 `@openai/codex-security`,自动验证漏洞,不报误报。 |
 | [disable-ipv6-multi-kernel](ops-cybersec-dba/disable-ipv6-multi-kernel.md) | 多内核 Linux 引导菜单批量加 `ipv6.disable=1` 的完整 SOP。 |
+| [dockerDiskSpaceSOP](ops-cybersec-dba/dockerDiskSpaceSOP.md) | Docker 磁盘满四阶段 SOP:只读定位 → 分层清理 → 阈值兜底 → 复发预防。含 `buildx du` 共享存储语义、`--filter` 9 个 key、daemon.json `=` vs buildkitd.toml `==`、Mac 稀疏文件陷阱(实测实际 24.8G / 表观 1224G)。 |
 | [kylinV10DisableIPv6](ops-cybersec-dba/kylinV10DisableIPv6.md) | 麒麟 V10 ARM 版通过 GRUB 内核参数彻底关闭 IPv6 的 5 步操作流程。 |
 | [linux-permission-debug](ops-cybersec-dba/linux-permission-debug.md) | `chmod 777` 成功但服务仍 Permission denied 的 6 层访问链调试。 |
 | [frpc-desktop](ops-cybersec-dba/frpc-desktop.md) | FRP 内网穿透跨平台桌面客户端(Electron + Vue 3),可视化配 frpc 代理,6,875⭐ 头部项目。 |
