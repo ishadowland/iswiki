@@ -301,7 +301,7 @@ brew install rtmpdump zlib nss
 
 - **能直接用上的场景**:本仓 [wafKnowledgeBase](wafKnowledgeBase.md)(WAF 拦截行为分类)讲的是「攻击行为怎么分类」,这篇补的是**另一层** —— 「WAF 还能按连接层指纹分类」。两者结合才是完整的 WAF 认知:请求层(header/参数)+ 连接层(TLS/HTTP2 指纹)。
 - **配对笔记**:[reverse-skill](../ai-vibecoding-agents/reverse-skill.md)(安全/逆向任务路由)、[blackBoxPentestPlaybook](blackBoxPentestPlaybook.md)(黑盒测试里「客户端指纹」这一维度目前是空白,可以补)。
-- **本机现状**:已装在 `/tmp/ci/`(临时目录,重启会丢)。如果要做常规验证,建议移到 `~/.hermes/tools/curl-impersonate/` 并把 wrapper 加进 PATH。注意 `zlib` 是 keg-only 的,不影响运行但编译其他东西时需要 `export LDFLAGS=-L/usr/local/opt/zlib/lib`。
+- **本机现状**:已正式安装到 `~/.hermes/tools/curl-impersonate/`(2026-10-13),wrapper 已通过 `~/.zshrc` 注入 PATH,新开终端直接用 `curl_chrome116 ...` 即可。调用速查见 `~/.hermes/tools/curl-impersonate/USAGE.md`。注意 `zlib` 是 keg-only 的,不影响本工具运行,但编译其他东西时需要 `export LDFLAGS=-L/usr/local/opt/zlib/lib`。
 - **别做的事**:不要拿它去抓不属于自己的站点。
 
 ---
