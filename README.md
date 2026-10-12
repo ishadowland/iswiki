@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 78 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 79 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -13,7 +13,7 @@ iswiki/
 ├── README.md
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(29)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
-├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(20)
+├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(21)
 | 🌐 web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(18) |
 └── misc/
     └── OS-gaming-console/        🎮 掌机 / 自定义 firmware(2)
@@ -58,7 +58,7 @@ iswiki/
 
 ---
 
-## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(20)
+## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(21)
 
 | 文档 | 一句话 |
 |---|---|
@@ -68,6 +68,7 @@ iswiki/
 | [dockerDiskSpaceSOP](ops-cybersec-dba/dockerDiskSpaceSOP.md) | Docker 磁盘满四阶段 SOP:只读定位 → 分层清理 → 阈值兜底 → 复发预防。含 `buildx du` 共享存储语义、`--filter` 9 个 key、daemon.json `=` vs buildkitd.toml `==`、Mac 稀疏文件陷阱(实测实际 24.8G / 表观 1224G)。 |
 | [kylinV10DisableIPv6](ops-cybersec-dba/kylinV10DisableIPv6.md) | 麒麟 V10 ARM 版通过 GRUB 内核参数彻底关闭 IPv6 的 5 步操作流程。 |
 | [linux-permission-debug](ops-cybersec-dba/linux-permission-debug.md) | `chmod 777` 成功但服务仍 Permission denied 的 6 层访问链调试。 |
+| [lvmPartitionedFilter](ops-cybersec-dba/lvmPartitionedFilter.md) | `pvcreate /dev/vdb` 报 `excluded by a filter` 的源码级真因:内置 `partitioned` filter,改 `lvm.conf` 绕不过(无开关)。含「有分区表且至少一个分区被定义」的判定条件逐行拆解、`deferred` 两阶段过滤机制、**2.03.14 与 main 的 GPT 判定差异(老版零 GPT 逻辑、只看 PMBR)**、`wipefs` 只擦主头漏备份头,以及 DeepSeek 对话里 5 处错判纠正。 |
 | [frpc-desktop](ops-cybersec-dba/frpc-desktop.md) | FRP 内网穿透跨平台桌面客户端(Electron + Vue 3),可视化配 frpc 代理,6,875⭐ 头部项目。 |
 | [bash-reference-manual](ops-cybersec-dba/bash-reference-manual.md) | Bash Reference Manual 完整学习(10 章 + 4 附录,含 8 大展开 / 13 类重定向 / 80+ 内建命令 / 12 大陷阱 / 5 大最佳实践)。 |
 | [blackBoxPentestPlaybook](ops-cybersec-dba/blackBoxPentestPlaybook.md) | 黑盒渗透测试完整打法(已脱敏):JS chunk 迭代收敛提取 → 应用层加密复现 → 未授权矩阵探测 → **双账号 diff 四维度 + 三层越权分离** → 四项专项 → 未成立项归档。附防守方 12 条自查清单。 |

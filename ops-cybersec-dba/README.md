@@ -17,6 +17,7 @@
 | [frpc-desktop](frpc-desktop.md) — FRP 内网穿透跨平台桌面客户端(Electron + Vue 3),可视化配 frpc 代理,6,875⭐ 头部项目
 | [kylinV10DisableIPv6](kylinV10DisableIPv6.md)
 | [linux-permission-debug](linux-permission-debug.md)
+| [lvmPartitionedFilter](lvmPartitionedFilter.md) | `pvcreate` 报 `excluded by a filter` 的真因是内置 partitioned filter,改 lvm.conf 绕不过。含源码级核验、**2.03.14 vs main 的 GPT 判定差异(老版零 GPT 逻辑、只看 PMBR)**、对话里 5 处错判纠正。 |
 | [netdata](netdata.md)
 | [opsTroubleshootingDiskGhost](opsTroubleshootingDiskGhost.md)
 | [opsTroubleshootingOOMCgroup](opsTroubleshootingOOMCgroup.md)
@@ -31,4 +32,4 @@
 
 ---
 
-**共 20 个文档**。
+**共 21 个文档**。
