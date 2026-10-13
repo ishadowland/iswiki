@@ -4,7 +4,8 @@
 > 调研来源: 微信公众号「胡哥Linux运维」,作者胡登治(RHCA 2015 版,15 年 Linux 运维)
 > 原文: https://mp.weixin.qq.com/s/KG6A-RCCa6Br8qO7rMLIgg
 > 系列定位: 「Linux 诡异现象排错」系列姊妹篇。上一篇 [`opsTroubleshootingOOMCgroup.md`](./opsTroubleshootingOOMCgroup.md)(free 还有 8G 却 OOM)讲的是**「该杀谁 / 什么时候杀」**;本篇讲**「死了之后去哪找证据」**。
-> 一手核验: 内核 `mm/oom_kill.c`(v5.4 / v5.10 / v6.1 / master 逐版比对)+ systemd `NEWS` v237/v252/v262 + rsyslog `runtime/ratelimit.c` + `plugins/imjournal/imjournal.c` + kernel `Documentation/admin-guide/sysctl/kernel.rst`
+> 一手核验: 内核 `mm/oom_kill.c`(**master + v4.19 双版本逐行比对**) + `Documentation/admin-guide/cgroup-v2.rst`(v4.19 / v5.10 / v5.19 三版比对)+ systemd `NEWS` v237/v243/v252/v259 + systemd v243 `service.h` + rsyslog `runtime/ratelimit.c` + `plugins/imjournal/imjournal.c` + kernel `Documentation/sysctl/kernel.txt`(4.19)
+> ⚠️ **麒麟 V10 SP3 用户(kernel 4.19.90)请优先读 §三·五「麒麟专项」**,该节逐条列出与新内核不兼容的命令。
 
 ---
 
@@ -72,30 +73,31 @@ dmesg -T | grep -iE "oom|killed process"
 
 **① 抬头行** —— 谁触发的 OOM:
 
+> ⚠️ **本节行号按上游 master 写。Kylin V10 SP3(kernel 4.19.90)的格式串和列数都不一样,见下方「麒麟 V10 SP3 专项」**。
+
 ```c
-/* oom_kill.c:458 */
-pr_warn("%s invoked oom-killer: gfp_mask=%#x(%pGg), order=%d, oom_score_adj=%d\n", ...);
+/* master oom_kill.c:458 */
+pr_warn("%s invoked oom-killer: gfp_mask=%#x(%pGg), order=%d, oom_score_adj:%d\n", ...);
 ```
 
 **② 进程清单表** —— 这是「为什么死的是它」的答案所在:
 
 ```c
-/* oom_kill.c:425 —— 表头 */
+/* master oom_kill.c:425 —— 表头 */
 [  pid  ]   uid  tgid total_vm      rss rss_anon rss_file rss_shmem pgtables_bytes swapents oom_score_adj name
-/* oom_kill.c:399 —— 每行末尾两列分别是 oom_score_adj 和 comm */
 ```
 
 `oom_score_adj` 分越高越先被杀 → **这一列就是你找的「被杀优先级」**。
 
-> ⚠️ 进程清单的打印受 sysctl `kernel.oom_dump_tasks` 控制(默认值 `1`,见 `oom_kill.c:58` / `:717`)。有些发行版为了省日志量调小过它,看不到清单不代表没杀进程,`Killed process` 那行永远在。
+> ⚠️ 进程清单的打印受 sysctl `kernel.oom_dump_tasks` 控制(默认值 `1`,4.19 见 `mm/oom_kill.c:54` / `:449`,master 见 `:58` / `:717`)。有些发行版为了省日志量调小过它,看不到清单不代表没杀进程,`Killed process` 那行永远在。
 
 **③ 凶手那一行** —— 整机 OOM vs cgroup OOM 的**唯一分水岭**:
 
 ```c
-/* oom_kill.c:1169 —— 一个三目运算符决定全部 */
+/* master oom_kill.c:1169 —— 一个三目运算符决定全部 */
 oom_kill_process(oc, !is_memcg_oom(oc) ? "Out of memory" :
                                  "Memory cgroup out of memory");
-/* oom_kill.c:945 —— 拼上 ": Killed process ..." */
+/* master oom_kill.c:945 —— 拼上 ": Killed process ..." */
 pr_err("%s: Killed process %d (%s) total-vm:%lukB, anon-rss:%lukB, file-rss:%lukB, shmem-rss:%lukB, UID:%u pgtables:%lukB oom_score_adj:%d\n", ...);
 ```
 
@@ -114,13 +116,191 @@ pr_err("%s: Killed process %d (%s) total-vm:%lukB, anon-rss:%lukB, file-rss:%luk
 |---|---|---|
 | **重启即清空** | ring buffer 在内存里,机器一重启就没了 | 内核 ring buffer 设计 |
 | **被新记录顶掉** | 内核打印量大时旧记录被挤掉,dmesg 是**第一现场,不是档案库** | 环形缓冲区语义 |
-| **容器里看不了** | 默认无 `CAP_SYSLOG` → `Operation not permitted` | `kernel.rst:253-261` 明确写了 `dmesg_restrict=1` 时需要 `CAP_SYSLOG` |
+| **容器里看不了** | 默认无 `CAP_SYSLOG` → `Operation not permitted` | 4.19 `Documentation/sysctl/kernel.txt:275-284` 与新版 `kernel.rst` 均写明 `dmesg_restrict=1` 时需要 `CAP_SYSLOG` |
 | **`-T` 时间有偏差** | 拿「开机时间 + 运行秒数」倒推,休眠过 / 跑很久会偏 | 建议只看事件**先后次序**,别掐秒 |
 
-`dmesg_restrict` 原文(核验自 `Documentation/admin-guide/sysctl/kernel.rst`):
+`dmesg_restrict` 原文(4.19 路径是 `Documentation/sysctl/kernel.txt`,新版才改名为 `kernel.rst`):
 
-> When `dmesg_restrict` is set to 1, users must have `CAP_SYSLOG` to use `dmesg(8)`.
+> When `dmesg_restrict` is set to (1), users must have CAP_SYSLOG to use dmesg(8).
 > 编译选项 `CONFIG_SECURITY_DMESG_RESTRICT` 决定它的默认值。
+
+---
+
+## 三·五、麒麟 V10 SP3 专项(必读)
+
+我们的生产服务器是 **Kylin Linux Advanced Server V10 SP3**,内核 **4.19.90-89.24.v2401.ky10.aarch64**。它属于 **RHEL 8 血统**(用户态基本对齐 RHEL 8),但内核是 4.19 而非 RHEL 8 的 4.18,**两者在 OOM 日志格式和 cgroup 文件上有实质差异**。
+
+### 3.5.1 OOM 日志格式完全不同(最容易踩的坑)
+
+4.19 的 `Killed process` 格式串**没有 `UID:` 也没有 `oom_score_adj:`**:
+
+```c
+/* v4.19 mm/oom_kill.c:864 —— 注意结尾没有 UID、没有 oom_score_adj */
+pr_err("Killed process %d (%s) total-vm:%lukB, anon-rss:%lukB, file-rss:%lukB, shmem-rss:%lukB\n",
+        task_pid_nr(victim), victim->comm, K(victim->mm->total_vm), ...);
+
+/* v4.19 mm/oom_kill.c:433 —— 多了 nodemask,少了 UID */
+pr_warn("%s invoked oom-killer: gfp_mask=%#x(%pGg), nodemask=%*pbl, order=%d, oom_score_adj:%hd\n", ...);
+```
+
+| 项 | master(5.x / 6.x) | **Kylin V10 SP3(4.19)** |
+|---|---|---|
+| 凶手前缀 | `Out of memory: Killed process` | **同样适用**(`v4.19:1120-1121` 三目运算符一致) |
+| 抬头行含 `nodemask=` | ❌ | **✅ 有**(4.19 有,master 已移除) |
+| 抬头行分隔符 | `oom_score_adj**=**%d`(等号) | `oom_score_adj**:**%hd`(**冒号**,类型是 `%hd`) |
+| `Killed process` 行含 `UID:` | ✅ | **❌ 无** |
+| `Killed process` 行含 `oom_score_adj:` | ✅ | **❌ 无** |
+| 进程清单**列数** | 12 列(含 `rss_anon` / `rss_file` / `rss_shmem`) | **8 列**(`v4.19:404`,无三个 rss 分项) |
+| 进程清单表头 | `... rss rss_anon rss_file rss_shmem pgtables_bytes swapents ...` | **`... rss pgtables_bytes swapents oom_score_adj name`** |
+
+> ⚠️ 分隔符差异(`=` vs `:`)意味着**跨版本的 grep 规则不能直接复用**。写自动化解析脚本时,用 `awk '{print $NF}'` 取进程名这种相对位置解析,比匹配具体字段名稳。
+
+**实战影响**:
+
+```bash
+# ❌ 在麒麟上这样 grep 不到 —— 4.19 格式里根本没有这两个字段
+dmesg -T | grep oom_score_adj        # 只能匹配到抬头行,匹配不到 Killed process 行
+
+# ✅ 4.19 上要看被杀优先级,只能从进程清单表的最后一列看
+dmesg -T | grep -A 30 "invoked oom-killer" | tail -20
+
+# ✅ 4.19 判定被杀的 UID,用 ps 反查,不能从日志里读
+dmesg -T | grep "Killed process" | awk '{print $4}'
+```
+
+> **结论**:「从 `Killed process` 那一行读出 `oom_score_adj`」这个动作,在麒麟 V10 SP3 上**做不到**。必须到进程清单表里找。这也是为什么我把「进程清单受 `oom_dump_tasks` 控制」那条单独标了 ⚠️ —— 在麒麟上如果这个 sysctl 被调成 0,你会**同时失去被杀进程的身份信息和优先级分数**。
+
+### 3.5.2 cgroup 文件:哪些能用,哪些会报错
+
+4.19 支持 cgroup v1/v2 **共存**(RHEL 8 血统通常只挂 v2,Kylin V10 SP3 需现场确认)。**文件可用性逐个核对**:
+
+| 文件 / 字段 | Kylin V10 SP3 (4.19) | 说明 |
+|---|---|---|
+| `memory.events` 的 `oom` / `max` / `high` | ✅ 有 | `v4.19 cgroup-v2.rst:1093-1135` |
+| `memory.events` 的 **`oom_kill`** | ✅ **有** | 铁证字段,4.19 已在(行 1130) |
+| `memory.events.local` | ❌ **没有** | 该文件 **v5.10 才引入**,4.19 上写它 = `No such file or directory` |
+| `oom_group_kill` 字段 | ❌ 没有 | 同上 |
+| **`memory.peak`** | ❌ **没有** | `memory.peak` **v5.19 才引入**,麒麟上 `cat` 会报 `No such file or directory` |
+| `memory.high` | ✅ 有 | 4.19 起可用(`cgroup-v2.rst:1049`) |
+| `memory.max` / `memory.current` | ✅ 有 | 基础文件 |
+| `memory.swap` | ✅ 有 | 4.19 起可用 |
+| cgroup v1 的 `memory.failcnt` | ⚠️ 仅 v1 模式 | 见 `opsTroubleshootingOOMCgroup.md` |
+
+**因此 §5.3 那段在麒麟上必须改成**:
+
+```bash
+# ❌ 麒麟 V10 SP3 上三条都会报错
+cat /sys/fs/cgroup/system.slice/collector.service/memory.peak
+cat .../memory.events.local     # 5.10+
+grep oom_group_kill .../memory.events
+
+# ✅ 麒麟上能用的
+cat /sys/fs/cgroup/system.slice/collector.service/memory.events   # 看 oom_kill
+cat /sys/fs/cgroup/system.slice/collector.service/memory.max
+cat /sys/fs/cgroup/system.slice/collector.service/memory.current
+cat /sys/fs/cgroup/system.slice/collector.service/memory.high    # 回收阈值
+```
+
+> `memory.peak` 缺失有实际影响:老内核上没有「峰值」记录,事后无法回答「这个服务历史峰值到底多高」。**容量规划只能靠 `memory.events` 的 `max` 计数 + `memory.high` 触发频次反推**,别指望 `memory.peak`。
+
+### 3.5.3 systemd 侧:版本相关行为(**以现场为准**)
+
+麒麟 V10 SP3 用户态对齐 **RHEL 8**,systemd 大版本落在 **239~243** 区间(随 SP 补丁级别浮动)。
+
+> ⚠️ **这一点我没有拿到麒麟官方 version 清单做硬证据**,是基于「RHEL 8 血统 + systemd 243 发布于 2019-10」的推断。**上生产前请先跑 `systemctl --version` 确认真实值**,下面表格按推断版本给出行为对照。
+
+| 项 | 需要的版本 | 239~242 | 243 | 备注 |
+|---|---|---|---|---|
+| `journalctl --grep=` | **237** | ✅ 可用 | ✅ 可用 | ≥237 即有,本区间**不需要退回 `grep` 管道** |
+| `Storage=auto` 默认行为 | <259 是 auto | ⚠️ **是 auto** | ⚠️ **是 auto** | `/var/log/journal` 不存在就写内存盘 —— **麒麟上最该先做的事** |
+| `OOMScoreAdjust=` | 早已支持 | ✅ 可用 | ✅ 可用 | 关键服务防误杀用这个 |
+| `OOMPolicy=` | **243** | ❌ **写了会启动失败** | ✅ 可用 | 243 以下写进 unit 文件是**硬错误**,systemd 解析 unit 时报未知指令 |
+| `systemd-tmpfiles --prefix=` | **212** | ✅ 可用 | ✅ 可用 | 早于本区间 |
+| `journalctl -b -1` | 早已支持 | ✅ 可用 | ✅ 可用 | **依赖持久化**,先做 §4.3 |
+
+```bash
+# 上生产前必跑这一条,把推断换成事实
+systemctl --version | head -1
+grep -c 'OOMPolicy' /etc/systemd/system/*.service 2>/dev/null   # 已有 unit 里若出现先清理
+```
+
+**麒麟上 journald 持久化的实际执行**(因为默认是 auto,这一步是必须的):
+
+```bash
+# 1. 先确认当前到底是落在哪(决定你要不要做)
+systemctl show systemd-journald -p ExecStart | grep -o '/[^ ]*log[^ ]*journal' | sort -u
+ls -ld /var/log/journal 2>/dev/null || echo "⚠️ /var/log/journal 不存在 → 现在写的是 /run/log/journal → 重启即丢"
+
+# 2. 做持久化(二选一,推荐第 2 种可追溯)
+mkdir -p /var/log/journal
+systemd-tmpfiles --create --prefix /var/log/journal
+systemctl restart systemd-journald
+
+# 或改配置文件
+printf '[Journal]\nStorage=persistent\n' | sudo tee -a /etc/systemd/journald.conf
+systemctl restart systemd-journald
+```
+
+> **系统族 CLI 差异**:麒麟 V10(`klas-root`,见 [`kylinV10DisableIPv6.md`](./kylinV10DisableIPv6.md))部分服务管理走 systemd,部分仍用 SysV 的 `service`/`chkconfig`。`journalctl -u <unit>` 只对 systemd 管理的 unit 有效;若服务是 SysV 的,改查 `journalctl -t <syslog-tag>` 或直接 `grep /var/log/messages`。
+
+### 3.5.4 麒麟上可直接用的完整排查脚本
+
+```bash
+#!/bin/bash
+# Kylin V10 SP3 OOM 排查(4.19 内核,已避开 memory.peak / events.local)
+echo "===== 0. 环境确认(先跑这个,别跳) ====="
+uname -r
+systemctl --version | head -1
+stat -fc %T /sys/fs/cgroup/            # cgroup2fs = v2 统一; tmpfs = v1(混合模式)
+cat /proc/sys/kernel/dmesg_restrict 2>/dev/null || echo "dmesg_restrict: 读不到(4.19 路径正常)"
+
+echo "===== 1. 内核账:被杀的进程 ====="
+dmesg -T | grep -iE "out of memory|killed process" || echo "本机未见 OOM 记录"
+
+echo "===== 2. 抬头行(4.19 特有 nodemask) ====="
+dmesg -T | grep -A 40 "invoked oom-killer" | grep -E "invoked oom-killer|task=|^\[" | head -30
+
+echo "===== 3. 进程清单表(4.19 只有 8 列,优先级在倒数第 2 列) ====="
+dmesg -T | grep -E "^\[ *[0-9]+\] " | tail -20
+
+echo "===== 4. 被杀进程身份反查(4.19 日志里没有 UID) ====="
+dmesg -T | grep "Killed process" | tail -5 | sed 's/[^0-9]\([0-9]\+\).*/PID=\1/'
+ps -o pid,user,comm,rss -p <上面的PID>
+
+echo "===== 5. cgroup 视角(仅 v2 且已确认是 v2) ====="
+if [ "$(stat -fc %T /sys/fs/cgroup/)" = "cgroup2fs" ]; then
+  D=/sys/fs/cgroup/system.slice/<服务名>.service
+  [ -d "$D" ] || D=$(systemctl show -p ControlGroup --value <服务名> 2>/dev/null)
+  cat "$D"/memory.events        # oom_kill > 0 = 铁证
+  cat "$D"/memory.max
+  cat "$D"/memory.current
+  cat "$D"/memory.high
+else
+  echo "当前是 cgroup v1(混合模式),走 memory.failcnt / memory.oom_control"
+fi
+
+echo "===== 6. systemd 账 ====="
+systemctl show <服务名> -p NRestarts,ExecMainStatus,ExecMainCode,Result
+journalctl -u <服务名> -e | tail -20
+journalctl --list-boots | tail -3   # 只有做了持久化才有意义
+
+echo "===== 7. journald 是否落盘 ====="
+ls -ld /var/log/journal 2>/dev/null \
+  && echo "✅ 已落盘" \
+  || echo "❌ 未落盘,重启后 OOM 证据全丢 —— 见笔记 §4.3"
+```
+
+### 3.5.5 麒麟 V10 SP3 上**不能**用的命令速查
+
+| 命令 / 文件 | 状态 | 原因 |
+|---|---|---|
+| `cat .../memory.peak` | ❌ | 4.19 没有,v5.19 才引入 |
+| `cat .../memory.events.local` | ❌ | 4.19 没有,v5.10 才引入 |
+| `memory.events` 里找 `oom_group_kill` | ❌ | 4.19 无该字段 |
+| 从 `Killed process` 行读 `oom_score_adj` | ❌ | 4.19 格式串不含该字段 |
+| 从 `Killed process` 行读 `UID:` | ❌ | 4.19 格式串不含该字段 |
+| `OOMPolicy=`(未先确认版本) | ⚠️ | systemd 243 才加,239~242 写进 unit 会导致**服务起不来** |
+| `journalctl -k --grep=` | ✅ 可用 | 麒麟在 239~243 区间,≥237 即有;保险起见先 `systemctl --version` |
 
 ---
 
@@ -301,11 +481,13 @@ cat /sys/fs/cgroup/system.slice/collector.service/memory.events
 
 **`oom_kill > 0` = 这个服务被 OOM 杀过的铁证。** 配套看:
 
+> ⚠️ **`memory.peak` 是 v5.19 才引入的**。麒麟 V10 SP3(4.19)上 `cat memory.peak` 会报 `No such file or directory`;`memory.events.local`(v5.10+)同样不存在。老内核上可用的是下面这四个。详见 §三·五。
+
 ```bash
 cat /sys/fs/cgroup/system.slice/collector.service/memory.high   # 回收阈值
 cat /sys/fs/cgroup/system.slice/collector.service/memory.max    # 硬上限
 cat /sys/fs/cgroup/system.slice/collector.service/memory.current # 当前用量
-cat /sys/fs/cgroup/system.slice/collector.service/memory.peak   # 峰值
+cat /sys/fs/cgroup/system.slice/collector.service/memory.peak   # 峰值(v5.19+,老内核无)
 ```
 
 > cgroup v1(老系统)对应文件是 `memory.failcnt` 和 `memory.oom_control`,详见 [`opsTroubleshootingOOMCgroup.md`](./opsTroubleshootingOOMCgroup.md) 的 cgroup v1 段。
@@ -421,7 +603,8 @@ OOMScoreAdjust=-500
 | 关联点 | 用法 |
 |---|---|
 | **Macmini 本机(launchd 而非 systemd)** | 这套命令**不能直接照搬** —— macOS 没有 `dmesg` / `journalctl` / `OOMScoreAdjust`。等价物是 `log show --predicate 'eventMessage contains "memorystatus"'`(jetsam)和 `vm_stat` / `memory_pressure`。**但「三本账」的思维通用**:应用日志(自己的) / launchd 日志(`log show --predicate 'process == "xxx"'`) / 内核日志(`log show --style compact --predicate 'sender == "kernel"'`) 三层对照 |
-| **Linux 服务器 / Kylin V10 等保机** | 上线 checklist 加一条:`/var/log/journal` **必须存在**,否则重启后 OOM 证据全丢(systemd ≤252 默认 `Storage=auto`) |
+| **Linux 服务器 / Kylin V10 等保机** | 上线 checklist 加一条:`/var/log/journal` **必须存在**,否则重启后 OOM 证据全丢(systemd ≤252 默认 `Storage=auto`)。**麒麟 V10 SP3 正是这个状态,见 §三·五** |
+| **麒麟 V10 SP3 生产机(kernel 4.19.90)** | **本篇 §三·五 是专机专用的执行版**。三条必记:① 日志格式与新内核不同,**不能**从 `Killed process` 行读 `oom_score_adj` / `UID`;② `memory.peak` / `memory.events.local` **不存在**,别照抄 §5.3;③ `OOMPolicy=` 写进 unit 前必须先 `systemctl --version`(243 才有) |
 | **CentOS 7 / RHEL 7(systemd 219)** | 查内核日志**不能用 `journalctl -k --grep=`**(v237 才加的),必须退回 `journalctl -k \| grep`。写脚本时按 `systemctl --version` 探测 |
 | **容器化业务 / K8s** | 监控告警优先用 `Reason: OOMKilled`,不要只用 exit code 137;宿主机上给关键服务配 `OOMScoreAdjust=-500`(内核选人)+ `OOMPolicy=kill`(被杀后的反应) |
 | **VPS / 云主机(纯调度编排)** | 我们 VPS 上没有重负载推理,OOM 概率低,但**飞书 gateway 3 个进程(coder / curator / stock)** 是长期常驻服务,值得给关键的设 `OOMScoreAdjust` + 确认 journald 持久化,防止某天被误杀后查不出原因 |
@@ -438,17 +621,33 @@ OOMScoreAdjust=-500
 - 同系列姊妹篇:[free 还有 8G,OOM 却杀了我的数据库](./opsTroubleshootingOOMCgroup.md) ← 讲「为什么杀」
 - 同系列前篇:[df 说满了,du 说没满](./opsTroubleshootingDiskGhost.md) ← 讲「账本对账」
 
-**内核源码(一手核验)**
+**内核源码 — master(一行号均按 master)**
 
-- `mm/oom_kill.c`:`mm/oom_kill.c` — `:425` 进程清单表头、`:458` invoked oom-killer、`:945` Killed process、`:943` `do_send_sig_info(SIGKILL, ...)`、`:1169` 整机/cgroup OOM 分水岭、`:58`/`:717` `oom_dump_tasks`
+- `mm/oom_kill.c` — `:425` 进程清单表头、`:458` invoked oom-killer、`:945` Killed process、`:943` `do_send_sig_info(SIGKILL, ...)`、`:1169` 整机/cgroup OOM 分水岭、`:58`/`:717` `oom_dump_tasks`
 - `Documentation/admin-guide/cgroup-v2.rst:1525-1535` — `memory.events` 字段定义
 - `Documentation/admin-guide/sysctl/kernel.rst:253-264` — `dmesg_restrict` / `CAP_SYSLOG`
+
+**内核源码 — v4.19(麒麟 V10 SP3 实际内核,行号完全不同,勿混用)**
+
+- `v4.19 mm/oom_kill.c` — `:404` 进程清单表头(8 列)、`:433` invoked oom-killer(**含 `nodemask`**)、`:864` Killed process(**无 UID / 无 oom_score_adj**)、`:862` `do_send_sig_info(SIGKILL, SEND_SIG_FORCED, ...)`、`:1120-1121` 整机/cgroup OOM 分水岭、`:54`/`:449` `oom_dump_tasks`
+- `v4.19 Documentation/admin-guide/cgroup-v2.rst` — `:1049` `memory.high`、`:1061` `memory.max`、`:1093-1135` `memory.events`(**`oom_kill` 在 `:1130`,已存在**)
+- `v4.19 Documentation/sysctl/kernel.txt:275-284` — `dmesg_restrict` / `CAP_SYSLOG`(4.19 阶段该文件名为 `.txt`,新版才改名 `.rst`)
+
+**版本引入时间线(麒麟对照用)**
+
+| 特性 | 引入版本 | 4.19 / 麒麟 |
+|---|---|---|
+| `memory.events` 的 `oom_kill` | 很早 | ✅ 有 |
+| `memory.events.local` | **v5.10** | ❌ 无 |
+| `memory.peak` | **v5.19** | ❌ 无 |
+| `oom_group_kill` 字段 | 晚于 4.19 | ❌ 无 |
 
 **systemd 文档与源码(一手核验)**
 
 - `journalctl --grep=` 引入版本:**systemd v237**(2018-01-28,`NEWS` 原文 "journalctl gained a new --grep= option")
 - `Storage=` 默认值变更:**systemd v259** 起默认从 `auto` 改为 `persistent`(`NEWS` v259)
 - `systemd-tmpfiles --prefix=` 引入版本:**systemd 212**(freedesktop 手册 "Added in version 212")
+- `OOMPolicy=` 引入版本:**systemd 243**(实测 `v243 src/core/service.h:194` 已有 `OOMPolicy oom_policy;`,v243 之前无)
 - journald 限速:`RateLimitIntervalSec=30s` / `RateLimitBurst=10000`(按 service 分别计算,journald.conf 手册)
 - `OOMScoreAdjust=` / `OOMPolicy=`: https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html
 - systemd 最新版:**v262**(2026-09-22 发布)
