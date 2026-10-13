@@ -21,8 +21,10 @@
 | [lvmPartitionedFilter](lvmPartitionedFilter.md) | `pvcreate` 报 `excluded by a filter` 的真因是内置 partitioned filter,改 lvm.conf 绕不过。含源码级核验、**2.03.14 vs main 的 GPT 判定差异(老版零 GPT 逻辑、只看 PMBR)**、对话里 5 处错判纠正。 |
 | [netdata](netdata.md)
 | [opsTroubleshootingDiskGhost](opsTroubleshootingDiskGhost.md)
-| [opsTroubleshootingOOMCgroup](opsTroubleshootingOOMCgroup.md)
+| [opsTroubleshootingOOMCgroup](opsTroubleshootingOOMCgroup.md) | 「账本思维」cgroup 篇:`free` 报空闲 ≠ 系统认为不杀你,OOM Killer 看的是进程所属 cgroup 的 memory.current vs memory.max。含 meminfo 拆解(SUnreclaim/slab)、THP + swappiness 调优、「七大账本对不上」速查表。**姊妹篇见 [opsTroubleshootingOOMSILogless](opsTroubleshootingOOMSILogless.md)**。 |
+| [opsTroubleshootingOOMSILogless](opsTroubleshootingOOMSILogless.md) | 「三本账」排查法:进程被 OOM Killer 杀了,应用日志里却什么都没留。SIGKILL 由 `do_send_sig_info()` 从内核态硬送,应用连遗言都写不了;证据在 dmesg / journalctl -k / systemd 三层。一手核验 `mm/oom_kill.c` + systemd NEWS + rsyslog 源码,补 5 处原文缺失:**journald `Storage=auto` 默认在 v259 才改 persistent**(老机器重启后证据全丢)、`--grep` 需 systemd ≥237(CentOS 7 无)、imjournal 默认 600s/20000 条限速、`status=9` 与退出码 9 是两回事、**137 只说明被 SIGKILL 不代表 OOM**。 |
 | [opsTroubleshootingStealTime](opsTroubleshootingStealTime.md) — 云上 CPU 30% 却卡:steal time 排查三板斧 + 工单取证话术
+| [opsTroubleshootingTCPPortExhaustion](opsTroubleshootingTCPPortExhaustion.md) | 调大 ulimit 反而雪崩:出站 TCP 端口耗尽 `EADDRNOTAVAIL` 三层修复 + 自查清单。 |
 | [overseas-youtube-security-channels](overseas-youtube-security-channels.md)
 | [performanceTriage](performanceTriage.md)
 | [qoder-security](qoder-security.md)
@@ -33,4 +35,4 @@
 
 ---
 
-**共 22 个文档**。
+**共 24 个文档**。

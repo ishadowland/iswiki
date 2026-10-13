@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 80 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 81 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -13,7 +13,7 @@ iswiki/
 ├── README.md
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(29)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
-├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(22)
+├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(24)
 | 🌐 web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(18) |
 └── misc/
     └── OS-gaming-console/        🎮 掌机 / 自定义 firmware(2)
@@ -58,7 +58,7 @@ iswiki/
 
 ---
 
-## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(22)
+## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(24)
 
 | 文档 | 一句话 |
 |---|---|
@@ -76,6 +76,7 @@ iswiki/
 | [netdata](ops-cybersec-dba/netdata.md) | 开箱即用的 per-second 实时监控平台,自带 ML 异常检测 + 告警。 |
 | [opsTroubleshootingDiskGhost](ops-cybersec-dba/opsTroubleshootingDiskGhost.md) | df 说满、du 说没满 ——「幽灵空间」排查(fd 还指向的 inode)。 |
 | [opsTroubleshootingOOMCgroup](ops-cybersec-dba/opsTroubleshootingOOMCgroup.md) | free 还有 8G 但 OOM 杀进程 —— cgroup 账本思维排查。 |
+| [opsTroubleshootingOOMSILogless](ops-cybersec-dba/opsTroubleshootingOOMSILogless.md) | 进程被 OOM Killer 杀了,应用日志里却什么都没留 ——「三本账」排查法。SIGKILL 由 `do_send_sig_info()` 从内核态硬送,应用连遗言都写不了;证据在 dmesg / journalctl -k / systemd 三层。一手核验 `mm/oom_kill.c` + systemd NEWS + rsyslog 源码,补 5 处原文缺失:**journald `Storage=auto` 默认 v259 才改 persistent**(老机器重启后证据全丢)、`journalctl --grep` 需 systemd ≥237(CentOS 7 无)、imjournal 默认 600s/20000 条限速、`status=9` 与退出码 9 完全不同、**137 只说明被 SIGKILL 不代表 OOM**。 |
 | [opsTroubleshootingStealTime](ops-cybersec-dba/opsTroubleshootingStealTime.md) | 云上 CPU 30% 却卡:steal time 排查三板斧 + 工单取证话术。 |
 | [opsTroubleshootingTCPPortExhaustion](ops-cybersec-dba/opsTroubleshootingTCPPortExhaustion.md) | 调大 ulimit 反而雪崩:出站 TCP 端口耗尽 `EADDRNOTAVAIL` 三层修复 + 自查清单。 |
 | [overseas-youtube-security-channels](ops-cybersec-dba/overseas-youtube-security-channels.md) | 8 个海外网络安全 YouTube 频道,覆盖入门到高级研究的完整自学路径。 |
