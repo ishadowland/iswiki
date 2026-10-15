@@ -30,10 +30,11 @@
 | [ponytail](ponytail.md) | 给 AI coding agent 注入"老员工 + YAGNI"人格的跨 13 平台 skill 集。 |
 | [redisAIAgentStack](redisAIAgentStack.md) | Redis 8 把 Vector Set + 向量检索 + Agent Memory + 语义缓存收进一个内核。**一手核验推翻公众号原文 3 处**(`SemanticSessionManager` 包路径不存在 / `SemanticCache.Builder` 无 `redisUrl()` 必传 client+vectorizer / `check(q,1)` 应为 `checkTopK`)+ 2 处版本(Java artifactId 实为 `redisvl` 0.13.1、`langchain4j-redis` 已停更迁 `langchain4j-community-redis`)。⚠️ **8.0 起 tri-license RSALv2/SSPLv1/AGPLv3**;Iris 是托管服务,本地 Docker 拿不到。 |
 | [rea](rea.md) | 20,918⭐ 的逆向 MCP 项目:106+ 工具把 Hopper/Ghidra/IDA 封装成带证据链的接口。最大亮点是 **Evidence ID + unknowns 台账**(`record_unknown` / `verify_unknown_resolution`)——强制每条结论挂证据。⚠️ clone 必须 `--recursive`(5 个 submodule),原生分析需 Hopper/Ghidra/IDA 之一。 |
+| [reaVideoReview](reaVideoReview.md) | Gary Chen《REA 到底在紅什麼？》13 分钟视频的一手字幕拆解(372 段官方 zh-TW 字幕全提取)+ 22 条评论交叉核验。视频侧视角,补 [rea](rea.md) 缺的三块:爆红原因(工具存在≠人用得起)、真实使用手感、边界认知。最硬的一段是 0:51「门槛不在工具在编译丢信息」;可迁移方法论是 8:22「参考物消灭猜测空间」。⚠️ 一手核验 5 处:视频省略 Hopper/Ghidra 授权门槛 / 作者自承不确定备忘录复刻是否真成功 / 8:14 最强对照实验未给来源 / 全片未提法律边界 / 未提 skill 与 npm 版本不同步的坑。 |
 | [remix-reference-video-prompt](remix-reference-video-prompt.md) | SKILL.md 级 prompt skill,按参考视频拆解运镜 + 生成结构化视频提示词。 |
 | [reverse-skill](reverse-skill.md) | AI Agent 的安全/逆向/渗透任务路由,857 文件 / 55 skill 模块 / R0-R39 路由。 |
 | [semantica](semantica.md) | ⭐13,856 的图原生 AI 可解释基础设施:决策变一等可查询对象 + W3C PROV-O 溯源 + Rete/Datalog/SPARQL 确定性推理,面向金融医疗法律合规。⚠️ **实测推翻 README 4 处**(`advanced_analytics=True` 裸装即崩 / trace 只对下游有效 / 语义检索喂关键词无结果 / 规则门禁缺字段返假阴性),且 bus factor = 1。 |
 | [teamai-cli](teamai-cli.md) | 腾讯开源的 Git-native 团队 AI 工具 CLI,push/MR/pull 同步 skill 给各 agent。 |
 | [wake](wake.md) | Mac 上 Rust+GPUI 写的 multi-agent 会话档案馆,统一浏览本地历史。 |
 
-**共 29 个文档**。
+**共 30 个文档**。

@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 81 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 82 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -11,7 +11,7 @@
 ```
 iswiki/
 ├── README.md
-├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(29)
+├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(30)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(24)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(18)
@@ -46,6 +46,7 @@ iswiki/
 | [ponytail](ai-vibecoding-agents/ponytail.md) | 给 AI coding agent 注入"老员工 + YAGNI"人格的跨 13 平台 skill 集。 |
 | [redisAIAgentStack](ai-vibecoding-agents/redisAIAgentStack.md) | Redis 8 把 Vector Set + 向量检索 + Agent Memory + 语义缓存收进一个内核。一手核验推翻公众号原文 3 处代码错误 + 2 处版本号;⚠️ 8.0 起 tri-license RSALv2/SSPLv1/AGPLv3,Iris 是托管服务本地拿不到。 |
 | [rea](ai-vibecoding-agents/rea.md) | 20,918⭐ 的逆向 MCP:106+ 工具封装 Hopper/Ghidra/IDA,强制每条结论挂 Evidence ID 并记录 unknowns。 |
+| [reaVideoReview](ai-vibecoding-agents/reaVideoReview.md) | Gary Chen《REA 到底在紅什麼？》13 分钟视频的一手字幕拆解(372 段官方 zh-TW 字幕全提取)+ 22 条评论交叉核验,补 [rea](ai-vibecoding-agents/rea.md) 缺的爆红原因/使用手感/边界认知。最硬一段是 0:51「门槛不在工具在编译丢信息」;可迁移的是 8:22「参考物消灭猜测空间」。⚠️ 一手核验 5 处(省略 Hopper 授权门槛 / 作者自承不确定复刻是否真成功 / 最强对照实验未给来源 / 全片未提法律边界 / 未提 skill 版本不同步的坑)。 |
 | [remix-reference-video-prompt](ai-vibecoding-agents/remix-reference-video-prompt.md) | SKILL.md 级 prompt skill,按参考视频拆解运镜 + 生成结构化视频提示词。 |
 | [reverse-skill](ai-vibecoding-agents/reverse-skill.md) | AI Agent 的安全/逆向/渗透任务路由,857 文件 / 55 skill 模块 / R0-R39 路由。 |
 | [semantica](ai-vibecoding-agents/semantica.md) | ⭐13,856 的图原生 AI 可解释基础设施:决策变一等可查询对象 + W3C PROV-O 溯源 + Rete/Datalog/SPARQL 确定性推理,面向金融医疗法律合规。⚠️ 实测推翻 README 4 处(advanced_analytics 裸装即崩 / trace 只对下游有效 / 语义检索喂关键词无结果 / 规则门禁缺字段返假阴性),且 bus factor = 1。 |
@@ -143,16 +144,16 @@ iswiki/
 
 | 分类 | 文档数 |
 |---|---|
-| 🤖 ai-vibecoding-agents | 29 |
+| 🤖 ai-vibecoding-agents | 30 |
 | 🛠️ ops-cybersec-dba | 24 |
 | 🌐 web-frontend-ui | 18 |
 | ⚡ developer-productivity | 7 |
 | 📌 misc/OS-gaming-console | 2 |
-| **分类小计** | **80** |
+| **分类小计** | **81** |
 | 根级（未分类） | 1 |
-| **总计** | **81** |
+| **总计** | **82** |
 
-(80 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(81 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
