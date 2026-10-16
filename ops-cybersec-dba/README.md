@@ -29,10 +29,11 @@
 | [performanceTriage](performanceTriage.md)
 | [qoder-security](qoder-security.md)
 | [recovery-sop](recovery-sop.md)
+| [s7-monitor](s7-monitor.md) | 西门子 S7 PLC 设备监测预警上位机(.NET 10 / WinForms,MIT,⭐0):9 设备 × 4 参数、越限报警、SQLite WAL 单文件落库、操作审计 6 模块。含三条可搬走的工程模式:**重连必须真实读取探活、不能信 `plc.IsConnected`**(S7.Net 本地标志位不探链路,掉线仍返 true,导致界面看不出断过线)、边沿即时 + 持续降频落库、崩溃重启重建基线防孤儿报警。⚠️ 一手核验推翻 README 2 处(承诺的离线 nupkg 与 `Database/` 脚本目录均不存在,私有包 `Zhaoxi.CustControls` 不在 nuget.org → 开箱编不过);仅 1 个 commit、无 CI 无测试。 |
 | [strix](strix.md)
 | [tier-1-housekeeping](tier-1-housekeeping.md)
 | [wafKnowledgeBase](wafKnowledgeBase.md)
 
 ---
 
-**共 24 个文档**。
+**共 25 个文档**。

@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 82 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 83 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -13,7 +13,7 @@ iswiki/
 ├── README.md
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(30)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
-├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(24)
+├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(25)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(18)
 └── misc/
     └── OS-gaming-console/        🎮 掌机 / 自定义 firmware(2)
@@ -84,6 +84,7 @@ iswiki/
 | [performanceTriage](ops-cybersec-dba/performanceTriage.md) | 性能告警 70% 是假象,基于"快照 vs 趋势 / 用户态 vs 内核态"的四维定位骨架。 |
 | [qoder-security](ops-cybersec-dba/qoder-security.md) | 阿里 Qoder 平台内嵌的 AI 安全工程师,IDE/CLI 原生三阶段扫描(L1/L2/L3)。 |
 | [recovery-sop](ops-cybersec-dba/recovery-sop.md) | 误删 MySQL/文件/RAID/PVC 等场景的通用恢复 SOP。 |
+| [s7-monitor](ops-cybersec-dba/s7-monitor.md) | 西门子 S7 PLC 设备监测预警上位机(.NET 10 / WinForms,MIT,⭐0):9 设备 × 4 参数、越限报警、SQLite WAL 单文件落库、操作审计 6 模块。含三条可搬走的工程模式:**重连必须真实读取探活、不能信 `plc.IsConnected`**(S7.Net 本地标志位不探链路,掉线仍返 true,导致界面看不出断过线)、边沿即时 + 持续降频落库、崩溃重启重建基线防孤儿报警。⚠️ 一手核验推翻 README 2 处(承诺的离线 nupkg 与 `Database/` 脚本目录均不存在,私有包 `Zhaoxi.CustControls` 不在 nuget.org → 开箱编不过);仅 1 个 commit、无 CI 无测试。 |
 | [strix](ops-cybersec-dba/strix.md) | 开源 AI 渗透测试 Agent 集群,动态挖漏洞 + PoC 验证,不是静态扫描器。 |
 | [tier-1-housekeeping](ops-cybersec-dba/tier-1-housekeeping.md) | Fireside Sprint 1.6 Tier 1 housekeeping,只收 outstanding 小修,不做大块。 |
 | [wafKnowledgeBase](ops-cybersec-dba/wafKnowledgeBase.md) | WAF 拦截的攻击行为分类知识库(SQL 注入 / XSS / 命令注入 等)。 |
@@ -145,15 +146,15 @@ iswiki/
 | 分类 | 文档数 |
 |---|---|
 | 🤖 ai-vibecoding-agents | 30 |
-| 🛠️ ops-cybersec-dba | 24 |
+| 🛠️ ops-cybersec-dba | 25 |
 | 🌐 web-frontend-ui | 18 |
 | ⚡ developer-productivity | 7 |
 | 📌 misc/OS-gaming-console | 2 |
-| **分类小计** | **81** |
+| **分类小计** | **82** |
 | 根级（未分类） | 1 |
-| **总计** | **82** |
+| **总计** | **83** |
 
-(81 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(82 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
