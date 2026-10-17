@@ -22,6 +22,7 @@
 | [lobeHub](lobeHub.md) | 把零散 LLM Agent 统一纳管的"首席 Agent 运营官"产品(招聘/排班/IM 网关)。 |
 | [logue](logue.md) | macOS 端完全本地(Apple Silicon MLX)的 AI 会议笔记 + 写作助手。 |
 | [mattpocock-skills](mattpocock-skills.md) | Matt Pocock 从 `.agents/` 开源的 Real Engineering skills,2×2 分类。 |
+| [mattpocock-skills-1-3](mattpocock-skills-1-3.md) | v1.3 把五步补成闭环七步:新增 `implement-spec`(task graph + frontier 并行,含 5 个实测坑)/ `pr`(Summary+Evidence+Merge Danger 三段式)/ `retro`(改环境不改代码)。一手核验 7 处,**视频漏报 `resolving-merge-conflicts` 被删 + `CONTEXT.md` 全线改名 `GLOSSARY.md` 两项破坏性变更**;`pr` 的视觉菜单实测抄自 Dex Horthy 的 `show-me`。294,790★ / MIT / v1.3.1。 |
 | [openclaw-awd-arena](openclaw-awd-arena.md) | Docker 编排的 LLM Agent 攻防对抗平台,容器隔离网络里多 agent 互打 + 实时计分大屏。 |
 | [openopc](openopc.md) | HKUDS 开源的"个人 AI 原生公司"模拟器,Phaser 像素办公室可视化 AI 员工。 |
 | [openviking](openviking.md) | ⭐39,514 火山引擎的 Agent 上下文数据库:`viking://` 虚拟文件系统 + L0/L1/L2 三层渐进加载 + 会话提交抽长期记忆。⚠️ **AGPL-3.0**(CLI/examples Apache 2.0、Hermes 插件 MIT);v0.5.0 有破坏性变更(peer 改用 git origin 推导、WM 默认关闭);**Hermes 是官方标注 Built-in 的集成**(Partner Projects 点名),benchmark 里 Hermes 原生记忆 33.38% → 82.86%。 |

@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 83 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 84 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -11,7 +11,7 @@
 ```
 iswiki/
 ├── README.md
-├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(30)
+├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(31)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(25)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(18)
@@ -37,6 +37,7 @@ iswiki/
 | [lobeHub](ai-vibecoding-agents/lobeHub.md) | 把零散 LLM Agent 统一纳管的"首席 Agent 运营官"产品(招聘/排班/IM 网关)。 |
 | [logue](ai-vibecoding-agents/logue.md) | macOS 端完全本地(Apple Silicon MLX)的 AI 会议笔记 + 写作助手。 |
 | [mattpocock-skills](ai-vibecoding-agents/mattpocock-skills.md) | Matt Pocock 从 `.agents/` 开源的 Real Engineering skills,2×2 分类。 |
+| [mattpocock-skills-1-3](ai-vibecoding-agents/mattpocock-skills-1-3.md) | v1.3 把五步补成闭环七步:新增 `implement-spec`(task graph + frontier 并行,含 5 个实测坑)/ `pr`(Summary+Evidence+Merge Danger 三段式)/ `retro`(改环境不改代码)。一手核验 7 处,**视频漏报 `resolving-merge-conflicts` 被删 + `CONTEXT.md` 全线改名 `GLOSSARY.md` 两项破坏性变更**;`pr` 的视觉菜单实测抄自 Dex Horthy 的 `show-me`。294,790★ / MIT / v1.3.1。 |
 | [OpenKimiPPTSkill](ai-vibecoding-agents/OpenKimiPPTSkill.md) | 逆向 Moonshot Kimi Slides 的非官方 PPT 创作 skill,生成可继续编辑的 PPTD 项目。 |
 | [openclaw-awd-arena](ai-vibecoding-agents/openclaw-awd-arena.md) | Docker 编排的 LLM Agent 攻防对抗平台,容器隔离网络里多 agent 互打 + 实时计分大屏。 |
 | [openopc](ai-vibecoding-agents/openopc.md) | HKUDS 开源的"个人 AI 原生公司"模拟器,Phaser 像素办公室可视化 AI 员工。 |
@@ -59,7 +60,7 @@ iswiki/
 
 ---
 
-## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(24)
+## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(25)
 
 | 文档 | 一句话 |
 |---|---|
@@ -145,16 +146,16 @@ iswiki/
 
 | 分类 | 文档数 |
 |---|---|
-| 🤖 ai-vibecoding-agents | 30 |
+| 🤖 ai-vibecoding-agents | 31 |
 | 🛠️ ops-cybersec-dba | 25 |
 | 🌐 web-frontend-ui | 18 |
 | ⚡ developer-productivity | 7 |
 | 📌 misc/OS-gaming-console | 2 |
-| **分类小计** | **82** |
+| **分类小计** | **83** |
 | 根级（未分类） | 1 |
-| **总计** | **83** |
+| **总计** | **84** |
 
-(82 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(83 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
