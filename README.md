@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 84 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 85 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -11,7 +11,7 @@
 ```
 iswiki/
 ├── README.md
-├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(31)
+├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(32)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(25)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(18)
@@ -40,6 +40,7 @@ iswiki/
 | [mattpocock-skills-1-3](ai-vibecoding-agents/mattpocock-skills-1-3.md) | v1.3 把五步补成闭环七步:新增 `implement-spec`(task graph + frontier 并行,含 5 个实测坑)/ `pr`(Summary+Evidence+Merge Danger 三段式)/ `retro`(改环境不改代码)。一手核验 7 处,**视频漏报 `resolving-merge-conflicts` 被删 + `CONTEXT.md` 全线改名 `GLOSSARY.md` 两项破坏性变更**;`pr` 的视觉菜单实测抄自 Dex Horthy 的 `show-me`。294,790★ / MIT / v1.3.1。 |
 | [OpenKimiPPTSkill](ai-vibecoding-agents/OpenKimiPPTSkill.md) | 逆向 Moonshot Kimi Slides 的非官方 PPT 创作 skill,生成可继续编辑的 PPTD 项目。 |
 | [openclaw-awd-arena](ai-vibecoding-agents/openclaw-awd-arena.md) | Docker 编排的 LLM Agent 攻防对抗平台,容器隔离网络里多 agent 互打 + 实时计分大屏。 |
+| [openclaw-yolo-inspection](ai-vibecoding-agents/openclaw-yolo-inspection.md) | 把 YOLO 缺陷检测封装成 skill + cron 编排的离线质检骨架。⚠️ 一手核验推翻公众号 6 处(没有 `skill.json` / 没有 `tasks/*.yaml` workflow DSL / `@openclaw/wecom-bot` npm 404 / 配置 key 是 `channels.wecom.botId` / `openclaw wecom` 子命令不存在),另实测 `openclaw automations` 与 `openclaw lobster` 在本机 2026.3.28 是 unknown command。含良率去重 + 模型复用 + AGPL-3.0 商用传染性三个坑。 |
 | [openopc](ai-vibecoding-agents/openopc.md) | HKUDS 开源的"个人 AI 原生公司"模拟器,Phaser 像素办公室可视化 AI 员工。 |
 | [openviking](ai-vibecoding-agents/openviking.md) | ⭐39,514 火山引擎的 Agent 上下文数据库:`viking://` 虚拟文件系统 + L0/L1/L2 三层渐进加载 + 会话提交抽长期记忆。⚠️ AGPL-3.0 主仓(CLI/examples Apache 2.0、Hermes 插件 MIT);v0.5.0 破坏性变更(peer 改用 git origin、WM 默认关闭);**Hermes 是官方 Built-in 集成**,LoCoMo 记忆 33.38% → 82.86%。 |
 | [paperclip](ai-vibecoding-agents/paperclip.md) | 92,766⭐ 的 agent 公司级控制平面:org chart + 原子任务 checkout + 预算硬停 + 审批门 + 审计日志,**内置 Hermes adapter**(`hermes_local` / `hermes_gateway`)。 |
@@ -146,16 +147,16 @@ iswiki/
 
 | 分类 | 文档数 |
 |---|---|
-| 🤖 ai-vibecoding-agents | 31 |
+| 🤖 ai-vibecoding-agents | 32 |
 | 🛠️ ops-cybersec-dba | 25 |
 | 🌐 web-frontend-ui | 18 |
 | ⚡ developer-productivity | 7 |
 | 📌 misc/OS-gaming-console | 2 |
-| **分类小计** | **83** |
+| **分类小计** | **84** |
 | 根级（未分类） | 1 |
-| **总计** | **84** |
+| **总计** | **85** |
 
-(83 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(84 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
