@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 85 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 86 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -11,7 +11,7 @@
 ```
 iswiki/
 ├── README.md
-├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(32)
+├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(33)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(25)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(18)
@@ -44,6 +44,7 @@ iswiki/
 | [openopc](ai-vibecoding-agents/openopc.md) | HKUDS 开源的"个人 AI 原生公司"模拟器,Phaser 像素办公室可视化 AI 员工。 |
 | [openviking](ai-vibecoding-agents/openviking.md) | ⭐39,514 火山引擎的 Agent 上下文数据库:`viking://` 虚拟文件系统 + L0/L1/L2 三层渐进加载 + 会话提交抽长期记忆。⚠️ AGPL-3.0 主仓(CLI/examples Apache 2.0、Hermes 插件 MIT);v0.5.0 破坏性变更(peer 改用 git origin、WM 默认关闭);**Hermes 是官方 Built-in 集成**,LoCoMo 记忆 33.38% → 82.86%。 |
 | [paperclip](ai-vibecoding-agents/paperclip.md) | 92,766⭐ 的 agent 公司级控制平面:org chart + 原子任务 checkout + 预算硬停 + 审批门 + 审计日志,**内置 Hermes adapter**(`hermes_local` / `hermes_gateway`)。 |
+| [patentDisclosureSkill](ai-vibecoding-agents/patentDisclosureSkill.md) | ⭐11,836 的「中国专利.skill」:9 个子 skill 覆盖交底书 / 申请四件套 / 解读 / 专利地图 / 对照表 / 审查答复 / 政策简报,**根 SKILL.md 只做路由(86 行)**。三个可抄设计:「须点名」硬门禁 / prompt 目录=状态机(max_rounds=3)+ 42 个 YAML Schema gate / 机读前缀 + 退出码协议。⚠️ 无 tag、无 CI、5 个工具有意存 3 份副本(~190 KB 重复)、只覆盖 CNIPA。 |
 | [paseo](ai-vibecoding-agents/paseo.md) | 跨平台多 agent 编排器,统一管理 Claude Code / Codex / Copilot / OpenCode / Pi。 |
 | [ponytail](ai-vibecoding-agents/ponytail.md) | 给 AI coding agent 注入"老员工 + YAGNI"人格的跨 13 平台 skill 集。 |
 | [redisAIAgentStack](ai-vibecoding-agents/redisAIAgentStack.md) | Redis 8 把 Vector Set + 向量检索 + Agent Memory + 语义缓存收进一个内核。一手核验推翻公众号原文 3 处代码错误 + 2 处版本号;⚠️ 8.0 起 tri-license RSALv2/SSPLv1/AGPLv3,Iris 是托管服务本地拿不到。 |
@@ -147,16 +148,16 @@ iswiki/
 
 | 分类 | 文档数 |
 |---|---|
-| 🤖 ai-vibecoding-agents | 32 |
+| 🤖 ai-vibecoding-agents | 33 |
 | 🛠️ ops-cybersec-dba | 25 |
 | 🌐 web-frontend-ui | 18 |
 | ⚡ developer-productivity | 7 |
 | 📌 misc/OS-gaming-console | 2 |
-| **分类小计** | **84** |
+| **分类小计** | **85** |
 | 根级（未分类） | 1 |
-| **总计** | **85** |
+| **总计** | **86** |
 
-(84 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(85 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 

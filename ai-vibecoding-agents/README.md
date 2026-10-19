@@ -28,6 +28,7 @@
 | [openopc](openopc.md) | HKUDS 开源的"个人 AI 原生公司"模拟器,Phaser 像素办公室可视化 AI 员工。 |
 | [openviking](openviking.md) | ⭐39,514 火山引擎的 Agent 上下文数据库:`viking://` 虚拟文件系统 + L0/L1/L2 三层渐进加载 + 会话提交抽长期记忆。⚠️ **AGPL-3.0**(CLI/examples Apache 2.0、Hermes 插件 MIT);v0.5.0 有破坏性变更(peer 改用 git origin 推导、WM 默认关闭);**Hermes 是官方标注 Built-in 的集成**(Partner Projects 点名),benchmark 里 Hermes 原生记忆 33.38% → 82.86%。 |
 | [paperclip](paperclip.md) | 92,766⭐ 的 agent 公司级控制平面:org chart + 原子任务 checkout + 预算硬停 + 审批门 + 审计日志,内置 Hermes adapter(`hermes_local` / `hermes_gateway`)。 |
+| [patentDisclosureSkill](patentDisclosureSkill.md) | ⭐11,836 的「中国专利.skill」:9 个子 skill 覆盖交底书 / 申请四件套 / 解读 / 专利地图 / 对照表 / 审查答复 / 政策简报。**根 SKILL.md 只做路由(86 行),正文全下沉子包**,489 文件 / 5.9 万行 Python / 59 个测试。三个可抄设计:①「须点名」硬门禁抑制 agent 越界 ② prompt 目录 = 显式状态机(patent-docket 有 max_rounds=3)+ 42 个 YAML Schema gate ③ 机读前缀(`EPUB_SEARCH_JSON:`/`DOCKET_OK:`)+ 退出码协议,让 LLM 判断成败不靠猜。⚠️ 无 tag/release(版本只在 frontmatter)、`md_to_docx.py` 等 5 个工具有意存 3 份副本(~190 KB 重复)、无 CI、模型落 `{Documents}/`、只覆盖 CNIPA。 |
 | [paseo](paseo.md) | 跨平台多 agent 编排器,统一管理 Claude Code / Codex / Copilot / OpenCode / Pi。 |
 | [ponytail](ponytail.md) | 给 AI coding agent 注入"老员工 + YAGNI"人格的跨 13 平台 skill 集。 |
 | [redisAIAgentStack](redisAIAgentStack.md) | Redis 8 把 Vector Set + 向量检索 + Agent Memory + 语义缓存收进一个内核。**一手核验推翻公众号原文 3 处**(`SemanticSessionManager` 包路径不存在 / `SemanticCache.Builder` 无 `redisUrl()` 必传 client+vectorizer / `check(q,1)` 应为 `checkTopK`)+ 2 处版本(Java artifactId 实为 `redisvl` 0.13.1、`langchain4j-redis` 已停更迁 `langchain4j-community-redis`)。⚠️ **8.0 起 tri-license RSALv2/SSPLv1/AGPLv3**;Iris 是托管服务,本地 Docker 拿不到。 |
@@ -39,4 +40,4 @@
 | [teamai-cli](teamai-cli.md) | 腾讯开源的 Git-native 团队 AI 工具 CLI,push/MR/pull 同步 skill 给各 agent。 |
 | [wake](wake.md) | Mac 上 Rust+GPUI 写的 multi-agent 会话档案馆,统一浏览本地历史。 |
 
-**共 30 个文档**。
+**共 33 个文档**。
