@@ -41,7 +41,6 @@
 | [teamai-cli](teamai-cli.md) | 腾讯开源的 Git-native 团队 AI 工具 CLI,push/MR/pull 同步 skill 给各 agent。 |
 | [wake](wake.md) | Mac 上 Rust+GPUI 写的 multi-agent 会话档案馆,统一浏览本地历史。 |
 
-**共 34 个文档**。
 | [multiAccountUnifiedAuth](multiAccountUnifiedAuth.md) | 公众号《我是程序汪》2026-10-20《多账号统一登录(实现方案)》的全文沉淀。作者 jruing / dustyblog.cn;核心动作是把 `users` 与 `user_auth` 拆为两张表,使新增第三方登录的成本降到零。含核心数据表 SQL 块 + 4 阶段叙述 + 方法论备注。 |
 
 **共 35 个文档**(本次新增 1 篇 multiAccountUnifiedAuth)。
