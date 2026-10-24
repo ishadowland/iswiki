@@ -5,7 +5,7 @@
 > **在线演示**(上游 public Pages,无需权限):https://yinweinidongle.github.io/screen-picture-demo/home.html
 > **原始审计**:由另一 agent(MiniMax)在 `macOS 24.6.0 x64 · Node v24.8.0 · Python 3.13.7` 上完成完整克隆 + 构建 + 浏览器实测 + 素材重建管线
 > **本文性质**:iswiki 改写收录。**所有数字、grep 证据、文件行号均来自原审计报告;Hermes 未独立复核**,引用时请注意这一点。
-> **修复进度**:private fork 已修 P0-1(CI 分支名 `master`→`main`,commit `80cc692`),其余 P0/P1 待处理。
+> **修复进度**:private fork 已修 P0-1(CI 分支名 `master`→`main`,commit `80cc692`;CI 实测 build 全绿),并发现**第二层阻塞**:private repo + GitHub Free 计划不支持 GitHub Pages(`POST /pages` → 422),已加 `vars.pages_enabled` 开关绕开(commit `d923c1e`)。其余 P0/P1 待处理。
 
 ---
 
@@ -57,7 +57,17 @@ on:
 
 **修复方式二选一**:把 workflow 的 `master` 改成 `main`,或把仓库默认分支改回 `master`。同时 `SECURITY.md:3`、`CONTRIBUTING.md:21,58`、`ROADMAP.md` 里的 `master` 也要同步。
 
-> ✅ **已在 private fork 修复(2026-10-24)**:`ishadowland/three-screen-lab` commit `80cc692` 把 5 个文件里的 `master` 全部改成 `main`(`.github/workflows/ci.yml` 3 处 + `CONTRIBUTING.md` 2 处 + `README.md` / `SECURITY.md` / `docs/architecture.md` 各 1 处),`workflow_dispatch` 手动触发验证 CI 已能跑起来。**未改** `.github/ISSUE_TEMPLATE/config.yml` 的 `blob/master/CONTRIBUTING.md` —— 那是指向上游 `yinweinidongle/screen-picture-demo` 的外链,非本仓库分支引用。
+> ✅ **已在 private fork 修复(2026-10-24)**:`ishadowland/three-screen-lab` commit `80cc692` 把 5 个文件里的 `master` 全部改成 `main`(`.github/workflows/ci.yml` 3 处 + `CONTRIBUTING.md` 2 处 + `README.md` / `SECURITY.md` / `docs/architecture.md` 各 1 处)。**未改** `.github/ISSUE_TEMPLATE/config.yml` 的 `blob/master/CONTRIBUTING.md` —— 那是指向上游 `yinweinidongle/screen-picture-demo` 的外链,非本仓库分支引用。
+>
+> ⚠️ **但修完分支名还不够 —— 审计未覆盖的第二层阻塞(2026-10-24 实测新增)**:修 `master` → `main` 后,CI 的 push 触发与 `build` job **实测全绿**(run `40100007065`,`npm ci` / `setup` / `format:check` / `check` / `test` / `build` / `test:browser` 全部 success,**Playwright 的 4 个 macOS 字体度量失败在 Linux CI 上完全没出现**,反向印证了审计"4 个失败是环境差异不是功能缺陷"的判断),但 `deploy` job 以 `HttpError: Not Found` 失败。根因**不是配置**:
+>
+> ```
+> POST /repos/{owner}/{repo}/pages
+> → 422 "Your current plan does not support GitHub Pages for this repository"
+> ```
+>
+> **GitHub Free 计划不支持 private repo 的 GitHub Pages**,且 fork 不继承上游的 Pages 设置。fork + private 这条路走不通 —— 上游 public Pages 站点(`yinweinidongle.github.io`)依然可用。
+> private fork 侧的解法(commit `d923c1e`):把 `upload-pages-artifact` 与 `deploy` job 都加上 `&& vars.pages_enabled == 'true'`(未定义 → 空串 → false → 整条 Pages 链路跳过,run 不再变红),并在 workflow 里写明两条真正解法 —— ① 升级 Pro/Team + 在 Pages 开启 + 加 Actions Variable `pages_enabled=true`;② 改部署到 Cloudflare Pages / Vercel / Netlify。
 
 ---
 
