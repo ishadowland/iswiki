@@ -4,6 +4,7 @@
 > **在线演示**:https://yinweinidongle.github.io/screen-picture-demo/home.html
 > **原始审计**:由另一 agent(MiniMax)在 `macOS 24.6.0 x64 · Node v24.8.0 · Python 3.13.7` 上完成完整克隆 + 构建 + 浏览器实测 + 素材重建管线
 > **本文性质**:iswiki 改写收录。**所有数字、grep 证据、文件行号均来自原审计报告;Hermes 未独立复核**,引用时请注意这一点。
+> **修复进度**:`ishadowland/three-screen-lab`(private fork)已修 P0-1(CI 分支名),其余 P0/P1 待处理。
 
 ---
 
@@ -53,6 +54,8 @@ on:
 `master` 分支不存在 → **push 触发不生效、Pages 部署永不执行**。`pull_request` 触发仍然有效(CI 校验还能跑)。
 
 **修复方式二选一**:把 workflow 的 `master` 改成 `main`,或把仓库默认分支改回 `master`。同时 `SECURITY.md:3`、`CONTRIBUTING.md:21,58`、`ROADMAP.md` 里的 `master` 也要同步。
+
+> ✅ **已在 private fork 修复(2026-10-24)**:`ishadowland/three-screen-lab` commit `80cc692` 把 5 个文件里的 `master` 全部改成 `main`(`.github/workflows/ci.yml` 3 处 + `CONTRIBUTING.md` 2 处 + `README.md` / `SECURITY.md` / `docs/architecture.md` 各 1 处),`workflow_dispatch` 手动触发验证 CI 已能跑起来。**未改** `.github/ISSUE_TEMPLATE/config.yml` 的 `blob/master/CONTRIBUTING.md` —— 那是指向上游 `yinweinidongle/screen-picture-demo` 的外链,非本仓库分支引用。
 
 ---
 
@@ -467,7 +470,7 @@ REVISION = "160"
 
 | 优先级 | 问题 | 预计工作量 |
 |---|---|---|
-| **P0** | CI/Pages 的 `master` → `main` 分支不匹配 | 5 分钟 |
+| **P0** ✅ | CI/Pages 的 `master` → `main` 分支不匹配 — **已修(commit `80cc692`)** | 5 分钟 |
 | **P0** | factory 接入 `VizLabRuntime.onDispose(twin.dispose)` | 15 分钟 |
 | **P0** | population 补 `dispose()`:取消 rAF、`renderer.dispose()`、摘监听、清定时器 | 1 小时 |
 | **P0** | population 的 `screens.json` 尺寸改为 2160×1200 | 2 分钟 |
