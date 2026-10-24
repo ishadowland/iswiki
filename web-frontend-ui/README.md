@@ -22,9 +22,10 @@
 | [scDatav](scDatav.md)
 | [shinjukuIndoorThreejsDemo](shinjukuIndoorThreejsDemo.md)
 | [stadiView](stadiView.md)
+| [three-screen-lab](three-screen-lab.md) | 七个可视化大屏(风电 / 工厂 / 人口 / 巡检 / 农业 / 工业 / 园区)的作品集框架深度审计:注册表驱动构建 + 内容哈希离线单文件 + SHA-256 素材溯源。⚠️ 6 项 P0/P1 缺陷(CI 分支 `master`≠`main` 致部署永不触发 / factory+population+inspection 三屏完全不遵守仓库自定的 `VizLabRuntime` 契约 / 人口页配置声明 1920×1080 实际渲染 2160×1200 / 真实七普数据标 2022 年且无演示标注 / 台湾港澳选区后永久变暗 / 巡检页三个指标共用 `56,797`);4 个 Playwright 失败均为字体度量环境差异非功能缺陷;**92% 素材可逐字节重建,仅 5 张装饰 PNG 不可重建且走"生成物/所有者授权"非标准 OSS 许可**。 |
 | [threeui](threeui.md)
 | [tripo](tripo.md)
 | [vgpu](vgpu.md)
 | [weatherNext](weatherNext.md)
 
-**共 18 个文档**。
+**共 19 个文档**。

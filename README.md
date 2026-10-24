@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 89 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 90 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -14,7 +14,7 @@ iswiki/
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(35)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(26)
-├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(18)
+├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(19)
 └── misc/
     └── OS-gaming-console/        🎮 掌机 / 自定义 firmware(2)
 ```
@@ -115,6 +115,7 @@ iswiki/
 | [humanAtlas](web-frontend-ui/humanAtlas.md) | React + Three.js + BodyParts3D 4.0 的 3D 人体解剖浏览器,2234 mesh + 3432 概念 + 爆炸图。 |
 | [shinjukuIndoorThreejsDemo](web-frontend-ui/shinjukuIndoorThreejsDemo.md) | 日本国土交通省新宿站室内 GIS 数据丢进 Three.js 做 3D 分层楼栋 + 流光行人。 |
 | [stadiView](web-frontend-ui/stadiView.md) | 纯过程化生成的 3D 足球场座位预览 demo,Three.js + GSAP 飞进任一座位。 |
+| [three-screen-lab](web-frontend-ui/three-screen-lab.md) | 七个可视化大屏(风电 / 工厂 / 人口 / 巡检 / 农业 / 工业 / 园区)的作品集框架深度审计:注册表驱动构建 + 内容哈希离线单文件 + SHA-256 素材溯源,七个场景全程序化建模(不依赖外部 CAD)。⚠️ 6 项 P0/P1 缺陷(CI 分支 `master`≠`main` 致部署永不触发 / 三屏完全不遵守仓库自定的 `VizLabRuntime` 生命周期契约 / 人口页配置声明 1920×1080 实际渲染 2160×1200 / 真实七普数据标 2022 年且无演示标注 / 台湾港澳选区后永久变暗 / 巡检页三个指标共用 `56,797`);4 个 Playwright 失败均为字体度量环境差异非功能缺陷;**92% 素材可逐字节重建,仅 5 张装饰 PNG 不可重建且走"生成物/所有者授权"非标准 OSS 许可**。 |
 | [threeui](web-frontend-ui/threeui.md) | Meng To 出品的 Three.js 3D UI / Shader / Hero 组件目录(Community 版 164 个)。 |
 | [tripo](web-frontend-ui/tripo.md) | VAST 的 AI 3D 大模型公司,主打原生四边面拓扑 + 按面数预算直出。 |
 | [vgpu](web-frontend-ui/vgpu.md) | Vercel Labs 的 WebGPU 库(TypeScript, 25KB),设计给 AI agent 用。 |
@@ -153,14 +154,14 @@ iswiki/
 |---|---|
 | 🤖 ai-vibecoding-agents | 35 |
 | 🛠️ ops-cybersec-dba | 26 |
-| 🌐 web-frontend-ui | 18 |
+| 🌐 web-frontend-ui | 19 |
 | ⚡ developer-productivity | 7 |
 | 📌 misc/OS-gaming-console | 2 |
-| **分类小计** | **88** |
+| **分类小计** | **89** |
 | 根级（未分类） | 1 |
-| **总计** | **89** |
+| **总计** | **90** |
 
-(88 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(89 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
