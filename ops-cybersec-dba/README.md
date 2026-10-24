@@ -23,6 +23,7 @@
 | [opsTroubleshootingDiskGhost](opsTroubleshootingDiskGhost.md)
 | [opsTroubleshootingOOMCgroup](opsTroubleshootingOOMCgroup.md) | 「账本思维」cgroup 篇:`free` 报空闲 ≠ 系统认为不杀你,OOM Killer 看的是进程所属 cgroup 的 memory.current vs memory.max。含 meminfo 拆解(SUnreclaim/slab)、THP + swappiness 调优、「七大账本对不上」速查表。**姊妹篇见 [opsTroubleshootingOOMSILogless](opsTroubleshootingOOMSILogless.md)**。 |
 | [opsTroubleshootingOOMSILogless](opsTroubleshootingOOMSILogless.md) | 「三本账」排查法:进程被 OOM Killer 杀了,应用日志里却什么都没留。SIGKILL 由 `do_send_sig_info()` 从内核态硬送,应用连遗言都写不了;证据在 dmesg / journalctl -k / systemd 三层。一手核验 `mm/oom_kill.c`(master + **v4.19 双版本**) + systemd NEWS + rsyslog 源码,补 5 处原文缺失(**journald `Storage=auto` 默认 v259 才改 persistent**、`--grep` 需 ≥237、imjournal 默认 600s/20000 条、`status=9` ≠ 退出码 9、**137 只说明被 SIGKILL 不代表 OOM**)。**§三·五 麒麟 V10 SP3 专项**:4.19 日志格式无 `UID`/`oom_score_adj`(列数 12→8、抬头行多 `nodemask`)、`memory.peak`(v5.19+)/`events.local`(v5.10+)不存在、`OOMPolicy=` 需 systemd 243,附可直接跑的排查脚本。 |
+| [opsTroubleshootingSanfine521](opsTroubleshootingSanfine521.md) | Cloudflare 521 排查 ——「接受 TCP 连接却零字节返回」= 源站实例层停机指纹。四层定位法(代理后 DNS 查不到回源 IP,靠 `~/.ssh/config` 翻出真实 IP)。**初判「高防到期转黑洞」已被后续证伪**,真实根因是实例系统损坏需重装 —— 多个成因共享同一网络指纹,客户端探测定不了案。含巡检脚本固化(--direct / --no-network / --json / 退出码分级)与 macOS Python OpenSSL 空目录坑。 |
 | [opsTroubleshootingStealTime](opsTroubleshootingStealTime.md) — 云上 CPU 30% 却卡:steal time 排查三板斧 + 工单取证话术
 | [opsTroubleshootingTCPPortExhaustion](opsTroubleshootingTCPPortExhaustion.md) | 调大 ulimit 反而雪崩:出站 TCP 端口耗尽 `EADDRNOTAVAIL` 三层修复 + 自查清单。 |
 | [overseas-youtube-security-channels](overseas-youtube-security-channels.md)
@@ -36,4 +37,4 @@
 
 ---
 
-**共 25 个文档**。
+**共 26 个文档**。

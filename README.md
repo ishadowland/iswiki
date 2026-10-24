@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 87 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 89 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -11,9 +11,9 @@
 ```
 iswiki/
 ├── README.md
-├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(34)
+├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(35)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
-├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(25)
+├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(26)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(18)
 └── misc/
     └── OS-gaming-console/        🎮 掌机 / 自定义 firmware(2)
@@ -31,6 +31,7 @@ iswiki/
 | [ipAsLogoSkill](ai-vibecoding-agents/ipAsLogoSkill.md) | 把"极简圆润 IP logo"设计语言写成 17KB SKILL 级硬约束,装到 Codex/Coze/Doubao/YouMind/Manus/Gemini Apps/Replit Agent 7 家,3 方向 × 2 变体 = 6 张候选(3 LL + 3 LR,三色封顶,永不降级 SVG)。5,867★ / MIT。 |
 | [MiceInTheMuseum](ai-vibecoding-agents/MiceInTheMuseum.md) | Google Arts & Culture 的 Gemini 多模态 + Google AI Audio 实时音频导览实验(2024-11 上线),架构可平移到儿童讲解 / 景点导览。 |
 | [mythicalManMonthVibeCoding](ai-vibecoding-agents/mythicalManMonthVibeCoding.md) | 《人月神话》在 vibe coding 时代还剩什么:解读 + 4 处商榷,指出文章漏掉第二系统效应与进度追踪幻觉,并把 Brooks 定律重新锚定到 agent 编排。 |
+| [multiAccountUnifiedAuth](ai-vibecoding-agents/multiAccountUnifiedAuth.md) | 公众号《我是程序汪》2026-10-20《多账号统一登录(实现方案)》的全文沉淀。作者 jruing / dustyblog.cn;核心动作是把 `users` 与 `user_auth` 拆为两张表,使新增第三方登录的成本降到零。含核心数据表 SQL 块 + 4 阶段叙述 + 方法论备注。 |
 | [bagidea-office](ai-vibecoding-agents/bagidea-office.md) | Claude Code 当引擎、脑子可换的桌面像素小人办公室:20 模型混搭 / agent 自发开会 / 自提案 plugin / 真·桌面壁纸模式 / WorkerW 监督 / 三层预算 / 5 套团队模板。228⭐,3 个月增长。 |
 | [3dgs-substation-digital-twin](ai-vibecoding-agents/3dgs-substation-digital-twin.md) | 3DGS 在变电站数字孪生的深度分析(去除营销,技术原理 + 5 大真实优势 + 7 大不足 + 6 大工程挑战 + 成本估算)。 |
 - [armorpaint-tech-selection](armorpaint-tech-selection.md) — ArmorPaint 开源 PBR 纹理绘制工具(给初级前端 + PM 的技术选型参考,12 节,含 9 年时间线 / 5 大方案对比 / 6 大限制 / 借鉴到自己的项目)
@@ -63,7 +64,7 @@ iswiki/
 
 ---
 
-## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(25)
+## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(26)
 
 | 文档 | 一句话 |
 |---|---|
@@ -82,6 +83,7 @@ iswiki/
 | [opsTroubleshootingDiskGhost](ops-cybersec-dba/opsTroubleshootingDiskGhost.md) | df 说满、du 说没满 ——「幽灵空间」排查(fd 还指向的 inode)。 |
 | [opsTroubleshootingOOMCgroup](ops-cybersec-dba/opsTroubleshootingOOMCgroup.md) | free 还有 8G 但 OOM 杀进程 —— cgroup 账本思维排查。 |
 | [opsTroubleshootingOOMSILogless](ops-cybersec-dba/opsTroubleshootingOOMSILogless.md) | 进程被 OOM Killer 杀了,应用日志里却什么都没留 ——「三本账」排查法。SIGKILL 由 `do_send_sig_info()` 从内核态硬送,应用连遗言都写不了;证据在 dmesg / journalctl -k / systemd 三层。一手核验 `mm/oom_kill.c`(master + **v4.19 双版本**) + systemd NEWS + rsyslog 源码,补 5 处原文缺失(**journald `Storage=auto` 默认 v259 才改 persistent**、`--grep` 需 ≥237、imjournal 默认 600s/20000 条、`status=9` ≠ 退出码 9、**137 只说明被 SIGKILL 不代表 OOM**)。**§三·五 麒麟 V10 SP3 专项**:4.19 日志格式无 `UID`/`oom_score_adj`、`memory.peak`(v5.19+)/`events.local`(v5.10+)不存在、`OOMPolicy=` 需 systemd 243,附可直接跑的排查脚本。 |
+| [opsTroubleshootingSanfine521](ops-cybersec-dba/opsTroubleshootingSanfine521.md) | Cloudflare 521 排查 ——「接受 TCP 连接却零字节返回」= 源站实例层停机指纹。含四层定位法(代理后 DNS 查不到回源 IP)。**初判「高防到期」已被后续证伪,真实根因是实例系统损坏需重装** —— 多个成因共享同一网络指纹,客户端探测定不了案,必须上云控制台。 |
 | [opsTroubleshootingStealTime](ops-cybersec-dba/opsTroubleshootingStealTime.md) | 云上 CPU 30% 却卡:steal time 排查三板斧 + 工单取证话术。 |
 | [opsTroubleshootingTCPPortExhaustion](ops-cybersec-dba/opsTroubleshootingTCPPortExhaustion.md) | 调大 ulimit 反而雪崩:出站 TCP 端口耗尽 `EADDRNOTAVAIL` 三层修复 + 自查清单。 |
 | [overseas-youtube-security-channels](ops-cybersec-dba/overseas-youtube-security-channels.md) | 8 个海外网络安全 YouTube 频道,覆盖入门到高级研究的完整自学路径。 |
@@ -149,16 +151,16 @@ iswiki/
 
 | 分类 | 文档数 |
 |---|---|
-| 🤖 ai-vibecoding-agents | 34 |
-| 🛠️ ops-cybersec-dba | 25 |
+| 🤖 ai-vibecoding-agents | 35 |
+| 🛠️ ops-cybersec-dba | 26 |
 | 🌐 web-frontend-ui | 18 |
 | ⚡ developer-productivity | 7 |
 | 📌 misc/OS-gaming-console | 2 |
-| **分类小计** | **86** |
+| **分类小计** | **88** |
 | 根级（未分类） | 1 |
-| **总计** | **87** |
+| **总计** | **89** |
 
-(86 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(88 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
