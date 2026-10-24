@@ -4,7 +4,9 @@
 > **上游出处**:`github.com/agentthink/three-screen-lab`(实为 `yinweinidongle/screen-picture-demo` 的再发布快照)—— 原始审计即在此快照上完成
 > **在线演示**(上游 public Pages,无需权限):https://yinweinidongle.github.io/screen-picture-demo/home.html
 > **原始审计**:由另一 agent(MiniMax)在 `macOS 24.6.0 x64 · Node v24.8.0 · Python 3.13.7` 上完成完整克隆 + 构建 + 浏览器实测 + 素材重建管线
-> **本文性质**:iswiki 改写收录。**所有数字、grep 证据、文件行号均来自原审计报告;Hermes 未独立复核**,引用时请注意这一点。
+> **本文性质**:iswiki 改写收录 + **2026-10-24 第二次独立复核(Hermes,macOS 13.6 x64 · Node v24.13.0 · Python 3.11/3.12)**
+>
+> 🔺 **复核结论**:原审计的绝大多数结论**成立且可复现**(17/17 测试通过、构建成功、8 页运行时外部请求全 0、素材重建后 Git 跟踪文件零变更、风电计数器 131 draw calls / 20 批 / 381 实例与性能文档完全一致、GLB 可重生成差 0.37%)。但**有 4 处结论过宽或错误**,已在正文就地标注 `🔺 独立复核修正`,并在**附录 B** 汇总复现证据与新发现。引用本文数字时请以附录 B 为准。
 > **修复进度**:private fork 已修 P0-1(CI 分支名 `master`→`main`,commit `80cc692`;CI 实测 build 全绿),并发现**第二层阻塞**:private repo + GitHub Free 计划不支持 GitHub Pages(`POST /pages` → 422),已加 `vars.pages_enabled` 开关绕开(commit `d923c1e`)。其余 P0/P1 待处理。
 
 ---
@@ -55,6 +57,13 @@ on:
 
 `master` 分支不存在 → **push 触发不生效、Pages 部署永不执行**。`pull_request` 触发仍然有效(CI 校验还能跑)。
 
+> 🔺 **独立复核修正（2026-10-24）**:此缺陷**只影响 `agentthink` 这份公开快照**,不能推广到整个项目。实测:
+>
+> - `agentthink/three-screen-lab`:只有 `main` 分支 → workflow 监听 `master` → push 不触发、`gh api repos/agentthink/three-screen-lab/pages` 返回 **404**(Pages 从未部署)
+> - 上游 `yinweinidongle/screen-picture-demo`:默认分支是 **`master`**,workflow 监听 `master` **匹配** → Pages 状态 **`built`**、`html_url` 正常,31 次 CI run 全部 success
+>
+> 所以准确表述是:**「`agentthink` 副本的部署从未通过;上游同名项目的部署一直正常」**。原文「这个项目在 GitHub 上的部署从来没通过」过宽。
+
 **修复方式二选一**:把 workflow 的 `master` 改成 `main`,或把仓库默认分支改回 `master`。同时 `SECURITY.md:3`、`CONTRIBUTING.md:21,58`、`ROADMAP.md` 里的 `master` 也要同步。
 
 > ✅ **已在 private fork 修复(2026-10-24)**:`ishadowland/three-screen-lab` commit `80cc692` 把 5 个文件里的 `master` 全部改成 `main`(`.github/workflows/ci.yml` 3 处 + `CONTRIBUTING.md` 2 处 + `README.md` / `SECURITY.md` / `docs/architecture.md` 各 1 处)。**未改** `.github/ISSUE_TEMPLATE/config.yml` 的 `blob/master/CONTRIBUTING.md` —— 那是指向上游 `yinweinidongle/screen-picture-demo` 的外链,非本仓库分支引用。
@@ -83,6 +92,8 @@ npm test          ✅  Python 14 tests OK + Node 3 tests OK  = 17/17 通过
 npm run build     ✅  10.2s,7 屏 + Home,web + standalone 双模式
 npm run test:browser  ⚠️  6 passed / 4 failed(4.2m)— 见 §六
 ```
+
+> 🔺 **独立复核修正**:二次实跑为 **7 passed / 3 failed** —— inspection 的截图超时在第二次跑通(转绿),三屏面板溢出仍失败。且**这三屏的失败不是字体环境差异**(见 §六·6.1 与附录 B),而是真的布局缺陷。
 
 ### 3.1 构建产物
 
@@ -256,6 +267,10 @@ tests/test_assets.py       → 拒绝陈旧哈希、拒绝非法路径、拒绝"
 
 **这 4 个失败全部是环境差异,不是功能缺陷。**
 
+> 🔺 **独立复核修正（2026-10-24,第二次实跑）**:上面 4 个失败里,**inspection 的截图超时属环境问题**;但**农业 / 工业 / 园区的面板溢出不是字体环境差异** —— 实测是**产品布局本身零余量**。详见下文 §6.1 的修正与文末「附录 B:独立复核」。
+>
+> 二次实跑结果:**7 passed / 3 failed**(inspection 通过,三屏溢出仍失败)。
+
 ### 6.1 失败 2/3/4(农业 / 工业 / 园区)— 面板溢出 3–5px
 
 测试断言所有 `.ob-panel` 不得出现 `scrollHeight > clientHeight + 2`。实测:
@@ -267,6 +282,12 @@ tests/test_assets.py       → 拒绝陈旧哈希、拒绝非法路径、拒绝"
 | park | 企业创新生态 | 236 | 233 | **3px** |
 
 根因:面板高度固定(内容盒 233px),字体栈是 `Inter, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif`。macOS 走 PingFang SC,Linux CI 走 Noto Sans CJK,**中文字形行高差几个像素**,刚好把内容顶出容器。
+
+> 🔺 **独立复核修正**:上面这段根因归给「macOS 走 PingFang SC,Linux CI 走 Noto Sans CJK,中文字形行高差几个像素」。**实测该假设不成立** —— 分别强制 `PingFang SC` / `Noto Sans CJK SC` / `Helvetica Neue` / `Times New Roman`,溢出量稳定不变(PingFang 与 Noto 均为 5px+4px,Helvetica 与 Times 为 5px+0)。字体只影响**溢出多少**,不影响**是否溢出**。
+>
+> **真实根因是布局零余量**:侧栏 `grid-template-rows: 234.656px / 234.672px / 234.672px`,而 `.ob-panel` 的 `padding: 17px 18px` 让内容盒只剩 **193px**;三个溢出面板的「内容 + margin」实际需要 **237 / 249 / 247px**。差 3–5px,不是几个像素的字体抖动 —— 是**产品侧没有留余量**。
+>
+> ⚠️ 附带印证:作者 private fork 在 Linux CI 上跑 `test:browser` **全部通过** —— 这确实说明字体度量有影响,但**不能推出「字体是失败根因」**。字体决定了*溢多少*,布局零余量决定了*会不会溢*。两者是「触发条件」与「根本原因」的区别。
 
 > **这暴露了一个真实的设计脆性**:面板高度是**像素级精确贴合**的,零余量。任何字体渲染环境变化(不同 OS、语言包、浏览器版本)都会打破构建。
 > **建议**:面板改用 `min-height` + `overflow-y:auto`,或给内容区留 6–8px 余量,测试断言改为容忍 ±6px。
@@ -388,6 +409,10 @@ glassUniforms.uTime.value = clock;
 
 `docs/astra-cases.md:18` 声称"主题切换同步核心指标与场景图层"。现有 Playwright 测试(`gallery.spec.mjs:136-137`)只断言 `data-focus` 属性,**所以这个 bug 不会被测出来**。
 
+> 🔺 **独立复核修正**:「`setLayer` 是空操作」这个说法**不准确**。实测 `setLayer` **确实会**切换 `energy.visible` 与 `security.visible`(两个图层互斥显隐),因此「智慧能源」「安防态势」两个主题**有真实 3D 变化**。
+>
+> 真实缺陷应表述为:**「空间运营」这一层没有差异化视觉** —— `buildings` 分支只把 `o.material.opacity = 1` 重写一遍(恒为原值),所以从「园区总览」切到「空间运营」,3D 画面基本不变。**问题在于图层语义不完整,而非函数无功能。**
+
 ### 🟠 P1 — 工业页设备矩阵图例与矩阵内容矛盾
 
 `industry/app.js:58` 的图例写"运行 156 / 待机 10 / 维护 02"(合计 168),但 `H.matrix(64)`(`observatory.js:113-123`)只渲染 **64** 个格子(60 正常 / 3 idle / 1 warn)。64 个格子无法表示 168 台设备。其 `aria-label`(`:115`)倒是诚实的。
@@ -475,6 +500,23 @@ REVISION = "160"
 - 两个 geo 页面之间的复制漂移:模态框焦点陷阱、tooltip、CSV 导出、舞台适配函数,各自重写一遍并改了变量名(`pScale` vs `scale`、`pTip` vs `showTip`、`tip-line` vs `tip-row`)。
 
 > ⚠️ **注意**:仓库自身的 git 历史只有 1 个压平的 `init` commit(作者名还是 "Your Name"),因此**无法从提交历史验证来源**。上述推断基于代码内部证据。
+
+> 🔺 **独立复核修正（2026-10-24）**:上面这句「无法从提交历史验证来源」**不准确**。实测:
+>
+> - `agentthink/three-screen-lab` 的 HEAD **tree hash = `2b3c674a9671717630da50358f9550c7ad3d2fa1`**,与 `yinweinidongle/screen-picture-demo` 的 **master tree hash 完全相同**,`git diff --stat` 零差异 → 确证是压平重上传
+> - `package.json` 的 `repository` 仍写 `github:yinweinidongle/screen-picture-demo`;README 的 CI 徽章与在线 Demo 链接**全部指向上游**
+> - 上游 `yinweinidongle/screen-picture-demo` 有 **18 个 commit** 的完整历史;场景来源 `yinweinidongle/big-screen-astra` 有 **21 个 commit**,授权记录里的 `d20e8078` 经 GitHub API 验证存在(2026-09-14)
+>
+> **来源是可完整核验的三层血缘**,不是只能靠代码内部推断:
+>
+> ```
+> big-screen-astra (Vue 3, 21 commits)
+>   └─ src/demos/scenes/{agriculture,industry,park,shared}.js @ d20e8078
+>      └─ screen-picture-demo (master, 18 commits)
+>         └─ agentthink/three-screen-lab (main, 1 个压平 init)
+> ```
+>
+> 「人工主导、局部 AI 辅助」的判断**仍然成立** —— 死字段 `model.home/target/labels`、`pick()` 的 `mesh` 参数全传 null、builder 解构未用的 `state`,这些是上游 Vue 项目移植后残留的契约形状,LLM 从零写不会在三个文件里一致地造出这三个同名字段。但支撑它的证据**从「代码内部推断」升级为「可核验的移植链 + 代码内部形态」双重支撑**。
 
 ---
 
@@ -564,6 +606,8 @@ npm run new:screen -- solar   # 生成新大屏骨架
 
 项目代码里出现的外部主机**总共只有 5 个**,且全部不是运行时依赖:
 
+> 🔺 **独立复核修正**:这个计数取决于口径。原文按「全仓」口径统计得 5;按 **runtime 代码(src/ + scripts/ + config/)** 口径实测是 **6 个** —— 多了 `github.com`(`src/home/template.html:30` 的上游导航链接)。`src/` 目录内出现的外部主机只有 `github.com` 与 `www.w3.org` 两个。**无论哪个口径,结论不变:全部不是运行时依赖。**
+
 | 主机 | 出现次数 | 性质 |
 |---|---|---|
 | `naciscdn.org` | 6 | `config/asset-sources.json` 里的 Natural Earth **下载 URL**(仅手动跑 `prepare_assets.py` 时使用) |
@@ -571,6 +615,7 @@ npm run new:screen -- solar   # 生成新大屏骨架
 | `json-schema.org` | 1 | schema `$id`(纯文本) |
 | `www.w3.org` | 2 | SVG 命名空间(不是网络请求) |
 | `127.0.0.1` | 2 | 本地开发服务器 |
+| `github.com` | 1 | Home 页面指向上游的导航链接(runtime 口径新增) |
 
 **结论:整站运行时零出站请求。** 唯一会联网的动作是标准工具链:`npm ci`(npmjs)、`pip install`(pypi)、`npx playwright install`(playwright CDN)。
 
@@ -701,6 +746,7 @@ GLB magic ok         : true        ← 合法 GLB
 | **性能回归用计数器断言而非 FPS** | `data-draw-calls < 300` 在 CI 里跑,比"跑个 benchmark 看数字"稳健得多 |
 | **WebGL 失败要有真 fallback** | 注入 `getContext` 返回 null 的测试用例,比"没测过 fallback"强太多 |
 | **registry 里只存一份真相** | 尺寸/分类/renderer 全在 `screens.json`,不要在代码里再写一遍 |
+| **审计结论要能复核** | 见附录 B:本文每个关键数字都有可复现命令,不是"读代码猜的" |
 
 ## 参考
 
@@ -715,4 +761,139 @@ GLB magic ok         : true        ← 合法 GLB
 
 ---
 
-*本文为 iswiki 改写收录,原始审计由另一 agent(MiniMax)完成,包含完整克隆 / 构建 / 浏览器实测 / 素材重建管线。Hermes 未独立复核文中数字;引用具体行号与度量值时请回上游仓库(public)核对。本文的修复与后续维护在作者 private fork `ishadowland/three-screen-lab` 上进行。*
+## 附录 B:独立复核(2026-10-24,Hermes)
+
+> 环境:`macOS 13.6 x64 · Node v24.13.0 · Python 3.11.15 / 3.12`
+> 审计副本:`~/.hermes/work/three-screen-lab`(完整 clone,独立跑完全部流程)
+> **结论:原审计绝大多数结论成立且可复现,但 4 处过宽或错误,另有 2 处新发现。**
+
+### B.1 二次实跑结果
+
+| 命令 | 原审计 | 二次实跑 | 一致? |
+|---|---|---|---|
+| `npm run check` | Registry: 7 screens | 同 | ✅ |
+| `npm test` | 17/17 通过 | 14 Python + 3 Node,**OK** | ✅ |
+| `npm run build` | 10.2s,7 屏 + Home | 成功,`dist/build-manifest.json` 生成 | ✅ |
+| `npm run test:browser` | 6 passed / 4 failed | **7 passed / 3 failed** | ⚠️ inspection 转绿 |
+| 8 页运行时外部请求 | 全 0 | **全 0**(Playwright 逐页监听) | ✅ |
+| 素材重建后 `git status` | 完全干净 | **跟踪文件零变更** | ✅ |
+| 风电计数器 | 381 实例 / 20 批 | **draw calls 131 · geometries 92 · triangles 114,356 · 20 批 · 381 实例** | ✅ 完全吻合 |
+| GLB 重导出 | 18,521,652 vs 18,589,916(差 0.36%) | **18,521,652 vs 18,589,916(差 0.37%)**,magic = `glTF` | ✅ |
+| `assets/manifest.json` 24 条 | — | **24/24 SHA-256 匹配,0 mismatch** | ✅ |
+
+### B.2 修正一:面板溢出的真因是布局零余量,不是字体
+
+原审计归因「macOS 走 PingFang SC,Linux CI 走 Noto Sans CJK,中文字形行高差几个像素」。**实测该假设不成立。**
+
+在 1920×1080 视口下对 `agriculture.html` 强制替换字体栈,逐次测量溢出:
+
+| 强制字体 | 溢出面板 | 溢出量 |
+|---|---|---|
+| `'PingFang SC'` | 作物生长监测 / 土壤生命力 | **5px / 4px** |
+| `'Noto Sans CJK SC', 'Source Han Sans SC', sans-serif` | 作物生长监测 / 土壤生命力 | **5px / 4px** |
+| `'Helvetica Neue', Arial, sans-serif` | 作物生长监测 | **5px** |
+| `'Times New Roman', serif` | 作物生长监测 | **5px** |
+
+字体只改变**溢出多少**,不改变**是否溢出**。逐面板测量真实需求:
+
+| 场景 | 面板 | clientHeight | 内容盒 | 内容+margin 需要 | 溢出 |
+|---|---|---|---|---|---|
+| agriculture | 作物生长监测 | 233 | 193 | **237** | 5px |
+| agriculture | 土壤生命力 | 233 | 193 | **247** | 4px |
+| industry | 全流程质量控制 | 233 | 193 | **249** | 5px |
+| park | 企业创新生态 | 233 | 193 | **247** | 3px |
+
+侧栏 `grid-template-rows: 234.656px / 234.672px / 234.672px`,`.ob-panel` 的 `padding: 17px 18px` 让内容盒只剩 193px。
+
+**结论:测试写得对,产品写得脆 —— 是产品侧没留余量,不是测试环境问题。**「失败全是环境差异」这个结论不成立。
+
+> 与 private fork 的 Linux CI 结果对照:CI 上 `test:browser` 全绿,说明字体度量确实影响**溢出幅度**;但布局零余量决定了**会不会溢出**。字体是触发条件,零余量是根本原因 —— 两者不能互相替代。
+
+### B.3 修正二:来源可以完整核验
+
+原审计写「仓库自身的 git 历史只有 1 个压平的 init commit,因此**无法从提交历史验证来源**」。实测:
+
+```bash
+$ git rev-parse HEAD^{tree}
+2b3c674a9671717630da50358f9550c7ad3d2fa1        # agentthink/three-screen-lab
+$ gh api repos/yinweinidongle/screen-picture-demo/git/trees/master --jq .sha
+2b3c674a9671717630da50358f9550c7ad3d2fa1        # 完全相同
+$ git diff --stat HEAD FETCH_HEAD                  # 零差异
+```
+
+- 上游 `yinweinidongle/screen-picture-demo`:默认分支 `master`,**18 个 commit** 完整历史
+- 场景来源 `yinweinidongle/big-screen-astra`:**21 个 commit**;授权记录里的 `d20e80789dee708faff031df840d03d2af8efd72` 经 GitHub API 验证存在(2026-09-14,commit message = "Add four Vue 3 and Three.js dashboards with generated assets and refined city panels")
+- `agentthink` 的 commit:`f413a2f` / "Your Name <you@example.com>" / 2026-10-24 14:41:36 +0800
+
+**三层血缘可核验**:big-screen-astra → screen-picture-demo → agentthink 压平重上传。「人工主导 + 局部 AI 辅助」的判断不变,但证据基础从「代码内部推断」升级为「可核验移植链 + 代码内部形态」双重支撑。
+
+### B.4 修正三:CI 分支问题只影响 agentthink 公开快照
+
+| 仓库 | 默认分支 | workflow 监听 | 实际结果 |
+|---|---|---|---|
+| `agentthink/three-screen-lab` | `main` | `master` | push 不触发;`gh api .../pages` → **404** |
+| `yinweinidongle/screen-picture-demo` | `master` | `master` | **匹配**;Pages 状态 `built`,31 次 CI run 全 success |
+
+原审计「这个项目在 GitHub 上的部署从来没通过」过宽 —— 上游同名项目部署一直正常。
+
+> 补充:作者 private fork 修好 `master`→`main` 后又遇到**第二层阻塞** —— private repo + GitHub Free 不支持 Pages(`POST /pages` → 422),已用 `vars.pages_enabled` 开关绕开。这是公开快照上不存在的问题,**不要把两者的 Pages 状态混为一谈**。
+
+### B.5 修正四:园区 setLayer 不是空操作
+
+`park/model.js:120-126` 确实会切换 `energy.visible` 与 `security.visible`(互斥显隐),所以「智慧能源」「安防态势」两个主题**有真实 3D 变化**。
+
+真实缺陷是**「空间运营」层没有差异化视觉**:`buildings` 分支只把 `o.material.opacity = 1` 重写一遍(恒为原值),从「园区总览」切到「空间运营」画面基本不变。**图层语义不完整 ≠ 函数无功能。**
+
+### B.6 修正五(次要):外部主机计数取决于口径
+
+原审计「总共只有 5 个」按全仓口径。按 runtime 代码(`src/` + `scripts/` + `config/`)口径实测是 **6 个** —— 多出 `github.com`(`src/home/template.html:30` 的上游导航链接)。`src/` 目录内只有 `github.com` 与 `www.w3.org` 两个外部主机。**两种口径下结论都不变:全部不是运行时依赖。**
+
+### B.7 新发现一:`npm run setup` 在 Python 3.10 上直接失败
+
+`scripts/tasks.mjs:14` 声称要求 Python ≥3.10,但 `requirements.txt` 锁死 `platformdirs==4.13.5`,该版本要求 **Python ≥3.11**:
+
+```
+ERROR: Ignored the following versions that require a different python version:
+       4.13.5 Requires-Python >=3.11
+ERROR: No matching distribution found for platformdirs==4.13.5
+```
+
+用 Python 3.11 建 venv 才装得上。`requirements-assets.txt` 要求更高:Python **≥3.12**(`numpy==2.5.4`)+ `shapely` + `pyshp`,且 **Pillow 不在该文件里**,需另行补装 `pillow==12.2.0`。
+
+### B.8 新发现二:Playwright 官方 chromium 不支持 macOS 13
+
+```
+$ npx playwright install chromium
+Error: ERROR: Playwright does not support chromium on mac13
+```
+
+本地跑浏览器测试需改用系统 Chrome(`channel: 'chrome'`)+ `--use-gl=angle --use-angle=swiftshader --enable-webgl --ignore-gpu-blocklist`。二次实跑即用此法,得到 7 passed / 3 failed。
+
+### B.9 复核确认成立的关键结论
+
+以下原审计结论经独立复核**全部成立**:
+
+- 生命周期矩阵(农业/工业/园区 ✅ 全清;风电 ✅ 但 `setInterval`+toast timeout 未清;工厂 `dispose()` 从不被调用;人口 rAF 永不取消 + `setInterval` 未清;巡检 `setInterval` 未清)
+- 人口页配置漂移(注册表 1920×1080 vs 代码 `Math.min(innerWidth/2160, innerHeight/1200)`)
+- 人口页真实七普数据(粤 12601 / 鲁 10152 / 豫 9937)配 2022 标签,且**省份卡片零「演示数据」标注**(全页 grep 命中 0;巡检页则有 6 处)
+- 性别比 79.23(`app.js:23`)在任何真实普查中不存在
+- 台湾/香港/澳门不在 `pRegionMembers` 任何分组
+- `pEsc` 定义未使用 + **7 处** `innerHTML` 未转义(原审计写「~10 处」,实测 7 处)
+- 巡检 `'56,797'` 三用;KPI 前 3 字符 `refreshCount ≥ 262` 时显示 `100`
+- 工业图例 156/10/02 vs `H.matrix(64)` 只渲染 64 格
+- 风电换流器管路/线束漏传 `parent`(`model.js:333-358`);玻璃 shader 声明 `uTime` 但片元未用
+- `--dim` 对比度实测 3.08–3.38:1,全不达 WCAG AA
+- 巡检页 32 层堆叠轮廓(`map-depth.js`)、轮廓 5,517 顶点只定义一次
+- 人口 SVG fallback(`globe.js:712-769`)+ Playwright 注入 `getContext` 返回 null 的降级用例
+- 素材 24/24 SHA-256 匹配;5 张装饰 PNG 占 assets 总量 **18.6%**(6.23 MB / 33.57 MB)
+- `docs/media/capture-manifest.json` 确实**未被** `verify_assets.py` / `test_assets.py` 校验 → 录屏哈希无人守护
+- `prepare_assets.py:378-381` 只自动重算 `assets/geo/` 与 `assets/textures/` 前缀 → 5 张 PNG 哈希需人工维护
+- 无 LFS / 无 submodule / 无 `.gitattributes` / 密钥扫描零真实命中
+
+### B.10 未能独立复现的一项
+
+原审计的 GLB 重导出数字**已复现**(见 B.1),但「重导出与仓库版本差 0.36%」的**归因**未能证实:差异应来自 three.js 版本的浮点打包顺序,本次未做版本对照实验。**不影响结论**(能重新生成这一点成立)。
+
+---
+
+*本文为 iswiki 改写收录,原始审计由另一 agent(MiniMax)完成,包含完整克隆 / 构建 / 浏览器实测 / 素材重建管线。2026-10-24 由 Hermes 独立复核一遍,4 处结论修正见正文 `🔺` 标记与附录 B。本文的修复与后续维护在作者 private fork `ishadowland/three-screen-lab` 上进行。*
