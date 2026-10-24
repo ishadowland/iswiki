@@ -7,7 +7,7 @@
 > **本文性质**:iswiki 改写收录 + **2026-10-24 第二次独立复核(Hermes,macOS 13.6 x64 · Node v24.13.0 · Python 3.11/3.12)**
 >
 > 🔺 **复核结论**:原审计的绝大多数结论**成立且可复现**(17/17 测试通过、构建成功、8 页运行时外部请求全 0、素材重建后 Git 跟踪文件零变更、风电计数器 131 draw calls / 20 批 / 381 实例与性能文档完全一致、GLB 可重生成差 0.37%)。但**有 4 处结论过宽或错误**,已在正文就地标注 `🔺 独立复核修正`,并在**附录 B** 汇总复现证据与新发现。引用本文数字时请以附录 B 为准。
-> **修复进度**:private fork 已修 P0-1(CI 分支名 `master`→`main`,commit `80cc692`;CI 实测 build 全绿),并发现**第二层阻塞**:private repo + GitHub Free 计划不支持 GitHub Pages(`POST /pages` → 422),已加 `vars.pages_enabled` 开关绕开(commit `d923c1e`);另定位并修掉 inspection 用例在 CI 上的随机超时(commit `0dcae39` → `9db5139`,**真因是视口截图在软件渲染下要 32 秒、而全页截图只要 0.6 秒** —— 与原审计「fullPage 慢」的归因相反,详见 §6.2)。其余 P0/P1 待处理。
+> **修复进度**:private fork 已修 P0-1(CI 分支名 `master`→`main`,commit `80cc692`;CI 实测 build 全绿),并发现**第二层阻塞**:private repo + GitHub Free 计划不支持 GitHub Pages(`POST /pages` → 422),已加 `vars.pages_enabled` 开关绕开(commit `d923c1e`);另定位并修掉 inspection 用例在 CI 上的随机超时(commit `0dcae39` → `9db5139`,**真因是视口截图在软件渲染下要 32 秒、而全页截图只要 0.6 秒** —— 与原审计「fullPage 慢」的归因相反,详见 §6.2)。**第四次 CI(run `40102609034`)拿到 10 passed / 0 failed,整体 success** —— 连带的 agriculture / industry / park 三个用例也一并转绿(它们此前的「面板溢出失败」同属超时误伤,详见 §6.2 末尾)。其余 P0/P1 待处理。
 
 ---
 
@@ -332,6 +332,12 @@ $ npx playwright test --grep "inspection" --timeout=120000
 > 因此**第一次修复方向搞反了**:commit `0dcae39` 把成功路径从 fullPage 改成视口截图,CI 上反而更慢(1.0m → 2.2m)且仍失败。**正确修法**(commit `9db5139`):afterEach 改回 `fullPage: true`,并把 `playwright.config.mjs` 的 `timeout` 提到 **180s** 兜底。代码里写明上述实测数据,避免再被「fullPage 慢」的直觉误导。
 >
 > 附:本机 Playwright 1.64 不支持 macOS 13 的官方 chromium,故用系统 Chrome(`channel: 'chrome'`)+ swiftshader 参数近似 CI 条件(见 [附录 B.8](#b8-新发现二playwright-官方-chromium-不支持-macos-13))。
+
+> 🔺 **连带结论:三屏的「面板溢出失败」也是同一个超时误伤(2026-10-24,Hermes)**。第四次 CI(run `40102609034`)在改掉截图根因后拿到 **10 passed / 0 failed** —— 此前一直失败的 `agriculture` / `industry` / `park` **三个用例全部转绿**,且日志中**没有任何 overflow / scrollHeight 断言失败**。
+>
+> 这意味着:附录 B.2 那句「三屏面板溢出不是字体环境差异,而是真的布局缺陷」**在 CI 上从未被验证过** —— 那些断言在 `waitForLoadState` 超时就死了,根本没执行到断言。**"布局零余量"作为独立缺陷目前缺乏 CI 证据支撑**,其测量数据(内容盒 193px vs 需要 237–249px)本身可能仍成立,但它**不是**这些用例失败的原因。
+>
+> 建议的验证方式:把 `waitForLoadState('networkidle')` 换成等待具体元素(如 `await expect(page.locator('#observatory-canvas')).toHaveAttribute('data-ready','true')` —— 同文件第 95 行已有这个断言),重跑后再看溢出断言是否复现。**在此之前,附录 B.2 应视为「待验证」而非「已确认」。**
 
 ### 6.3 浏览器测试的实际含金量
 
@@ -808,7 +814,7 @@ GLB magic ok         : true        ← 合法 GLB
 | GLB 重导出 | 18,521,652 vs 18,589,916(差 0.36%) | **18,521,652 vs 18,589,916(差 0.37%)**,magic = `glTF` | ✅ |
 | `assets/manifest.json` 24 条 | — | **24/24 SHA-256 匹配,0 mismatch** | ✅ |
 
-### B.2 修正一:面板溢出的真因是布局零余量,不是字体
+### B.2 修正一:面板溢出的真因是布局零余量,不是字体 ⚠️ **本节结论在 CI 上待验证**
 
 原审计归因「macOS 走 PingFang SC,Linux CI 走 Noto Sans CJK,中文字形行高差几个像素」。**实测该假设不成立。**
 
