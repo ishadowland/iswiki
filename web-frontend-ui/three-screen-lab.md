@@ -1,10 +1,11 @@
 # three-screen-lab(VIZ / LAB 可视化大屏展厅)深度审计
 
-> **对象**:`github.com/agentthink/three-screen-lab`(实为 `yinweinidongle/screen-picture-demo` 的再发布快照)
-> **在线演示**:https://yinweinidongle.github.io/screen-picture-demo/home.html
+> **本文对象**:`github.com/ishadowland/three-screen-lab`(**private fork**,作者自用;公开访问会 404)
+> **上游出处**:`github.com/agentthink/three-screen-lab`(实为 `yinweinidongle/screen-picture-demo` 的再发布快照)—— 原始审计即在此快照上完成
+> **在线演示**(上游 public Pages,无需权限):https://yinweinidongle.github.io/screen-picture-demo/home.html
 > **原始审计**:由另一 agent(MiniMax)在 `macOS 24.6.0 x64 · Node v24.8.0 · Python 3.13.7` 上完成完整克隆 + 构建 + 浏览器实测 + 素材重建管线
 > **本文性质**:iswiki 改写收录。**所有数字、grep 证据、文件行号均来自原审计报告;Hermes 未独立复核**,引用时请注意这一点。
-> **修复进度**:`ishadowland/three-screen-lab`(private fork)已修 P0-1(CI 分支名),其余 P0/P1 待处理。
+> **修复进度**:private fork 已修 P0-1(CI 分支名 `master`→`main`,commit `80cc692`),其余 P0/P1 待处理。
 
 ---
 
@@ -36,6 +37,7 @@
 | `package.json` repository | `github:yinweinidongle/screen-picture-demo` |
 | README / 文档内所有链接 | 指向 `yinweinidongle.github.io` 与 `github.com/yinweinidongle/screen-picture-demo` |
 | 上游来源 | `agentthink/three-screen-lab` 是 `yinweinidongle/screen-picture-demo` 的**再发布快照** |
+| 本文对应副本 | `ishadowland/three-screen-lab`(**private**,agentthink/three-screen-lab 的 fork);已修 P0-1,commit `80cc692` |
 | 待合并 PR | 4 个 dependabot:checkout-7 / upload-artifact-7 / upload-pages-artifact-5 / pillow-13.0.0 |
 
 ### 🔴 P0 — CI 与 Pages 在本仓库永远无法触发
@@ -495,7 +497,10 @@ REVISION = "160"
 ## 十一、怎么跑起来
 
 ```bash
-cd three-screen-lab
+# private fork 需先授权(一次即可):
+gh auth setup-git && gh repo clone ishadowland/three-screen-lab && cd three-screen-lab
+# 或直接用公开上游:git clone https://github.com/agentthink/three-screen-lab.git
+
 npm ci
 npm run setup          # 建 .venv,装 pillow + black
 npm run dev            # http://127.0.0.1:5173/home.html
@@ -689,11 +694,15 @@ GLB magic ok         : true        ← 合法 GLB
 
 ## 参考
 
-- 仓库:<https://github.com/agentthink/three-screen-lab>
-- 上游(README 指向):<https://github.com/yinweinidongle/screen-picture-demo>
-- 在线演示:<https://yinweinidongle.github.io/screen-picture-demo/home.html>
+- **本文对象(private fork,需权限)**:<https://github.com/ishadowland/three-screen-lab>
+  - 本地 clone:`gh repo clone ishadowland/three-screen-lab` 或 `git clone https://github.com/ishadowland/three-screen-lab.git`(需 `gh auth setup-git`)
+- **上游出处(公开,审计对象)**:<https://github.com/agentthink/three-screen-lab>
+- 上游 README 指向的真正来源:<https://github.com/yinweinidongle/screen-picture-demo>
+- 在线演示(上游 public Pages):<https://yinweinidongle.github.io/screen-picture-demo/home.html>
 - 素材上游:Natural Earth(<https://www.naturalearthdata.com/>),公共领域
+
+> ⚠️ **关于 private fork 的引用**:iswiki 是 public 仓库,`ishadowland/three-screen-lab` 对外部读者是 404。文中所有**技术内容**(文件路径、行号、commit SHA、度量值)对读者仍有价值 —— 想核对的人可以 clone 上游 `agentthink/three-screen-lab` 或 `yinweinidongle/screen-picture-demo` 对照同一 commit `f413a2f`。
 
 ---
 
-*本文为 iswiki 改写收录,原始审计由另一 agent(MiniMax)完成,包含完整克隆 / 构建 / 浏览器实测 / 素材重建管线。Hermes 未独立复核文中数字;引用具体行号与度量值时请回原仓库核对。*
+*本文为 iswiki 改写收录,原始审计由另一 agent(MiniMax)完成,包含完整克隆 / 构建 / 浏览器实测 / 素材重建管线。Hermes 未独立复核文中数字;引用具体行号与度量值时请回上游仓库(public)核对。本文的修复与后续维护在作者 private fork `ishadowland/three-screen-lab` 上进行。*
