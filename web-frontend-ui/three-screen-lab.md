@@ -7,7 +7,7 @@
 > **本文性质**:iswiki 改写收录 + **2026-10-24 第二次独立复核(Hermes,macOS 13.6 x64 · Node v24.13.0 · Python 3.11/3.12)**
 >
 > 🔺 **复核结论**:原审计的绝大多数结论**成立且可复现**(17/17 测试通过、构建成功、8 页运行时外部请求全 0、素材重建后 Git 跟踪文件零变更、风电计数器 131 draw calls / 20 批 / 381 实例与性能文档完全一致、GLB 可重生成差 0.37%)。但**有 4 处结论过宽或错误**,已在正文就地标注 `🔺 独立复核修正`,并在**附录 B** 汇总复现证据与新发现。引用本文数字时请以附录 B 为准。
-> **修复进度**:private fork 已修 P0-1(CI 分支名 `master`→`main`,commit `80cc692`;CI 实测 build 全绿),并发现**第二层阻塞**:private repo + GitHub Free 计划不支持 GitHub Pages(`POST /pages` → 422),已加 `vars.pages_enabled` 开关绕开(commit `d923c1e`);另按 §6.2 建议修掉 inspection 用例的 flaky 超时(commit `0dcae39`)。其余 P0/P1 待处理。
+> **修复进度**:private fork 已修 P0-1(CI 分支名 `master`→`main`,commit `80cc692`;CI 实测 build 全绿),并发现**第二层阻塞**:private repo + GitHub Free 计划不支持 GitHub Pages(`POST /pages` → 422),已加 `vars.pages_enabled` 开关绕开(commit `d923c1e`);另定位并修掉 inspection 用例在 CI 上的随机超时(commit `0dcae39` → `9db5139`,**真因是视口截图在软件渲染下要 32 秒、而全页截图只要 0.6 秒** —— 与原审计「fullPage 慢」的归因相反,详见 §6.2)。其余 P0/P1 待处理。
 
 ---
 
@@ -306,11 +306,32 @@ $ npx playwright test --grep "inspection" --timeout=120000
 
 **通过。** 修复建议:`playwright.config.mjs` 的 `timeout: 45000` 对含全页截图的 afterEach 偏紧,建议提到 90–120s,或把 `fullPage` 截图降级为视口截图。
 
-> ✅ **该建议已在作者 private fork 落地并被 CI 反向验证(2026-10-24,Hermes)**:private fork 的 CI 实测确认这个用例**是 flaky 而非稳定失败** —— 同一份代码在 run `40100007065` **通过**、在 run `40100479694` 以 `page.waitForLoadState: Test timeout of 45000ms exceeded` **失败**。已按建议修(commit `0dcae39`):
-> - `playwright.config.mjs`:`timeout` 45s → **120s**,`expect.timeout` 20s → **30s**
-> - `tests/browser/gallery.spec.mjs` — afterEach 截图**按结果降级**:`fullPage: info.status !== info.expectedStatus`(成功的用例只截视口,失败的才截 fullPage —— 成功路径的 review.png 无人查看,却每次消耗几十秒)
+> 🔺 **真因已实测定位(2026-10-24,Hermes)—— 上面这两条建议的方向都是反的**。private fork 的 CI 复现了这个失败(同一份代码:run `40100007065` 通过、run `40100479694` 以 `page.waitForLoadState: Test timeout` 失败、run `40101404647` 仍失败),但**原审计归因「afterEach 的 `fullPage:true` 截图太慢」不成立**。
 >
-> `info.status` 在 afterEach 里的取值用**最小 Playwright probe 实测确认**(不需浏览器):通过 → `expectedStatus=passed status=passed` → `fullPage=false`;失败 → `expectedStatus=passed status=failed` → `fullPage=true`。本地已过 `npm run format:check` / `npm run check` / `npm test`(3/3);浏览器测试需 macOS 14+ 的 Playwright 1.64,本机 macOS 13.6 装不了官方 chromium,故由 CI 验证(见 [附录 B.8](#b8-新发现二playwright-官方-chromium-不支持-macos-13))。
+> 本机逐项计时(macOS 13.6 + Playwright 1.64 + 系统 Chrome + swiftshader 软件渲染参数)得到:
+>
+> | 步骤 | 耗时 |
+> |---|---|
+> | `page.goto` | 1121 ms |
+> | `waitForLoadState('networkidle')` | **OK,260 ms**(不是瓶颈) |
+> | 34 个省份按钮断言 | OK,1982 ms |
+> | **`page.screenshot({fullPage:false})` 视口截图** | **32,237 ms** ★ |
+> | **`page.screenshot({fullPage:true})` 全页截图** | **596 ms** ★ |
+>
+> **视口截图比全页截图慢 50 倍** —— 完全反直觉,但这就是真相:inspection 的 SVG(5517 顶点 × 32 层堆叠)在软件渲染下,**视口光栅化**要 32 秒,而 fullPage 走整页合成路径只要 0.6 秒。
+>
+> 完整因果链:
+> ```
+> inspection 的巨型 SVG
+>   → swiftshader 下视口光栅化 32 秒
+>   → afterEach 截图占住页面主线程 32 秒
+>   → waitForLoadState('networkidle') 排不上队
+>   → 报 Test timeout exceeded(表象在测试体第 83 行,根因在 afterEach)
+> ```
+>
+> 因此**第一次修复方向搞反了**:commit `0dcae39` 把成功路径从 fullPage 改成视口截图,CI 上反而更慢(1.0m → 2.2m)且仍失败。**正确修法**(commit `9db5139`):afterEach 改回 `fullPage: true`,并把 `playwright.config.mjs` 的 `timeout` 提到 **180s** 兜底。代码里写明上述实测数据,避免再被「fullPage 慢」的直觉误导。
+>
+> 附:本机 Playwright 1.64 不支持 macOS 13 的官方 chromium,故用系统 Chrome(`channel: 'chrome'`)+ swiftshader 参数近似 CI 条件(见 [附录 B.8](#b8-新发现二playwright-官方-chromium-不支持-macos-13))。
 
 ### 6.3 浏览器测试的实际含金量
 
@@ -542,7 +563,7 @@ REVISION = "160"
 | **P1** | 人口 `pRegionMembers` 补齐台湾/香港/澳门或加"其他"区 | 20 分钟 |
 | **P1** | 三个主题 `--dim` 提到 ≥4.5:1 | 15 分钟 |
 | **P1** | 面板高度留 6–8px 余量,测试断言放宽到 ±6px | 30 分钟 |
-| **P1** ✅ | Playwright `timeout` 提到 90–120s,或 afterEach 改视口截图 — **已修(commit `0dcae39`;CI 实测该用例为 flaky,已加超时 + 截图按需 fullPage)** | 5 分钟 |
+| **P1** ✅ | Playwright `timeout` 提到 90–120s,或 afterEach 改视口截图 — **已修(commit `9db5139`);真因实测为「视口截图在 swiftshader 下要 32 秒、fullPage 只要 0.6 秒」,故 afterEach 保持 `fullPage: true` 并把 timeout 提到 180s** | 5 分钟 |
 | **P2** | 风电删除玻璃 shader 的死 `uTime` 与每帧空写 | 10 分钟 |
 | **P2** | 人口页接线 `pEsc` 或删除它 | 30 分钟 |
 | **P2** | 补 `docs/adding-a-screen.md` 的 Observatory 路径,`new-screen.mjs` 支持生成 observatory 模板 | 1 小时 |
