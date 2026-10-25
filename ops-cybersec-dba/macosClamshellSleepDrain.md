@@ -54,12 +54,18 @@ log show --start "2026-10-23 20:21:00" --end "2026-10-23 20:21:30" \
   --style compact | grep -i chooseStandbyDelay
 ```
 
-**失败那晚的原始记录**（10-23 20:08:32，本次会话直接读到）：
+**失败那晚的原始记录**（10-23 20:08:32，本机实测直接读到）：
 
 ```
 chooseStandbyDelay(): lowBattery = false, battery powered = true,
                       capacity=83, lowBatteryThreshold=50; chosen delay=86400
 ```
+
+> 📌 **证据来源说明**：ASL 主日志（`pmset -g log`）保留了失败夜最后一次合盖的完整记录——
+> `2026-10-23 20:21:49 Entering Sleep state due to 'Clamshell Sleep' ... Using Batt (Charge:75%)`；
+> 而 `chooseStandbyDelay` 的**决策过程**只存在于 unified log，且该条已被日志的时钟校正冲掉，
+> 引用的是同一晚**前一次**合盖（20:08:32，83%）的决策记录。两者同夜、同参数、同分支（`lowBattery=false` → 86400），
+> 分支归属可由 §1.3 的实测全表自洽验证。
 
 **修复后的记录**（10-24 22:15:27）：
 
@@ -86,6 +92,46 @@ else                               →  chosen delay = standbydelayhigh  (默认
 > 🔑 **这是本案最反直觉的地方**：电量**越高**，反而选**越长**的 standby 延迟。
 > 合盖时 75% > 阈值 50% → 走 high 分支 → 24 小时都进不了 Deep Idle → **整晚停在浅睡眠**。
 > 「电量高所以放心慢慢睡」在电源管理里是反直觉的陷阱。
+
+#### 实测决策全表（本机 20 条真实采样，用于验证上述逻辑）
+
+```bash
+log show --last 3d --predicate 'eventMessage CONTAINS "chooseStandbyDelay"' \
+  --style compact | grep chooseStandbyDelay
+```
+
+```
+2026-10-22 22:00:52  lowBattery=false  battery powered=false  capacity=100  threshold=0   →  chosen delay=86400
+2026-10-22 22:22:32  lowBattery=false  battery powered=false  capacity=100  threshold=0   →  chosen delay=86400
+2026-10-22 22:43:35  lowBattery=false  battery powered=false  capacity=100  threshold=0   →  chosen delay=86400
+2026-10-23 19:53:55  lowBattery=false  battery powered=true   capacity=98   threshold=50  →  chosen delay=86400
+2026-10-23 20:08:32  lowBattery=false  battery powered=true   capacity=83   threshold=50  →  chosen delay=86400   ← 失败夜
+──────────── 修复：proximitywake=0 / standbydelay 归一 / highstandbythreshold=90 ────────────
+2026-10-24 15:37:17  lowBattery=true   battery powered=true   capacity=28   threshold=50  →  chosen delay=10800
+2026-10-24 15:55:39  lowBattery=true   battery powered=true   capacity=41   threshold=90  →  chosen delay=1800
+2026-10-24 17:51:45  lowBattery=true   battery powered=true   capacity=86   threshold=90  →  chosen delay=1800
+2026-10-24 18:12:23  lowBattery=true   battery powered=true   capacity=86   threshold=90  →  chosen delay=1800
+2026-10-24 18:22:14  lowBattery=false  battery powered=true   capacity=91   threshold=90  →  chosen delay=1800
+2026-10-24 19:11:30  lowBattery=true   battery powered=true   capacity=82   threshold=90  →  chosen delay=600
+2026-10-24 19:25:16  lowBattery=true   battery powered=true   capacity=77   threshold=90  →  chosen delay=600
+2026-10-24 19:35:42  lowBattery=true   battery powered=true   capacity=78   threshold=90  →  chosen delay=600
+2026-10-24 22:15:27  lowBattery=false  battery powered=true   capacity=100  threshold=90  →  chosen delay=1800   ← 修复后过夜
+2026-10-24 22:37:13  lowBattery=false  battery powered=true   capacity=100  threshold=90  →  chosen delay=1800
+2026-10-24 22:45:50  lowBattery=false  battery powered=true   capacity=100  threshold=90  →  chosen delay=1800
+2026-10-24 23:18:57  lowBattery=false  battery powered=true   capacity=100  threshold=90  →  chosen delay=1800
+2026-10-25 00:16:32  lowBattery=false  battery powered=true   capacity=100  threshold=90  →  chosen delay=1800
+```
+
+从这张表能读出**三条**之前容易忽略的事实：
+
+**① AC 供电时 `lowBatteryThreshold` 恒为 0**
+10-22 三条记录都是 `battery powered=false`（插电）→ `threshold=0` → `capacity` 恒 `>= 0` → **永远走 high 分支，永远 86400**。也就是说**插电合盖过夜一定是最坏情况**，且与 `highstandbythreshold` 配多少完全无关。这也是本案必须单独调 AC 侧 `standbydelayhigh` 的原因。
+
+**② `capacity=100` 在修复后仍然走 high 分支**
+22:15:27 那条 `lowBattery=false`（100 >= 90）→ 走 high → `chosen delay=1800`。**所以修复过夜能成功的直接原因不是「阈值提高让满电走低分支」，而是 `standbydelayhigh` 本身被降到了 1800。** 阈值改成 90 的真实作用是让 **50%~90% 这个区间**（含失败那夜的 75%）改走低分支。
+
+**③ 延迟值与 `standbydelaylow/high` 的对应关系可直接反推**
+19:11:30 那条 `chosen delay=600` 对应当时 `standbydelaylow=600`；22:15:27 那条 `chosen delay=1800` 对应当时 `standbydelayhigh=1800`。分支归属与取值完全自洽。
 
 ### 1.4 找出长挂断言
 
@@ -148,12 +194,15 @@ sudo pmset -c standbydelayhigh 10800
 sudo pmset -b standbydelaylow   600
 sudo pmset -c standbydelaylow   10800
 
-# ③ 提高低电量阈值，让 100% 满电也走短延迟分支
+# ③ 提高低电量阈值：让 50%~90% 区间（含失败那夜的 75%）改走低延迟分支
 sudo pmset -b highstandbythreshold 90
 sudo pmset -c highstandbythreshold 90
 ```
 
-**核心思想**：把 `standbydelayhigh` 和 `standbydelaylow` **调成同一个值**，这样 `capacity` 与 `lowBatteryThreshold` 的比较结果**不再影响**最终延迟，绕开整个分支逻辑。
+**核心思想**：把 `standbydelayhigh` 和 `standbydelaylow` **调成同一个值**（电池侧 1800/600 两轮调整后趋同），这样 `capacity` 与 `lowBatteryThreshold` 的比较结果**不再影响**最终延迟，绕开整个分支逻辑。
+
+> ⚠️ **不要误读 ③ 的作用**：单独把 `highstandbythreshold` 调到 90 **不会**让 100% 满电走低分支（100 >= 90 仍走 high）。它的真实价值是让 **50%~90% 区间**改走低分支。真正保证「满电也不卡 24 小时」的是 ② 里 `standbydelayhigh` 被降到了 1800。
+> 而 AC 侧 `lowBatteryThreshold` 恒为 0（见 §1.3 ①），**只能靠直接调小 AC 的 `standbydelayhigh` 来治**。
 
 ### 2.2 顺带做的加固
 
@@ -260,6 +309,10 @@ done
 | 睡眠深度 | 浅睡眠 Standby ❌ | 深度休眠 ✅ |
 | **整夜耗电** | **75%（耗尽）** ❌ | **2%** ✅ |
 
+> 修复后过夜的 `chosen delay=1800` 走的是 **high 分支**（100% >= 90），不是 low 分支。
+> 也就是说**「满电也不卡 24 小时」靠的是 `standbydelayhigh` 被降到 1800，而不是阈值提高**——
+> 这一点在 §1.3 的实测全表里可以逐条验证。
+
 ---
 
 ## Phase 4：App 层才是真正的大头
@@ -345,6 +398,8 @@ ls /var/db/receipts/ | grep -i -E "todesk|youqu"        # ⑧ 安装收据
 |---|---|
 | **「合盖不睡」≠ 「合盖没进睡眠」** | 日志里 `Entering Sleep state due to 'Clamshell Sleep'` 才是真的进睡眠了；要查的是**有没有进 Deep Idle** |
 | **电量越高，standby 延迟越长** | `capacity >= highstandbythreshold` → 走 `standbydelayhigh`（默认 24h）。高电量反而更容易卡在浅睡眠 |
+| **AC 供电时 `lowBatteryThreshold` 恒为 0** | 日志里 `battery powered=false` → `threshold=0` → 永远走 high 分支 → 永远 24h。**插电合盖过夜一定是最坏情况**，且调 `highstandbythreshold` 没用，只能直接调小 AC 的 `standbydelayhigh` |
+| **提高 `highstandbythreshold` ≠ 让满电走低分支** | 100% >= 90 仍走 high。它真正的作用是让 **50%~90% 区间**（含失败那夜的 75%）走低分支 |
 | **`pmset -g log` 看不到 powerd 决策** | `chooseStandbyDelay` 只在 unified log 里，必须 `log show --predicate 'subsystem == "com.apple.powerd"'` |
 | **unified log 时间窗会漂** | 报 `Wall Clock adjustment detected` 时 `--start/--end` 不可靠，改用 ASL 主日志交叉验证 |
 | **ASL 日志按天轮转** | `/var/log/powermanagement/YYYY.MM.DD.asl`，超过一天的历史要翻旧文件 |
