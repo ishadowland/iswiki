@@ -74,6 +74,7 @@ iswiki/
 | [disable-ipv6-multi-kernel](ops-cybersec-dba/disable-ipv6-multi-kernel.md) | 多内核 Linux 引导菜单批量加 `ipv6.disable=1` 的完整 SOP。 |
 | [dockerDiskSpaceSOP](ops-cybersec-dba/dockerDiskSpaceSOP.md) | Docker 磁盘满四阶段 SOP:只读定位 → 分层清理 → 阈值兜底 → 复发预防。含 `buildx du` 共享存储语义、`--filter` 9 个 key、daemon.json `=` vs buildkitd.toml `==`、Mac 稀疏文件陷阱(实测实际 24.8G / 表观 1224G)。 |
 | [kylinV10DisableIPv6](ops-cybersec-dba/kylinV10DisableIPv6.md) | 麒麟 V10 ARM 版通过 GRUB 内核参数彻底关闭 IPv6 的 5 步操作流程。 |
+| [K8sHostsEndpointsFailure](ops-cybersec-dba/K8sHostsEndpointsFailure.md) | K8s「控制面全绿、业务全挂」事故复盘 + **K8s 小白概念补课**(架构图 / 名词表 / Service 转发链路 / 控制循环)。根因链:节点集体重启 → cloud-init `update_etc_hosts` 重写 `/etc/hosts` → endpoint slice controller 状态未恢复 → EndpointSlice 停在旧 Pod IP → kube-proxy 指向死 Pod。**⚠️ 一手核验纠正原文 7 处偏差**(最重要两条:`manage_etc_hosts` 官方默认是 `false` 不是"出厂预置 true";**Endpoints 自 v1.33 已弃用**,真实数据源是 EndpointSlice;§五的 metrics 日志是 metrics-server 而非 apiserver 在请求 kubelet)。含静态 Pod 目录禁放备份的官方警告 + 控制器工作计数量化「假活」的排查法。 |
 | [linux-permission-debug](ops-cybersec-dba/linux-permission-debug.md) | `chmod 777` 成功但服务仍 Permission denied 的 6 层访问链调试。 |
 | [lvmPartitionedFilter](ops-cybersec-dba/lvmPartitionedFilter.md) | `pvcreate /dev/vdb` 报 `excluded by a filter` 的源码级真因:内置 `partitioned` filter,改 `lvm.conf` 绕不过(无开关)。含「有分区表且至少一个分区被定义」的判定条件逐行拆解、`deferred` 两阶段过滤机制、**2.03.14 与 main 的 GPT 判定差异(老版零 GPT 逻辑、只看 PMBR)**、`wipefs` 只擦主头漏备份头,以及 DeepSeek 对话里 5 处错判纠正。 |
 | [frpc-desktop](ops-cybersec-dba/frpc-desktop.md) | FRP 内网穿透跨平台桌面客户端(Electron + Vue 3),可视化配 frpc 代理,6,875⭐ 头部项目。 |
@@ -154,15 +155,15 @@ iswiki/
 | 分类 | 文档数 |
 |---|---|
 | 🤖 ai-vibecoding-agents | 35 |
-| 🛠️ ops-cybersec-dba | 26 |
+| 🛠️ ops-cybersec-dba | 27 |
 | 🌐 web-frontend-ui | 19 |
 | ⚡ developer-productivity | 7 |
 | 📌 misc/OS-gaming-console | 2 |
-| **分类小计** | **89** |
+| **分类小计** | **90** |
 | 根级（未分类） | 1 |
-| **总计** | **90** |
+| **总计** | **91** |
 
-(89 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(90 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
