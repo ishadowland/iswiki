@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 90 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 91 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -13,7 +13,7 @@ iswiki/
 ├── README.md
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(35)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
-├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(26)
+├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(27)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(19)
 └── misc/
     └── OS-gaming-console/        🎮 掌机 / 自定义 firmware(2)
@@ -64,7 +64,7 @@ iswiki/
 
 ---
 
-## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(26)
+## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(27)
 
 | 文档 | 一句话 |
 |---|---|
@@ -79,6 +79,7 @@ iswiki/
 | [frpc-desktop](ops-cybersec-dba/frpc-desktop.md) | FRP 内网穿透跨平台桌面客户端(Electron + Vue 3),可视化配 frpc 代理,6,875⭐ 头部项目。 |
 | [bash-reference-manual](ops-cybersec-dba/bash-reference-manual.md) | Bash Reference Manual 完整学习(10 章 + 4 附录,含 8 大展开 / 13 类重定向 / 80+ 内建命令 / 12 大陷阱 / 5 大最佳实践)。 |
 | [blackBoxPentestPlaybook](ops-cybersec-dba/blackBoxPentestPlaybook.md) | 黑盒渗透测试完整打法(已脱敏):JS chunk 迭代收敛提取 → 应用层加密复现 → 未授权矩阵探测 → **双账号 diff 四维度 + 三层越权分离** → 四项专项 → 未成立项归档。附防守方 12 条自查清单。 |
+| [macosClamshellSleepDrain](ops-cybersec-dba/macosClamshellSleepDrain.md) | MacBook 合盖不睡/夜间耗电定位 SOP:根因是 **`proximitywake` 开启后 ALS 接近感应在睡眠中被启用,powerd 持有 `InternalPreventSleep` 长达 13h04m** 把机器钉在浅睡眠;叠加 **`capacity >= highstandbythreshold` → 走 `standbydelayhigh`(默认 24h)分支**,高电量反而卡在浅睡眠。反直觉点:电量越高,standby 延迟越长。含 `chooseStandbyDelay` 决策读取法、ASL 按天轮转 / unified log 时间窗漂移等坑,以及第三方常驻软件(ToDesk)彻底卸载 8 项验证清单。本机实测 MacBookPro15,2:整夜耗电 **75% → 0% 修复为 100% → 98%(11h 掉 2%)**。 |
 | [netdata](ops-cybersec-dba/netdata.md) | 开箱即用的 per-second 实时监控平台,自带 ML 异常检测 + 告警。 |
 | [opsTroubleshootingDiskGhost](ops-cybersec-dba/opsTroubleshootingDiskGhost.md) | df 说满、du 说没满 ——「幽灵空间」排查(fd 还指向的 inode)。 |
 | [opsTroubleshootingOOMCgroup](ops-cybersec-dba/opsTroubleshootingOOMCgroup.md) | free 还有 8G 但 OOM 杀进程 —— cgroup 账本思维排查。 |

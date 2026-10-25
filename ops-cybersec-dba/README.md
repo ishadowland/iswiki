@@ -19,6 +19,7 @@
 | [kylinV10DisableIPv6](kylinV10DisableIPv6.md)
 | [linux-permission-debug](linux-permission-debug.md)
 | [lvmPartitionedFilter](lvmPartitionedFilter.md) | `pvcreate` 报 `excluded by a filter` 的真因是内置 partitioned filter,改 lvm.conf 绕不过。含源码级核验、**2.03.14 vs main 的 GPT 判定差异(老版零 GPT 逻辑、只看 PMBR)**、对话里 5 处错判纠正。 |
+| [macosClamshellSleepDrain](macosClamshellSleepDrain.md) | MacBook 合盖不睡/夜间耗电的定位处置 SOP:先分清「没进睡眠」vs「进了没进深睡」→ 读 `chooseStandbyDelay` 决策分支 → 找长挂 IOKit 断言。根因是 **`proximitywake` 开启后 ALS 接近感应在睡眠中被启用,powerd 持有 `InternalPreventSleep` 长达 13h04m** 把机器钉在浅睡眠;叠加 **`capacity >= highstandbythreshold` → 走 `standbydelayhigh`(默认 24h)分支**,高电量反而卡在浅睡眠。反直觉点:电量越高,standby 延迟越长。含 `pmset -g log` 看不到 powerd 决策(unified log 才看得到)、ASL 日志按天轮转、unified log 时间窗漂移等坑,以及**第三方常驻软件(ToDesk)彻底卸载的 8 项验证清单**(先 unload 再删文件 / `UninstallerWatcher` 会复活 / 音频驱动需 `killall coreaudiod`)。本机实测 MacBookPro15,2:整夜耗电 **75% → 0% 修复为 100% → 98%(11h 掉 2%)**。 |
 | [netdata](netdata.md)
 | [opsTroubleshootingDiskGhost](opsTroubleshootingDiskGhost.md)
 | [opsTroubleshootingOOMCgroup](opsTroubleshootingOOMCgroup.md) | 「账本思维」cgroup 篇:`free` 报空闲 ≠ 系统认为不杀你,OOM Killer 看的是进程所属 cgroup 的 memory.current vs memory.max。含 meminfo 拆解(SUnreclaim/slab)、THP + swappiness 调优、「七大账本对不上」速查表。**姊妹篇见 [opsTroubleshootingOOMSILogless](opsTroubleshootingOOMSILogless.md)**。 |
@@ -37,4 +38,4 @@
 
 ---
 
-**共 26 个文档**。
+**共 27 个文档**。
