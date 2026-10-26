@@ -13,7 +13,7 @@ iswiki/
 ├── README.md
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(36)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
-├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(28)
+├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(29)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(19)
 └── misc/
     └── OS-gaming-console/        🎮 掌机 / 自定义 firmware(2)
@@ -65,13 +65,14 @@ iswiki/
 
 ---
 
-## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(28)
+## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(29)
 
 | 文档 | 一句话 |
 |---|---|
 | [anthropic-cybersecurity-skills](ops-cybersec-dba/anthropic-cybersecurity-skills.md) | 817 个结构化网络安全技能 + 6 框架映射,让 AI agent 像资深安全分析师工作。 |
 | [codex-security](ops-cybersec-dba/codex-security.md) | OpenAI 开源的 `@openai/codex-security`,自动验证漏洞,不报误报。 |
 | [curlImpersonate](ops-cybersec-dba/curlImpersonate.md) | 伪装浏览器 TLS + HTTP/2 指纹的 curl 补丁版,**本机实测装完跑通并抓了三组指纹对比**(系统 curl / Chrome 116 / Safari 15.5 的 ja3 + ja4 全不同,GREASE 每次连接随机但 ja4 稳定)。含:`tls_permute_extensions` 导致的自校验陷阱(比对 extension 顺序会误判)、macOS Firefox 版因 `libnsspem` 缺失不可用、指纹停在 2023 年 Chrome 116 的时效性风险,以及授权测试使用边界。 |
+| [cve-2026-91403-emudhra-java-truststore](ops-cybersec-dba/cve-2026-91403-emudhra-java-truststore.md) | eMudhra 8 个中间 CA 弱私钥(CVSS 9.1):本机 Java 8 / JDK 17 信任库体检 + 14 个官方测试端点实测矩阵 + 「只封中间 CA 不动根」的手工兜底。 |
 | [disable-ipv6-multi-kernel](ops-cybersec-dba/disable-ipv6-multi-kernel.md) | 多内核 Linux 引导菜单批量加 `ipv6.disable=1` 的完整 SOP。 |
 | [dockerDiskSpaceSOP](ops-cybersec-dba/dockerDiskSpaceSOP.md) | Docker 磁盘满四阶段 SOP:只读定位 → 分层清理 → 阈值兜底 → 复发预防。含 `buildx du` 共享存储语义、`--filter` 9 个 key、daemon.json `=` vs buildkitd.toml `==`、Mac 稀疏文件陷阱(实测实际 24.8G / 表观 1224G)。 |
 | [kylinV10DisableIPv6](ops-cybersec-dba/kylinV10DisableIPv6.md) | 麒麟 V10 ARM 版通过 GRUB 内核参数彻底关闭 IPv6 的 5 步操作流程。 |
@@ -156,15 +157,15 @@ iswiki/
 | 分类 | 文档数 |
 |---|---|
 | 🤖 ai-vibecoding-agents | 36 |
-| 🛠️ ops-cybersec-dba | 28 |
+| 🛠️ ops-cybersec-dba | 29 |
 | 🌐 web-frontend-ui | 19 |
 | ⚡ developer-productivity | 7 |
 | 📌 misc/OS-gaming-console | 2 |
-| **分类小计** | **92** |
+| **分类小计** | **93** |
 | 根级（未分类） | 1 |
-| **总计** | **93** |
+| **总计** | **94** |
 
-(92 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(93 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
