@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 91 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 92 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -11,7 +11,7 @@
 ```
 iswiki/
 ├── README.md
-├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(35)
+├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(36)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(27)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(19)
@@ -34,6 +34,7 @@ iswiki/
 | [multiAccountUnifiedAuth](ai-vibecoding-agents/multiAccountUnifiedAuth.md) | 公众号《我是程序汪》2026-10-20《多账号统一登录(实现方案)》的全文沉淀。作者 jruing / dustyblog.cn;核心动作是把 `users` 与 `user_auth` 拆为两张表,使新增第三方登录的成本降到零。含核心数据表 SQL 块 + 4 阶段叙述 + 方法论备注。 |
 | [bagidea-office](ai-vibecoding-agents/bagidea-office.md) | Claude Code 当引擎、脑子可换的桌面像素小人办公室:20 模型混搭 / agent 自发开会 / 自提案 plugin / 真·桌面壁纸模式 / WorkerW 监督 / 三层预算 / 5 套团队模板。228⭐,3 个月增长。 |
 | [3dgs-substation-digital-twin](ai-vibecoding-agents/3dgs-substation-digital-twin.md) | 3DGS 在变电站数字孪生的深度分析(去除营销,技术原理 + 5 大真实优势 + 7 大不足 + 6 大工程挑战 + 成本估算)。 |
+| [anthropicAiCodeReview](ai-vibecoding-agents/anthropicAiCodeReview.md) | 马克的工作坊解读 Anthropic《How the Claude Code team does code review》:**90% 代码由 AI 写**时如何审核 —— 重构为**七层自动防线** + 三个优化目标(评测集/降噪/收敛)。**用全新 context 的 agent 审 diff**、**后几轮只审新 diff**(git blame 实测 59% 是老代码)、**一轮过审 65%→78% / PR 翻倍而回滚降 40%+**。⚠️ 原文 6 项视频未讲 + 数据为单点无对照。 |
 - [armorpaint-tech-selection](armorpaint-tech-selection.md) — ArmorPaint 开源 PBR 纹理绘制工具(给初级前端 + PM 的技术选型参考,12 节,含 9 年时间线 / 5 大方案对比 / 6 大限制 / 借鉴到自己的项目)
 | [lobeHub](ai-vibecoding-agents/lobeHub.md) | 把零散 LLM Agent 统一纳管的"首席 Agent 运营官"产品(招聘/排班/IM 网关)。 |
 | [logue](ai-vibecoding-agents/logue.md) | macOS 端完全本地(Apple Silicon MLX)的 AI 会议笔记 + 写作助手。 |
@@ -154,16 +155,16 @@ iswiki/
 
 | 分类 | 文档数 |
 |---|---|
-| 🤖 ai-vibecoding-agents | 35 |
+| 🤖 ai-vibecoding-agents | 36 |
 | 🛠️ ops-cybersec-dba | 27 |
 | 🌐 web-frontend-ui | 19 |
 | ⚡ developer-productivity | 7 |
 | 📌 misc/OS-gaming-console | 2 |
-| **分类小计** | **90** |
+| **分类小计** | **91** |
 | 根级（未分类） | 1 |
-| **总计** | **91** |
+| **总计** | **92** |
 
-(90 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(91 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
