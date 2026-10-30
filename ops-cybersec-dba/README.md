@@ -9,6 +9,7 @@
 | 文档 | 一句话 |
 |---|---|
 | [anthropic-cybersecurity-skills](anthropic-cybersecurity-skills.md)
+| [minerSelfCheck](minerSelfCheck.md) | 公众号《你的服务器被挖矿了吗?5 分钟自查,附一键检测脚本》(胡哥Linux运维,2026-10-29)实战拆解:**FakeSvc 挖矿组织**(CNCERT 2026-07-31 风险提示,安天科技参与样本分析)累计感染 **16,054 台**、单日最高 2,511 台肉鸡,经 **SSH 弱口令爆破** → 伪装系统进程 → 计划任务持久化 → 部署门罗币矿机 → **以受害主机为跳板爆破同网段**。**七项自查**(进程血统/定时任务全家桶/登录即执行/SSH 后门钥匙/外连与矿池端口/临时目录与 chattr/ps 完整性)每条都带边界(`ps` 的 %cpu 是历史平均不是瞬时、端口≠证据、数量相同≠无隐藏进程、immutable 只对 ext4/xfs 有效、`sshd -T` 有 Match 块时不带 -C 不代表最终配置、爆破统计别用 `awk "{print $11}"`)。**处置五步且顺序不能反:先取证 → 断持久化 → 封出口 → 收兵 → 换锁**(杀进程只是打地鼠,5 分钟复活);PGID 冻结整组前必须同时满足三条(>1 / ≠ 当前 shell PGID / 组内无业务进程),否则只动已确认 PID。⚠️ **原文附的 `check_miner.sh` 有 15 处 bug 会直接崩**(`warn "A""B"` 参数被合并 → `set -u` 下 `unbound variable`,且崩在第 1 项入口,后面 6 项全跑不到;另有 2 处漏空格导致 `authorized_keys` 家目录替换静默漏检)—— **本文已修复、附修复版脚本,并实跑验证 7/7 项通过**;另发现 `net`/`networkservice` 关键词在 macOS/Linux 均会误报、`-perm /111` 在 BSD find 上报错。 |
 | [bash-reference-manual](bash-reference-manual.md)
 | [blackBoxPentestPlaybook](blackBoxPentestPlaybook.md) | 黑盒渗透测试完整打法(脱敏方法论):Phase 0 授权边界 → Phase 1 **JS chunk 迭代收敛提取**(收敛判据=本轮新增为 0)+ 8 类 JS 挖掘目标 → Phase 2 应用层加密识别复现 → Phase 3 未授权矩阵探测(路径 × 多前缀)→ Phase 4 **双账号 diff 四维度**(总数/集合差集/字段集/值内容)+ 三层越权分离 + **跨边界验证区分"隔离层缺失"vs"行级过滤缺失"** → Phase 5 注入/上传/RCE/对象存储四专项 → Phase 6 未成立项归档 + 跨版本 diff。核心认知:黑盒信息差只在**前端 JS / 加密协议 / 登录态数据边界**三处,扫描器只覆盖第一张表的一小部分。 |
 | [codex-security](codex-security.md)
@@ -40,4 +41,4 @@
 
 ---
 
-**共 28 个文档**。
+**共 29 个文档**。

@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 93 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 94 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -13,7 +13,7 @@ iswiki/
 ├── README.md
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(36)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
-├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(29)
+├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(30)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(19)
 └── misc/
     └── OS-gaming-console/        🎮 掌机 / 自定义 firmware(2)
@@ -65,11 +65,12 @@ iswiki/
 
 ---
 
-## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(29)
+## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(30)
 
 | 文档 | 一句话 |
 |---|---|
 | [anthropic-cybersecurity-skills](ops-cybersec-dba/anthropic-cybersecurity-skills.md) | 817 个结构化网络安全技能 + 6 框架映射,让 AI agent 像资深安全分析师工作。 |
+| [minerSelfCheck](ops-cybersec-dba/minerSelfCheck.md) | 公众号《你的服务器被挖矿了吗?5 分钟自查》实战拆解:**FakeSvc 挖矿组织**感染 16,054 台(SSH 弱口令爆破 → 伪装进程 → 计划任务持久化 → 门罗币矿机 → 跳板爆破同网段)。**七项自查 + 处置五步(取证→断持久化→封出口→收兵→换锁,顺序不能反)**。⚠️ **原文脚本有 15 处崩溃 bug,已修复并实跑 7/7 通过**。 |
 | [codex-security](ops-cybersec-dba/codex-security.md) | OpenAI 开源的 `@openai/codex-security`,自动验证漏洞,不报误报。 |
 | [curlImpersonate](ops-cybersec-dba/curlImpersonate.md) | 伪装浏览器 TLS + HTTP/2 指纹的 curl 补丁版,**本机实测装完跑通并抓了三组指纹对比**(系统 curl / Chrome 116 / Safari 15.5 的 ja3 + ja4 全不同,GREASE 每次连接随机但 ja4 稳定)。含:`tls_permute_extensions` 导致的自校验陷阱(比对 extension 顺序会误判)、macOS Firefox 版因 `libnsspem` 缺失不可用、指纹停在 2023 年 Chrome 116 的时效性风险,以及授权测试使用边界。 |
 | [cve-2026-91403-emudhra-java-truststore](ops-cybersec-dba/cve-2026-91403-emudhra-java-truststore.md) | eMudhra 8 个中间 CA 弱私钥(CVSS 9.1):本机 Java 8 / JDK 17 信任库体检 + 14 个官方测试端点实测矩阵 + 「只封中间 CA 不动根」的手工兜底。 |
@@ -161,11 +162,11 @@ iswiki/
 | 🌐 web-frontend-ui | 19 |
 | ⚡ developer-productivity | 7 |
 | 📌 misc/OS-gaming-console | 2 |
-| **分类小计** | **93** |
+| **分类小计** | **94** |
 | 根级（未分类） | 1 |
-| **总计** | **94** |
+| **总计** | **95** |
 
-(93 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(94 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
