@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 94 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 96 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -11,7 +11,7 @@
 ```
 iswiki/
 ├── README.md
-├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(36)
+├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(37)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(30)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(19)
@@ -28,6 +28,7 @@ iswiki/
 | [fireside-sprint1](ai-vibecoding-agents/fireside-sprint1.md) | Fireside 异步圆桌会议平台的 Sprint 1 闭环笔记(REST 建房 → WebSocket 广播 → EndRoom)。 |
 | [i-have-adhd](ai-vibecoding-agents/i-have-adhd.md) | 让 AI coding agent 用 action-first / numbered / no-preamble 风格输出,适合 ADHD 读者。 |
 | [img2threejs](ai-vibecoding-agents/img2threejs.md) | AI 看图后按 8 阶段写 Three.js 代码,产物是可继续编辑的 TS,不是网格。 |
+| [impeccable](ai-vibecoding-agents/impeccable.md) | ⭐99,751 给 coding agent 的**设计词汇表**:24 个设计命令词 + **62 条确定性反模式检测规则**(无 LLM、无 API key),装进 20 种 harness(含 **Hermes 插件 `impeccable-design-hook`**)。Rust 引擎(17 crate)同一套规则编译成 wasm 跑进 Chrome 扩展 overlay。**一手实跑 `npx impeccable detect`**:手写 AI slop 页面 → 10 条独立问题全部命中零漏报。三处最值得抄:**① critique 的 A/B 双盲评审**(A 必须先于 B 进入父上下文,否则 LLM 被锚定;inline 跑必须打 DEGRADED 横幅)**② hook 两级分层**(编辑时只跑机械性"即时层",回合末 Stop 深扫跑全量并去重)**③ `undersized-ui-text` 堵死逃生口**("加到 DESIGN.md token 阶梯里只是洗白 token")。⚠️ 局限:审美规则必然有误报且分不清"刻意品牌选择"与"无脑默认";官网自己必须过自己的检测;hook 每次编辑 +5s;62 条是静态的而审美是动态的。 |
 | [ipAsLogoSkill](ai-vibecoding-agents/ipAsLogoSkill.md) | 把"极简圆润 IP logo"设计语言写成 17KB SKILL 级硬约束,装到 Codex/Coze/Doubao/YouMind/Manus/Gemini Apps/Replit Agent 7 家,3 方向 × 2 变体 = 6 张候选(3 LL + 3 LR,三色封顶,永不降级 SVG)。5,867★ / MIT。 |
 | [MiceInTheMuseum](ai-vibecoding-agents/MiceInTheMuseum.md) | Google Arts & Culture 的 Gemini 多模态 + Google AI Audio 实时音频导览实验(2024-11 上线),架构可平移到儿童讲解 / 景点导览。 |
 | [mythicalManMonthVibeCoding](ai-vibecoding-agents/mythicalManMonthVibeCoding.md) | 《人月神话》在 vibe coding 时代还剩什么:解读 + 4 处商榷,指出文章漏掉第二系统效应与进度追踪幻觉,并把 Brooks 定律重新锚定到 agent 编排。 |
@@ -157,16 +158,16 @@ iswiki/
 
 | 分类 | 文档数 |
 |---|---|
-| 🤖 ai-vibecoding-agents | 36 |
-| 🛠️ ops-cybersec-dba | 29 |
+| 🤖 ai-vibecoding-agents | 37 |
+| 🛠️ ops-cybersec-dba | 30 |
 | 🌐 web-frontend-ui | 19 |
 | ⚡ developer-productivity | 7 |
 | 📌 misc/OS-gaming-console | 2 |
-| **分类小计** | **94** |
+| **分类小计** | **95** |
 | 根级（未分类） | 1 |
-| **总计** | **95** |
+| **总计** | **96** |
 
-(94 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(95 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 

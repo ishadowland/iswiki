@@ -17,6 +17,7 @@
 | [fireside-sprint1](fireside-sprint1.md) | Fireside 异步圆桌会议平台的 Sprint 1 闭环笔记(REST 建房 → WebSocket 广播 → EndRoom)。 |
 | [i-have-adhd](i-have-adhd.md) | 让 AI coding agent 用 action-first / numbered / no-preamble 风格输出,适合 ADHD 读者。 |
 | [img2threejs](img2threejs.md) | AI 看图后按 8 阶段写 Three.js 代码,产物是可继续编辑的 TS,不是网格。 |
+| [impeccable](impeccable.md) | ⭐99,751 给 coding agent 的**设计词汇表**:24 个设计命令词(`bolder`/`quieter`/`distill`…)+ **62 条确定性反模式检测规则**(无 LLM、无 API key),装进 20 种 harness(含 **Hermes 插件 `impeccable-design-hook`**)。Rust 引擎(17 crate / 430 个 .rs)同一套规则编译成 wasm 跑进 Chrome 扩展 overlay。**一手实跑 `npx impeccable detect`**:手写 AI slop 页面 → 10 条独立问题全部命中零漏报(`low-contrast` 报具体比值 2.6:1、`skipped-heading` 引出两个标题原文)。三处最值得抄:**① critique 的 A/B 双盲评审** —— A(设计判断)必须**先于** B(检测器证据)进入父上下文,否则 LLM 被锚定,inline 跑必须打 `⚠️ DEGRADED` 横幅;**② hook 两级分层** —— 每次编辑只跑机械性"即时层"规则,回合末 Stop 深扫跑全量并去重(否则每次全量会变噪音,agent 学不会看);**③ `undersized-ui-text` 堵死逃生口** —— "加到 DESIGN.md token 阶梯里只是洗白 token,没解决问题"。⚠️ 局限:62 条审美规则必然有误报且无法区分"刻意品牌选择"与"无脑默认",ignore 清单会持续膨胀;官网自己必须过自己的检测(每加规则就得改站);hook 每次编辑 +5s / 回合末 +30s;"62 条"是静态的,审美是动态的;强绑 Claude 形状 hook 事件(Hermes 插件需翻译 `transform_tool_result`/`pre_verify` → `PostToolUse`/`Stop`)。 |
 | [ipAsLogoSkill](ipAsLogoSkill.md) | 把"极简圆润 IP logo"设计语言写成 17KB SKILL 级硬约束,装到 Codex/Coze/Doubao/YouMind/Manus/Gemini Apps/Replit Agent 7 家,3 方向 × 2 变体 = 6 张候选(3 LL + 3 LR,三色封顶,永不降级 SVG)。5,867★ / MIT。 |
 | [MiceInTheMuseum](MiceInTheMuseum.md) | Google Arts & Culture 的 Gemini 多模态 + Google AI Audio 实时音频导览实验(2024-11 上线),架构可平移到儿童讲解 / 景点导览。 |
 | [mythicalManMonthVibeCoding](mythicalManMonthVibeCoding.md) | 解读「都2026年了《人月神话》还值得看吗」并商榷:文章无事实错误但漏了原书里对 AI 最危险的两条(第二系统效应 / 进度追踪幻觉),并把 Brooks 定律的 n(n-1)/2 重新锚定到 agent 编排(并行单元从人头换成 agent,公式仍成立)。 |
@@ -44,4 +45,4 @@
 
 | [multiAccountUnifiedAuth](multiAccountUnifiedAuth.md) | 公众号《我是程序汪》2026-10-20《多账号统一登录(实现方案)》的全文沉淀。作者 jruing / dustyblog.cn;核心动作是把 `users` 与 `user_auth` 拆为两张表,使新增第三方登录的成本降到零。含核心数据表 SQL 块 + 4 阶段叙述 + 方法论备注。 |
 
-**共 36 个文档**(本次新增 1 篇 multiAccountUnifiedAuth)。
+**共 37 个文档**(本次新增 1 篇 impeccable)。
