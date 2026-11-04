@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 96 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 97 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -12,7 +12,7 @@
 iswiki/
 ├── README.md
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(37)
-├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(7)
+├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(8)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(30)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(19)
 └── misc/
@@ -140,6 +140,7 @@ iswiki/
 | [sdrangel](developer-productivity/sdrangel.md) | SDRangel 开源软件无线电「全家桶」工作台(87 插件 / 10 硬件 / Rx+Tx, NOAA / AIS / FT8 / LoRa, 4059⭐) |
 | [press-fit-guard](developer-productivity/press-fit-guard.md) | 新能源三电压装上位机:全行程位移-压力包络线判定替代只看峰值,Modbus 从站仿真 + SQLite WAL 追溯(⚠️ 仓库空仓,内容来自公众号文章) |
 | [hermes-feishu-gateway-bug](developer-productivity/hermes-feishu-gateway-bug.md) | Hermes feishu gateway 入站缺 `message_id` 时静默丢弃整条消息(仅 DEBUG 日志)。含已装 fallback patch 的 6 处一手复核,以及 cron 监控被 `grep -c` + `set -e` 静默打挂 12 天的第二层 bug。 |
+| [mygo](developer-productivity/mygo.md) | `github.com/egoist/mygo` —— **用 Go 写跨平台桌面应用的框架**(39 天 ⭐4,445)。**零 cgo + 同一份 UI 跑浏览器(WebGL 2)+ Go→TS 绑定自动生成** 三条差异化;**21 个官方 showcase**(真 zsh 终端 + Git TUI + AI 邮件客户端);~7 MB / 35 MB / idle 0.005% CPU。⚠️ 39 天 v0.7.4,生产押注风险高,移动端不在范围。 |
 
 ---
 
@@ -161,13 +162,13 @@ iswiki/
 | 🤖 ai-vibecoding-agents | 37 |
 | 🛠️ ops-cybersec-dba | 30 |
 | 🌐 web-frontend-ui | 19 |
-| ⚡ developer-productivity | 7 |
+| ⚡ developer-productivity | 8 |
 | 📌 misc/OS-gaming-console | 2 |
-| **分类小计** | **95** |
+| **分类小计** | **96** |
 | 根级（未分类） | 1 |
-| **总计** | **96** |
+| **总计** | **97** |
 
-(95 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(96 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
