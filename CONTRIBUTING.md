@@ -197,7 +197,10 @@ done
 
 ## 10. 相关资源
 
-- **Hermes skill**: `note-taking/iswiki-writing/SKILL.md`(完整流程)
+- **Hermes skill**（default / coder profile,2026-11-10 起由 default/coder 接管）:
+  - `note-taking/iswiki/SKILL.md` — 通用调研流程 + 骨架 + commit 风格 + 验证清单
+  - `note-taking/iswiki-note-from-article/SKILL.md` — 中文长文转笔记,7 步端到端
+  - 仓路径 `~/Codes/iswiki`(2026-11-10 从失效的 `~/.hermes/repos/iswiki` 迁入)
 - **已有 pattern 参考**:
   - humanAtlas(2026-09-11)— 10 张 WebP 图,assets/humanAtlas/
   - 3dgs-substation(2026-09-11)— 1 张官方图 + 5 个 ASCII 图
