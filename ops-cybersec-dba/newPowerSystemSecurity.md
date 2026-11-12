@@ -241,7 +241,7 @@ ENTSO-E 最终报告的落点正是"**电压控制、无功功率管理、监管
 - 公众号转载: <https://mp.weixin.qq.com/s/mKQKQ7WdO8ER7WFp14GjaA>
 
 **官方数据**
-- 国家能源局 · 2025 年全国电力统计数据: <https://news.cn/20260128/a8dec26356d974be1aa7d73bd9a0a4684.pdf> → 实际 <https://news.cn/20260128/a8dec26356d974be1aa7d73bd9a0a4684/c.html>
+- 新华网 · 截至 2025 年底全国累计发电装机容量 38.9 亿千瓦（风 6.4 亿 / 光 12.0 亿）: <https://news.cn/20260128/a8dec26356d974be1aa7d73bd9a0a4684/c.html>
 - 国家能源局 · 2026-07-10 全国用电负荷 15.18 亿千瓦创历史新高: <http://www.nea.gov.cn/20260710/02dd0d866ecd4e12855f69848a350181/c.html>
 - 新华社 · 国家电网累计建成 42 项特高压工程（"22 交 20 直"，3.7 亿千瓦）: <https://news.cn/20260116/d5116bbea6e245e199e7d7d3210a65f8/c.html>
 - 新华网 · 湖北万户级低压分布式光伏柔性同调: <http://www.hb.xinhuanet.com/20250813/7ede56ff93994a57a6252af902e4d438/c.html>
