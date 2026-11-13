@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 98 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 99 个文档,4 个顶层分类 + 1 个 misc 专题目录**
 
 ---
 
@@ -13,7 +13,7 @@ iswiki/
 ├── README.md
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(37)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(8)
-├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(31)
+├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(32)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(19)
 └── misc/
     └── OS-gaming-console/        🎮 掌机 / 自定义 firmware(2)
@@ -66,7 +66,7 @@ iswiki/
 
 ---
 
-## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(30)
+## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(32)
 
 | 文档 | 一句话 |
 |---|---|
@@ -87,6 +87,7 @@ iswiki/
 | [macosClamshellSleepDrain](ops-cybersec-dba/macosClamshellSleepDrain.md) | MacBook 合盖不睡/夜间耗电定位 SOP:根因是 **`proximitywake` 开启后 ALS 接近感应在睡眠中被启用,powerd 持有 `InternalPreventSleep` 长达 13h04m** 把机器钉在浅睡眠;叠加 **`capacity >= highstandbythreshold` → 走 `standbydelayhigh`(默认 24h)分支**,高电量反而卡在浅睡眠。反直觉点:电量越高,standby 延迟越长。含 `chooseStandbyDelay` 决策读取法、ASL 按天轮转 / unified log 时间窗漂移等坑,以及第三方常驻软件(ToDesk)彻底卸载 8 项验证清单。本机实测 MacBookPro15,2:整夜耗电 **75% → 0% 修复为 100% → 98%(11h 掉 2%)**。 |
 | [netdata](ops-cybersec-dba/netdata.md) | 开箱即用的 per-second 实时监控平台,自带 ML 异常检测 + 告警。 |
 | [opsTroubleshootingDiskGhost](ops-cybersec-dba/opsTroubleshootingDiskGhost.md) | df 说满、du 说没满 ——「幽灵空间」排查(fd 还指向的 inode)。 |
+| [opsTroubleshootingInodeExhaustion](ops-cybersec-dba/opsTroubleshootingInodeExhaustion.md) | 「磁盘有空间却报 No space」的 inode 耗尽排查。⭐**XFS 动态分配 inode、总数会漂移**(Red Hat KB 官方实例:5700 万↔23 亿),照搬 ext4 的"重格式化"结论会做错决策 —— 排查先 `df -T` 确认 fs 类型。含 ext4 inode_ratio=16384 核实、`Free inodes:` 字段名纠正、Prometheus 指标名是 `files` 非 `inodes`、`du --inodes` 替代慢 `find|wc -l`、告警应贴 100% 并配单目录文件数早发信号。**本机 APFS `ifree` 13.96 亿 → 本机不会 inode 耗尽**。 |
 | [opsTroubleshootingOOMCgroup](ops-cybersec-dba/opsTroubleshootingOOMCgroup.md) | free 还有 8G 但 OOM 杀进程 —— cgroup 账本思维排查。 |
 | [opsTroubleshootingOOMSILogless](ops-cybersec-dba/opsTroubleshootingOOMSILogless.md) | 进程被 OOM Killer 杀了,应用日志里却什么都没留 ——「三本账」排查法。SIGKILL 由 `do_send_sig_info()` 从内核态硬送,应用连遗言都写不了;证据在 dmesg / journalctl -k / systemd 三层。一手核验 `mm/oom_kill.c`(master + **v4.19 双版本**) + systemd NEWS + rsyslog 源码,补 5 处原文缺失(**journald `Storage=auto` 默认 v259 才改 persistent**、`--grep` 需 ≥237、imjournal 默认 600s/20000 条、`status=9` ≠ 退出码 9、**137 只说明被 SIGKILL 不代表 OOM**)。**§三·五 麒麟 V10 SP3 专项**:4.19 日志格式无 `UID`/`oom_score_adj`、`memory.peak`(v5.19+)/`events.local`(v5.10+)不存在、`OOMPolicy=` 需 systemd 243,附可直接跑的排查脚本。 |
 | [opsTroubleshootingSanfine521](ops-cybersec-dba/opsTroubleshootingSanfine521.md) | Cloudflare 521 排查 ——「接受 TCP 连接却零字节返回」= 源站实例层停机指纹。含四层定位法(代理后 DNS 查不到回源 IP)。**初判「高防到期」已被后续证伪,真实根因是实例系统损坏需重装** —— 多个成因共享同一网络指纹,客户端探测定不了案,必须上云控制台。 |
@@ -161,15 +162,15 @@ iswiki/
 | 分类 | 文档数 |
 |---|---|
 | 🤖 ai-vibecoding-agents | 37 |
-| 🛠️ ops-cybersec-dba | 31 |
+| 🛠️ ops-cybersec-dba | 32 |
 | 🌐 web-frontend-ui | 19 |
 | ⚡ developer-productivity | 8 |
 | 📌 misc/OS-gaming-console | 2 |
-| **分类小计** | **97** |
+| **分类小计** | **98** |
 | 根级（未分类） | 1 |
-| **总计** | **98** |
+| **总计** | **99** |
 
-(97 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(98 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
