@@ -4,6 +4,8 @@ iswiki — 技术调研笔记索引
 
 ## ai-vibecoding-agents
 
+- [📋 ai-vibecoding-agents 域索引](ai-vibecoding-agents/README.md)
+
 - [fireside-sprint1](ai-vibecoding-agents/fireside-sprint1.md)
 
 - [i-have-adhd](ai-vibecoding-agents/i-have-adhd.md)
@@ -25,12 +27,6 @@ iswiki — 技术调研笔记索引
 - [3dgs-substation-digital-twin](ai-vibecoding-agents/3dgs-substation-digital-twin.md)
 
 - [anthropicAiCodeReview](ai-vibecoding-agents/anthropicAiCodeReview.md)
-
-## 根级（未分类）
-
-- [armorpaint-tech-selection](armorpaint-tech-selection.md)
-
-## ai-vibecoding-agents
 
 - [lobeHub](ai-vibecoding-agents/lobeHub.md)
 
@@ -84,7 +80,13 @@ iswiki — 技术调研笔记索引
 
 - [wake](ai-vibecoding-agents/wake.md)
 
+## 根级（未分类）
+
+- [armorpaint-tech-selection](armorpaint-tech-selection.md)
+
 ## ops-cybersec-dba
+
+- [📋 ops-cybersec-dba 域索引](ops-cybersec-dba/README.md)
 
 - [anthropic-cybersecurity-skills](ops-cybersec-dba/anthropic-cybersecurity-skills.md)
 
@@ -152,6 +154,8 @@ iswiki — 技术调研笔记索引
 
 ## web-frontend-ui
 
+- [📋 web-frontend-ui 域索引](web-frontend-ui/README.md)
+
 - [agoraFlat](web-frontend-ui/agoraFlat.md)
 
 - [animeJs](web-frontend-ui/animeJs.md)
@@ -192,6 +196,8 @@ iswiki — 技术调研笔记索引
 
 ## developer-productivity
 
+- [📋 developer-productivity 域索引](developer-productivity/README.md)
+
 - [programWangPrivateProjects](developer-productivity/programWangPrivateProjects.md)
 
 - [ReArk](developer-productivity/ReArk.md)
@@ -209,6 +215,8 @@ iswiki — 技术调研笔记索引
 - [mygo](developer-productivity/mygo.md)
 
 ## misc/OS-gaming-console
+
+- [📋 misc/OS-gaming-console 域索引](misc/OS-gaming-console/README.md)
 
 - [Mindustry](misc/OS-gaming-console/Mindustry.md)
 
