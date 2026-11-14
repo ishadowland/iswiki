@@ -3,6 +3,7 @@
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
 > **共 99 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> 🌐 在线阅读(mdBook): https://ishadowland.github.io/iswiki/
 
 ---
 

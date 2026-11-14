@@ -1,0 +1,17 @@
+[book]
+title = "iswiki — 技术调研笔记"
+description = "长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研笔记"
+authors = ["ishadowland"]
+language = "zh-CN"
+src = "."
+
+[build]
+build-dir = "book"
+create-missing = false
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+no-section-label = false
+copy-fonts = true
+git-repository-url = "https://github.com/ishadowland/iswiki"
