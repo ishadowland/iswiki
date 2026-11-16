@@ -221,3 +221,9 @@ iswiki — 技术调研笔记索引
 - [Mindustry](misc/OS-gaming-console/Mindustry.md)
 
 - [leaf-deploy](misc/OS-gaming-console/leaf-deploy.md)
+
+## misc/open-source-games
+
+- [📋 misc/open-source-games 域索引](misc/open-source-games/README.md)
+
+- [open-source-games](misc/open-source-games/open-source-games.md)

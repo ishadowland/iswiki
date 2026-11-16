@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 99 个文档,4 个顶层分类 + 1 个 misc 专题目录**
+> **共 100 个文档,4 个顶层分类 + 2 个 misc 专题目录**
 > 🌐 在线阅读(mdBook): https://ishadowland.github.io/iswiki/
 
 ---
@@ -17,7 +17,8 @@ iswiki/
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(32)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(19)
 └── misc/
-    └── OS-gaming-console/        🎮 掌机 / 自定义 firmware(2)
+    ├── OS-gaming-console/        🎮 掌机 / 自定义 firmware(2)
+    └── open-source-games/        📚 开源游戏清单 / 生态索引(1)
 ```
 
 ---
@@ -156,6 +157,12 @@ iswiki/
 | [Mindustry](misc/OS-gaming-console/Mindustry.md) | 一人开发 9 年的 GPL-3.0 开源工厂塔防:四渠道分层定价(itch 自愿付费 / Play+F-Droid 免费 / iOS $1.99 / Steam $9.99),零广告零内购零 DLC,约 130 万份 / $630 万。 |
 | [leaf-deploy](misc/OS-gaming-console/leaf-deploy.md) | Miniloong Pocket 1 掌机的自定义固件,SD 卡安装 / OTA 升级 / recovery 回退(基于 v0.11.0)。 |
 
+#### 📚 [misc/open-source-games/](misc/open-source-games/) — 开源游戏清单 / 生态索引
+
+| 文档 | 一句话 |
+|---|---|
+| [open-source-games](misc/open-source-games/open-source-games.md) | 18.4k★ 策展型开源游戏清单(177 个游戏/项目,19 分类)。**实测复核其 issue #128 链接健康报告**:10 个 archived 仓库 **10/10 属实**;15 条"死链"是 Wikipedia 嵌套括号导致 URL 被截断的**误报**(README 原文链接其实完整)。附 21 个主流游戏的语言/⭐/最后 push/archived 实测表 + 列表解析脚本(含 `re.M` 陷阱)。 |
+
 ---
 
 ## 📊 统计
@@ -167,11 +174,12 @@ iswiki/
 | 🌐 web-frontend-ui | 19 |
 | ⚡ developer-productivity | 8 |
 | 📌 misc/OS-gaming-console | 2 |
-| **分类小计** | **98** |
+| 📚 misc/open-source-games | 1 |
+| **分类小计** | **99** |
 | 根级（未分类） | 1 |
-| **总计** | **99** |
+| **总计** | **100** |
 
-(98 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(99 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
