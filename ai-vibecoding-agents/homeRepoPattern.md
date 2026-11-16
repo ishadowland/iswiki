@@ -4,6 +4,7 @@
 > 官方文章: <https://www.aihero.dev/the-home-repo-pattern>（7 min read · Updated Nov 12, 2026）
 > 字典条目: <https://aihero.dev/ai-coding-dictionary/home-repo> · 一手 markdown: <https://github.com/mattpocock/dictionary-of-ai-coding/blob/main/dictionary/Home%20Repo.md>
 > 视频: <https://www.youtube.com/watch?v=hWe-j78vNpc>（The Home Repo: The effortless multi-repo agent setup · 8:53 · 253K views）
+> 🎬 **视频字幕已完整提取并逐句核对**（255 句，`en-orig` 轨道，2026-11-16）—— 本文 §七 与 §9.3 的补充内容均出自字幕一手原话
 > 作者: Matt Pocock（AI Hero / Total TypeScript）· 相关仓: `mattpocock/skills`（⭐325,498）· `mattpocock/dictionary-of-ai-coding`（⭐5,499）
 
 > **本篇与已有两篇的关系**：[mattpocock-skills](mattpocock-skills.md) 讲的是**单个 skill 仓的结构**，本篇讲的是**多个仓怎么组织**。[mattpocock-skills-1-3](mattpocock-skills-1-3.md) 拆的是 v1.3 的三个新 skill。**三篇互补，不重叠** —— 本篇不重复 skills 仓本身的内容，专注「Home Repo 这个模式」。
@@ -134,11 +135,11 @@ AI Hero: ~/repos/ai/ai-hero (git pull to view latest, likely out of date)
 
 ### 4.3 规模与退化策略
 
-| 仓数量 | 做法 |
-|---|---|
-| **~20 个** | 一仓一行指针，完全够用 |
-| **~400 个** | 一仓一行太多，agent 选择困难 → **改用渐进披露**：每个业务领域一个文件，指针指向那个文件 |
-| **几千个** | skills 的消费者够多了 → **用 skills marketplace 更合适** |
+| 仓数量 | 做法 | 来源 |
+|---|---|---|
+| **20–40 个** | 一仓一行指针，完全够用 | 视频原话："This setup works for **maybe 20 30 40 repos** possibly" |
+| **~400 个** | 一仓一行太多 → **改用渐进披露**：每个业务领域一个文件，指针指向那个文件 | 文章 FAQ + 视频："It wouldn't scale to like 400 repos" |
+| **几千个** | skills 的消费者够多了 → **用 skills marketplace 更合适** | 文章 FAQ |
 
 渐进披露的样子：
 
@@ -197,6 +198,14 @@ Home Repo（git 仓）              →  ⭐ 版本化、可共享、可 review
 - 视频里展示 home repo 的界面时，讲的是结构（CLAUDE.md / skills / wiki / tooling），**没说也不打算给内容**
 
 ⭐ 另一个他提到的点值得记：**home repo 里还放了一个巨大的 wiki** —— "an enormous wiki of all of the data that is kind of sensitive to my business... essentially a **LLM Wiki, Karpathy style**"。且他明确说：**「自从用了 home repo，我为自己 agent 做的工具变得更加大胆了」**（因为工具和上下文都在一处，迭代成本低）。
+
+🎬 **视频字幕补充的三条细节**（文章里没有）：
+
+1. **「用户目录」为什么不够** —— 他的理由比文章更具体：用户目录里的东西 "because it's kind of **invisible to the user**"，用户不会主动更新它，"they'll probably fall behind what the global setup is"；而且用户目录是**用户自己改自己**的地方，"instead of how the **team** wants them to work" → **个人偏好 vs 团队标准**的冲突，这是他反对用户目录的核心理由。
+2. **home repo 的定位是「业务的工具层」** —— "the home repo becomes the **tooling that links all different parts of your business** up together, not only the code, but giving access to the agent to really **rich data sources**"。他举了具体集成：Gmail / Slack / Discord / YouTube / GitHub / GCal / AI Hero / Buffer，以及「一次性 HTML 报告」。→ 这解释了为什么工具会「有机生长」在 home repo 里：所有东西都集中在一处，且**永远只从一个地方启动 agent**。
+3. **它同时是「知识库」** —— "I'm able to **query it**, able to extract really, really rich data from it that goes into **course creation**, goes into **content creation**"。他明确说 wiki 的生成与维护会另开一期视频讲。
+
+⚠️ **注意视频里的用词不一致**：他口头说的是 "**claw.md**"（AGENTS.md 的口语转写），文章和字典里统一写 AGENTS.md。
 
 ## 八、跟我们的关系
 
@@ -291,11 +300,18 @@ FAQ 说 "The agent can reach every repo's issue tracker, so it can make sense of
 
 ⚠️ 与 Home Repo 自己的安全姿态有张力：prompt 里明写 "**Secrets stay where they are: leave .env and other secret files unread**" —— 对 secrets 这么克制，却默认 agent 能开所有仓的 issue。**一个跨所有仓的凭据，本身就是个高价值攻击面。**
 
-### 9.3 「约 20 个仓」这个数字来源不明
+### 9.3 「约 20 个仓」是经验值，不是算出来的（视频已确认）
 
-官方给了三档规模阈值（20 / 400 / 几千），但**没有说明 20 是怎么来的** —— 是经验值？是实测？是 token 预算推算？
+**视频字幕已把这条答案补上**（一手原话）：
 
-⚠️ 与 §3.2 的成本模型对不上：按「指针 = 一行、约 10-20 token」算，20 个指针 ≈ 200-400 token，**远没到上下文预算瓶颈**。真正的瓶颈可能是 **agent 的选择困难**（400 档的原话是 "too many decisions for the agent to choose between"）—— 也就是**注意力**而非 token。这两个是不同的约束，官方把它们混在一起说了。
+> "This setup works for **maybe 20 30 40 repos** possibly. **It wouldn't scale to like 400 repos.**"
+
+所以：
+- ✅ 「20」**确实是经验值**，不是 token 预算推算 —— Matt 自己说的是 "maybe"，且实际区间是 **20–40**（比文章写的「约 20」宽松一倍）
+- ✅ 400 档的**渐进披露**做法，视频给的具体形态与文章 FAQ 一致："instead of linking to the raw repos, you would just say, okay, here are the **front end repos**, here are the **back end repos**, and here are the **internal repos**"
+- ⚠️ **但成本模型上的疑问仍然成立**：按「指针 = 一行、约 10-20 token」算，40 个指针 ≈ 400–800 token，**远没到上下文预算瓶颈**。真正的瓶颈是 **agent 的选择困难**（文章 400 档的原话 "too many decisions for the agent to choose between"）—— 也就是**注意力**而非 token。这两个是不同的约束，官方把它们混在一起说了。
+
+⭐ 视频还补了一条文章没写的**判断依据**：Matt 说 progressive disclosure 之后，"the agent would just be able to find the right repo based on just **simple file system tactics**" —— 也就是说**渐进披露不只是省 token，而是给 agent 一个可搜索的分层结构**。
 
 ## 参考链接
 
