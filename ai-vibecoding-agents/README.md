@@ -25,6 +25,7 @@
 | [logue](logue.md) | macOS 端完全本地(Apple Silicon MLX)的 AI 会议笔记 + 写作助手。 |
 | [mattpocock-skills](mattpocock-skills.md) | Matt Pocock 从 `.agents/` 开源的 Real Engineering skills,2×2 分类。 |
 | [mattpocock-skills-1-3](mattpocock-skills-1-3.md) | v1.3 把五步补成闭环七步:新增 `implement-spec`(task graph + frontier 并行,含 5 个实测坑)/ `pr`(Summary+Evidence+Merge Danger 三段式)/ `retro`(改环境不改代码)。一手核验 7 处,**视频漏报 `resolving-merge-conflicts` 被删 + `CONTEXT.md` 全线改名 `GLOSSARY.md` 两项破坏性变更**;`pr` 的视觉菜单实测抄自 Dex Horthy 的 `show-me`。294,790★ / MIT / v1.3.1。 |
+| [homeRepoPattern](homeRepoPattern.md) | Matt Pocock 的 **Home Repo 模式**:把「agent 的启动目录」收敛成一个仓 —— skills + AGENTS.md + 共享文档放一处,AGENTS.md 只放指向其他仓的**导航指针**(context pointer)。**成本模型是精华**:指针 1 行 vs 内联 2,000 token runbook,后者每 session 都付钱;且 context 成本是**双重的** —— 除 input token 外还吃**注意力预算**,「agent 忽略了你知道它 context 里有」的规则就是被稀释的征兆。官方 setup prompt 四步(清点仓→清点物料分四桶→敲定方案→执行)**全程「批准前只读」**。本机实测:**13 个 skill 分类在 default/general 两处重复、2 个已实际漂移**(grounded-citations、hermes-agent);4 个仓**公私混用**(iswiki/pv-intel 公开 + power-trading-vpp/reader 私有)正是该模式的目标场景。⚠️ 三个存疑点:多 profile 下 skills 如何共享官方没讲 / 「能开所有仓 issue」与「不动 secrets」有张力 / 「20 个仓」这个阈值来源不明。 |
 | [openclaw-awd-arena](openclaw-awd-arena.md) | Docker 编排的 LLM Agent 攻防对抗平台,容器隔离网络里多 agent 互打 + 实时计分大屏。 |
 | [openclaw-yolo-inspection](openclaw-yolo-inspection.md) | 把 YOLO 缺陷检测接进 agent 自动化的完整方法论:① **先算延迟预算再决定 agent 落在哪一段**(LLM 单次 1-3s + 推理 0.5s = 5s+,高速产线装不下就不放) ② 四步法(先训模型→再封 skill→再编排→最后接渠道,顺序不能反) ③ **五级递进阶梯**(日报→预警→趋势→评分→归档,后级依赖前级产物,当 checklist 用) ④ 低代码配置法(自然语言→声明式→人工审查三件事) ⑤ 声明式评分规则 + 扣分明细拆解两个可迁移模式。⚠️ 接口层 6 处必须重写:OpenClaw 没有 `skill.json`(是 `SKILL.md`)、`.py` 不自动注册成 tool、没有 `tasks/*.yaml` workflow DSL(只有 at/every/cron/on-exit/stream)、`@openclaw/wecom-bot` npm 404(真名 `@wecom/wecom-openclaw-plugin`)、配置 key 是 `channels.wecom.botId`、`openclaw wecom` 子命令不存在;另实测 `openclaw automations` / `openclaw lobster` 在本机 2026.3.28 是 unknown command。含良率去重 / 模型复用 / utf-8-sig / 归因要标假设四个坑 + AGPL-3.0 商用传染性。 |
 | [openopc](openopc.md) | HKUDS 开源的"个人 AI 原生公司"模拟器,Phaser 像素办公室可视化 AI 员工。 |
@@ -45,4 +46,4 @@
 
 | [multiAccountUnifiedAuth](multiAccountUnifiedAuth.md) | 公众号《我是程序汪》2026-10-20《多账号统一登录(实现方案)》的全文沉淀。作者 jruing / dustyblog.cn;核心动作是把 `users` 与 `user_auth` 拆为两张表,使新增第三方登录的成本降到零。含核心数据表 SQL 块 + 4 阶段叙述 + 方法论备注。 |
 
-**共 37 个文档**(本次新增 1 篇 impeccable)。
+**共 38 个文档**(本次新增 1 篇 homeRepoPattern)。

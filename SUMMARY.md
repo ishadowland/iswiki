@@ -2,6 +2,10 @@
 
 iswiki — 技术调研笔记索引
 
+## 根级（未分类）
+
+- [armorpaint-tech-selection](armorpaint-tech-selection.md)
+
 ## ai-vibecoding-agents
 
 - [📋 ai-vibecoding-agents 域索引](ai-vibecoding-agents/README.md)
@@ -35,6 +39,7 @@ iswiki — 技术调研笔记索引
 - [mattpocock-skills](ai-vibecoding-agents/mattpocock-skills.md)
 
 - [mattpocock-skills-1-3](ai-vibecoding-agents/mattpocock-skills-1-3.md)
+- [homeRepoPattern](ai-vibecoding-agents/homeRepoPattern.md)
 
 - [OpenKimiPPTSkill](ai-vibecoding-agents/OpenKimiPPTSkill.md)
 
@@ -79,10 +84,6 @@ iswiki — 技术调研笔记索引
 - [CnDemSkill](ai-vibecoding-agents/CnDemSkill.md)
 
 - [wake](ai-vibecoding-agents/wake.md)
-
-## 根级（未分类）
-
-- [armorpaint-tech-selection](armorpaint-tech-selection.md)
 
 ## ops-cybersec-dba
 
