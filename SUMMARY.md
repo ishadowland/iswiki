@@ -40,6 +40,7 @@ iswiki — 技术调研笔记索引
 
 - [mattpocock-skills-1-3](ai-vibecoding-agents/mattpocock-skills-1-3.md)
 - [homeRepoPattern](ai-vibecoding-agents/homeRepoPattern.md)
+- [modernWebGuidance](ai-vibecoding-agents/modernWebGuidance.md)
 
 - [OpenKimiPPTSkill](ai-vibecoding-agents/OpenKimiPPTSkill.md)
 

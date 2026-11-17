@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 101 个文档,4 个顶层分类 + 2 个 misc 专题目录**
+> **共 102 个文档,4 个顶层分类 + 2 个 misc 专题目录**
 > 🌐 在线阅读(mdBook): https://ishadowland.github.io/iswiki/
 
 ---
@@ -12,7 +12,7 @@
 ```
 iswiki/
 ├── README.md
-├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(38)
+├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(39)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(8)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(32)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(19)
@@ -44,6 +44,7 @@ iswiki/
 | [mattpocock-skills](ai-vibecoding-agents/mattpocock-skills.md) | Matt Pocock 从 `.agents/` 开源的 Real Engineering skills,2×2 分类。 |
 | [mattpocock-skills-1-3](ai-vibecoding-agents/mattpocock-skills-1-3.md) | v1.3 把五步补成闭环七步:新增 `implement-spec`(task graph + frontier 并行,含 5 个实测坑)/ `pr`(Summary+Evidence+Merge Danger 三段式)/ `retro`(改环境不改代码)。一手核验 7 处,**视频漏报 `resolving-merge-conflicts` 被删 + `CONTEXT.md` 全线改名 `GLOSSARY.md` 两项破坏性变更**;`pr` 的视觉菜单实测抄自 Dex Horthy 的 `show-me`。294,790★ / MIT / v1.3.1。 |
 | [homeRepoPattern](ai-vibecoding-agents/homeRepoPattern.md) | Matt Pocock 的 **Home Repo 模式**:把「agent 的启动目录」收敛成一个仓 —— skills + AGENTS.md + 共享文档放一处,AGENTS.md 只放指向其他仓的**导航指针**。**成本模型是精华**:指针 1 行 vs 内联 2,000 token runbook,后者每 session 都付钱;context 成本是**双重的** —— 除 input token 还吃**注意力预算**,「agent 忽略了你知道它 context 里有」的规则 = 被稀释的征兆。官方 setup prompt 四步(清点仓→清点物料分四桶→敲定方案→执行)全程**「批准前只读」**。**本机实测**:13 个 skill 分类在 default/general 两处重复、**2 个已实际漂移**(grounded-citations、hermes-agent);4 个仓**公私混用**(iswiki/pv-intel 公开 + power-trading-vpp/reader 私有)正是该模式的目标场景。⚠️ 三个存疑点:多 profile 下 skills 如何共享官方没讲 /「能开所有仓 issue」与「不动 secrets」有张力 /「20 个仓」阈值来源不明。 |
+| [modernWebGuidance](ai-vibecoding-agents/modernWebGuidance.md) | **Google Chrome 团队官方 skill**(Chrome + Edge + Firefox + MDN 共同维护):把「现代 Web 平台怎么写」做成可检索知识库,给 coding agent 用 —— 让 agent 别再手搓 focus trap / `::-webkit-scrollbar` / 手写深色模式,而是用 `<dialog>` / `scrollbar-color` / `color-scheme`。**209 条指南**(中位 7.6KB ≈ 1.9k token),skill 本体仅 9.8KB(按需 retrieve,不塞 1.9MB 进上下文)。官方 evals:Claude Code **57%→88%**、Codex 54%→82%、Antigravity 58%→94%(双向校准:黄金解 100% 过 / 未改基线 100% 挂)。⭐ **官方「Top 10 things AI gets wrong」逐条拆解**(无障碍 3 / 体验 3 / 性能 2 / 安全 2),其中「**模型不主动加 CSP**」「用 `display:none` 而非 `content-visibility:hidden` 销毁渲染缓存」「`scroll-behavior:smooth` 无条件设」等最具体。⚠️ 遥测默认开(发搜索词到 Google,`DISABLE_TELEMETRY=1` 可关);legacy-scan **只覆盖 ~18%**(官方 JSON 自承);第三方实测搜索召回不稳(1.0.1 已部分修复)且**引导后代码反而更长**;SEO 覆盖≈0。 |
 | [OpenKimiPPTSkill](ai-vibecoding-agents/OpenKimiPPTSkill.md) | 逆向 Moonshot Kimi Slides 的非官方 PPT 创作 skill,生成可继续编辑的 PPTD 项目。 |
 | [openclaw-awd-arena](ai-vibecoding-agents/openclaw-awd-arena.md) | Docker 编排的 LLM Agent 攻防对抗平台,容器隔离网络里多 agent 互打 + 实时计分大屏。 |
 | [openclaw-yolo-inspection](ai-vibecoding-agents/openclaw-yolo-inspection.md) | 把 YOLO 缺陷检测接进 agent 自动化的完整方法论:延迟预算决定 agent 落在哪一段 + 四步法(先训模型再封 skill)+ 五级递进阶梯(日报→预警→趋势→评分→归档)+ 低代码配置法 + 声明式评分规则。⚠️ 接口层 6 处必须重写(没有 `skill.json` / 没有 `tasks/*.yaml` workflow DSL / `@openclaw/wecom-bot` npm 404 / 配置 key 是 `channels.wecom.botId` / `openclaw wecom` 子命令不存在),另实测 `openclaw automations` 与 `openclaw lobster` 在本机 2026.3.28 是 unknown command。 |
@@ -170,17 +171,17 @@ iswiki/
 
 | 分类 | 文档数 |
 |---|---|
-| 🤖 ai-vibecoding-agents | 38 |
+| 🤖 ai-vibecoding-agents | 39 |
 | 🛠️ ops-cybersec-dba | 32 |
 | 🌐 web-frontend-ui | 19 |
 | ⚡ developer-productivity | 8 |
 | 📌 misc/OS-gaming-console | 2 |
 | 📚 misc/open-source-games | 1 |
-| **分类小计** | **100** |
+| **分类小计** | **101** |
 | 根级（未分类） | 1 |
-| **总计** | **101** |
+| **总计** | **102** |
 
-(100 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(101 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
