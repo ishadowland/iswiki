@@ -147,6 +147,8 @@ iswiki — 技术调研笔记索引
 - [s7-monitor](ops-cybersec-dba/s7-monitor.md)
 
 - [strix](ops-cybersec-dba/strix.md)
+- [pentagi](ops-cybersec-dba/pentagi.md)
+- [airecon](ops-cybersec-dba/airecon.md)
 
 - [tier-1-housekeeping](ops-cybersec-dba/tier-1-housekeeping.md)
 

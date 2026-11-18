@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 102 个文档,4 个顶层分类 + 2 个 misc 专题目录**
+> **共 104 个文档,4 个顶层分类 + 2 个 misc 专题目录**
 > 🌐 在线阅读(mdBook): https://ishadowland.github.io/iswiki/
 
 ---
@@ -14,7 +14,7 @@ iswiki/
 ├── README.md
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(39)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(8)
-├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(32)
+├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(34)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(19)
 └── misc/
     ├── OS-gaming-console/        🎮 掌机 / 自定义 firmware(2)
@@ -70,7 +70,7 @@ iswiki/
 
 ---
 
-## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(32)
+## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(34)
 
 | 文档 | 一句话 |
 |---|---|
@@ -102,7 +102,9 @@ iswiki/
 | [qoder-security](ops-cybersec-dba/qoder-security.md) | 阿里 Qoder 平台内嵌的 AI 安全工程师,IDE/CLI 原生三阶段扫描(L1/L2/L3)。 |
 | [recovery-sop](ops-cybersec-dba/recovery-sop.md) | 误删 MySQL/文件/RAID/PVC 等场景的通用恢复 SOP。 |
 | [s7-monitor](ops-cybersec-dba/s7-monitor.md) | 西门子 S7 PLC 设备监测预警上位机(.NET 10 / WinForms,MIT,⭐0):9 设备 × 4 参数、越限报警、SQLite WAL 单文件落库、操作审计 6 模块。含三条可搬走的工程模式:**重连必须真实读取探活、不能信 `plc.IsConnected`**(S7.Net 本地标志位不探链路,掉线仍返 true,导致界面看不出断过线)、边沿即时 + 持续降频落库、崩溃重启重建基线防孤儿报警。⚠️ 一手核验推翻 README 2 处(承诺的离线 nupkg 与 `Database/` 脚本目录均不存在,私有包 `Zhaoxi.CustControls` 不在 nuget.org → 开箱编不过);仅 1 个 commit、无 CI 无测试。 |
-| [strix](ops-cybersec-dba/strix.md) | 开源 AI 渗透测试 Agent 集群,动态挖漏洞 + PoC 验证,不是静态扫描器。 |
+| [strix](ops-cybersec-dba/strix.md)
+| [pentagi](ops-cybersec-dba/pentagi.md) | 开源自托管多智能体渗透测试平台(Go + React,34,520⭐,MIT **+ 附加 EULA**)。20+ 专业工具沙箱、pgvector 记忆 + Neo4j 图谱、10+ LLM provider(含 DeepSeek/GLM/Kimi/Qwen/MiniMax)。⭐官方主动划能力边界(**不是 BAS 产品**);GitHub Discussion #217 官方**认账误报率 10-30%、缺乏端到端利用验证**。⚠️**habr 独立实测:296 个发现里 42 CRITICAL+50 HIGH 共 92 个高危无一可利用**(部分 PoC 是模板粘贴的他人 CVE),且**agent 发现网段属他方后仍继续扫描,须人工叫停**。另:`admin@pentagi.com`/`admin` 默认口令、`.env` 里 10 个弱默认口令、`DOCKER_NET_ADMIN=true` 默认开启、**Docker Hub 镜像滞后源码约 6 周**。 |
+| [airecon](ops-cybersec-dba/airecon.md) | 零 API Key 的本地化自主渗透侦察 agent(Python 3.12+,1,095⭐,MIT):**本地 Ollama/任意 OpenAI 兼容网关 + Kali Docker 沙箱 + Textual TUI**,目标情报与工具输出可**完全不出本机**。⭐**七层反幻觉机制**(幻觉短语黑名单 / 工具调用 schema 校验 / **无证据报告直接拒收** / 字段级规则 / CVSS 分级 / **只学已验证的** / 工作区 scope 隔离)+ 本地 **1.09M 条**安全知识库 FTS5 + 实测 **141 个** skill 文件。⚠️**install.sh 硬编码 `/usr/bin/python3`,macOS 会选到 3.9 直接退出**(已给绕过方法);**GitHub Releases 停更 7 个月、无 PyPI 包**;README 的 skill 数(57)已过时。第三方独立实测**基本缺失**(多为新闻稿转述)。 | | 开源 AI 渗透测试 Agent 集群,动态挖漏洞 + PoC 验证,不是静态扫描器。 |
 | [tier-1-housekeeping](ops-cybersec-dba/tier-1-housekeeping.md) | Fireside Sprint 1.6 Tier 1 housekeeping,只收 outstanding 小修,不做大块。 |
 | [wafKnowledgeBase](ops-cybersec-dba/wafKnowledgeBase.md) | WAF 拦截的攻击行为分类知识库(SQL 注入 / XSS / 命令注入 等)。 |
 | [newPowerSystemSecurity](ops-cybersec-dba/newPowerSystemSecurity.md) | 中科院院刊《新型电力系统的安全风险、关键问题与应对策略》(中国工程科学 2026, 28(5): 12-21)深度解析:五维风险→三大体系→8 关键问题→对策。⭐三个真洞见(**装机≠可信出力**,3 亿 kW 晚峰只顶 <1 亿 kW / **储能兜底是负反馈**,缺口越大越充不进电 / **电网"空心化"**=送端受端双向失支撑)。⚠️ **一手核验 12 条**:核心量化锚点 6 条精确吻合(负荷/特高压/分布式光伏/APT),**4 条有出入或夸大**(伊比利亚停电归因与 ENTSO-E 官方结论相反——真因是过电压保护动作不是热浪 / Moss Landing **单位错**(300 MW/1200 MWh 非 MW·h)+疏散 1200-1500 人非"超 2000"+起火原因官方仍未定论 / 台风麦德姆 **14 级**非 10~12 级 / 柔直均压电阻"卡脖子"存疑,换流阀本体已国产化)。⚠️ 四个结构性弱点:8 问题**无排序**、成本反复提但**不讲谁付钱**、作者全是系统内机构=**运营方视角**(供应链风险被归因于外部而非自己扛)、分布式侧只写风险源不写资源(湖北已实现万户级柔性同调,10461 户成功率 97%+)。+ §六 跟我们的关系:论文 C 体系=用户上位机产品**未来的合规压力表**(工控协议加固→`plc.IsConnected` 不可信 / 云边端→单机上位机攻击面最大)。 |
