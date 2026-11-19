@@ -68,7 +68,7 @@ iswiki — 技术调研笔记索引
 
 - [reaVideoReview](ai-vibecoding-agents/reaVideoReview.md)
 - [cicdVideoReview](ai-vibecoding-agents/cicdVideoReview.md)
-- [verifiedSlopTalk](ai-vibecoding-agents/verifiedSlopTalk.md)
+- [all-code-is-slop-except-mine](ai-vibecoding-agents/all-code-is-slop-except-mine.md)
 
 - [remix-reference-video-prompt](ai-vibecoding-agents/remix-reference-video-prompt.md)
 
