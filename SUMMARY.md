@@ -67,6 +67,7 @@ iswiki — 技术调研笔记索引
 - [rea](ai-vibecoding-agents/rea.md)
 
 - [reaVideoReview](ai-vibecoding-agents/reaVideoReview.md)
+- [cicdVideoReview](ai-vibecoding-agents/cicdVideoReview.md)
 
 - [remix-reference-video-prompt](ai-vibecoding-agents/remix-reference-video-prompt.md)
 

@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 104 个文档,4 个顶层分类 + 2 个 misc 专题目录**
+> **共 105 个文档,4 个顶层分类 + 2 个 misc 专题目录**
 > 🌐 在线阅读(mdBook): https://ishadowland.github.io/iswiki/
 
 ---
@@ -12,7 +12,7 @@
 ```
 iswiki/
 ├── README.md
-├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(39)
+├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(40)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(8)
 ├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(34)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(19)
@@ -57,7 +57,8 @@ iswiki/
 | [ponytail](ai-vibecoding-agents/ponytail.md) | 给 AI coding agent 注入"老员工 + YAGNI"人格的跨 13 平台 skill 集。 |
 | [redisAIAgentStack](ai-vibecoding-agents/redisAIAgentStack.md) | Redis 8 把 Vector Set + 向量检索 + Agent Memory + 语义缓存收进一个内核。一手核验推翻公众号原文 3 处代码错误 + 2 处版本号;⚠️ 8.0 起 tri-license RSALv2/SSPLv1/AGPLv3,Iris 是托管服务本地拿不到。 |
 | [rea](ai-vibecoding-agents/rea.md) | 20,918⭐ 的逆向 MCP:106+ 工具封装 Hopper/Ghidra/IDA,强制每条结论挂 Evidence ID 并记录 unknowns。 |
-| [reaVideoReview](ai-vibecoding-agents/reaVideoReview.md) | Gary Chen《REA 到底在紅什麼？》13 分钟视频的一手字幕拆解(372 段官方 zh-TW 字幕全提取)+ 22 条评论交叉核验,补 [rea](ai-vibecoding-agents/rea.md) 缺的爆红原因/使用手感/边界认知。最硬一段是 0:51「门槛不在工具在编译丢信息」;可迁移的是 8:22「参考物消灭猜测空间」。⚠️ 一手核验 5 处(省略 Hopper 授权门槛 / 作者自承不确定复刻是否真成功 / 最强对照实验未给来源 / 全片未提法律边界 / 未提 skill 版本不同步的坑)。 |
+| [reaVideoReview](ai-vibecoding-agents/reaVideoReview.md)
+| [cicdVideoReview](ai-vibecoding-agents/cicdVideoReview.md) | Gary Chen《给 Vibe Coder 的 CI/CD 教学》14 分钟视频的一手字幕拆解(官方繁体 zh-TW 轨 373 cue→220 段)+ 9 条评论交叉核验。⭐最有价值的是最后 1 分钟的**两层防线模型**:底层 CI/CD 拦「事先定义好的问题」,上层用独立 AI 实机操作产品+录证据补齐真实世界的意外。⚠️ 一手核验 5 处:视频 2:37 说前作用 Render **但前作主演示平台是 Vercel**(Render 仅出现 2 次且都在推荐列表,评论恰好问中此点且作者未回)/ 两个 CI 健检 Prompt **不在公开页而在 Skool 付费墙后** / pstack 仓库与 create-verification-skill 原文已核实("Never weaken the journey to make it pass" 可直接抄进我们的验收规则)/ MiniMax 官方博客独立印证 Lauren Tan 的 verification skill 与「另一方复核」机制 / pstack 的 PR 吞吐量数字是自报。9 条评论无一条触及技术命题 —— 认知到行动的转化率才是真正瓶颈。 | | Gary Chen《REA 到底在紅什麼？》13 分钟视频的一手字幕拆解(372 段官方 zh-TW 字幕全提取)+ 22 条评论交叉核验,补 [rea](ai-vibecoding-agents/rea.md) 缺的爆红原因/使用手感/边界认知。最硬一段是 0:51「门槛不在工具在编译丢信息」;可迁移的是 8:22「参考物消灭猜测空间」。⚠️ 一手核验 5 处(省略 Hopper 授权门槛 / 作者自承不确定复刻是否真成功 / 最强对照实验未给来源 / 全片未提法律边界 / 未提 skill 版本不同步的坑)。 |
 | [remix-reference-video-prompt](ai-vibecoding-agents/remix-reference-video-prompt.md) | SKILL.md 级 prompt skill,按参考视频拆解运镜 + 生成结构化视频提示词。 |
 | [reverse-skill](ai-vibecoding-agents/reverse-skill.md) | AI Agent 的安全/逆向/渗透任务路由,857 文件 / 55 skill 模块 / R0-R39 路由。 |
 | [semantica](ai-vibecoding-agents/semantica.md) | ⭐13,856 的图原生 AI 可解释基础设施:决策变一等可查询对象 + W3C PROV-O 溯源 + Rete/Datalog/SPARQL 确定性推理,面向金融医疗法律合规。⚠️ 实测推翻 README 4 处(advanced_analytics 裸装即崩 / trace 只对下游有效 / 语义检索喂关键词无结果 / 规则门禁缺字段返假阴性),且 bus factor = 1。 |
