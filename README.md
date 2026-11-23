@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 107 个文档,4 个顶层分类 + 2 个 misc 专题目录**
+> **共 108 个文档,4 个顶层分类 + 2 个 misc 专题目录**
 > 🌐 在线阅读(mdBook): https://ishadowland.github.io/iswiki/
 
 ---
@@ -14,7 +14,7 @@ iswiki/
 ├── README.md
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(41)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(8)
-├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(35)
+├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(36)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(19)
 └── misc/
     ├── OS-gaming-console/        🎮 掌机 / 自定义 firmware(2)
@@ -72,7 +72,7 @@ iswiki/
 
 ---
 
-## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(34)
+## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(35)
 
 | 文档 | 一句话 |
 |---|---|
@@ -111,6 +111,7 @@ iswiki/
 | [tier-1-housekeeping](ops-cybersec-dba/tier-1-housekeeping.md) | Fireside Sprint 1.6 Tier 1 housekeeping,只收 outstanding 小修,不做大块。 |
 | [wafKnowledgeBase](ops-cybersec-dba/wafKnowledgeBase.md) | WAF 拦截的攻击行为分类知识库(SQL 注入 / XSS / 命令注入 等)。 |
 | [newPowerSystemSecurity](ops-cybersec-dba/newPowerSystemSecurity.md) | 中科院院刊《新型电力系统的安全风险、关键问题与应对策略》(中国工程科学 2026, 28(5): 12-21)深度解析:五维风险→三大体系→8 关键问题→对策。⭐三个真洞见(**装机≠可信出力**,3 亿 kW 晚峰只顶 <1 亿 kW / **储能兜底是负反馈**,缺口越大越充不进电 / **电网"空心化"**=送端受端双向失支撑)。⚠️ **一手核验 12 条**:核心量化锚点 6 条精确吻合(负荷/特高压/分布式光伏/APT),**4 条有出入或夸大**(伊比利亚停电归因与 ENTSO-E 官方结论相反——真因是过电压保护动作不是热浪 / Moss Landing **单位错**(300 MW/1200 MWh 非 MW·h)+疏散 1200-1500 人非"超 2000"+起火原因官方仍未定论 / 台风麦德姆 **14 级**非 10~12 级 / 柔直均压电阻"卡脖子"存疑,换流阀本体已国产化)。⚠️ 四个结构性弱点:8 问题**无排序**、成本反复提但**不讲谁付钱**、作者全是系统内机构=**运营方视角**(供应链风险被归因于外部而非自己扛)、分布式侧只写风险源不写资源(湖北已实现万户级柔性同调,10461 户成功率 97%+)。+ §六 跟我们的关系:论文 C 体系=用户上位机产品**未来的合规压力表**(工控协议加固→`plc.IsConnected` 不可信 / 云边端→单机上位机攻击面最大)。 |
+| [emqxPvMigration](ops-cybersec-dba/emqxPvMigration.md) | EMQX Cloud 光伏储能**万级网关平滑迁移**落地拆解(不改固件、不换域名):DNS 切换 + REST 分批踢连接 + **先生产者后消费者**;遥测走 Kafka / 高敏感告警走 HTTP 直达 / >1MB 大文件走旁路;认证缓存条数=连接数。⚠️ **官方文档核对**:Kafka 批量默认 **896 KB**(原文归错层)、**专有版起价 $234/月**(原文不提成本)、告警链路 buffer 要用 disk。 |
 
 ---
 
@@ -176,17 +177,17 @@ iswiki/
 
 | 分类 | 文档数 |
 |---|---|
-| 🤖 ai-vibecoding-agents | 39 |
-| 🛠️ ops-cybersec-dba | 32 |
+| 🤖 ai-vibecoding-agents | 41 |
+| 🛠️ ops-cybersec-dba | 36 |
 | 🌐 web-frontend-ui | 19 |
 | ⚡ developer-productivity | 8 |
 | 📌 misc/OS-gaming-console | 2 |
 | 📚 misc/open-source-games | 1 |
-| **分类小计** | **101** |
-| 根级（未分类） | 1 |
-| **总计** | **102** |
+| **分类小计** | **107** |
+| 根级（未分类） | 3 |
+| **总计** | **110** |
 
-(101 个被分类的 doc + 1 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
+(107 个被分类的 doc + 3 个根级 doc + 1 个根 README.md + 1 个 CONTRIBUTING.md)
 
 ---
 
