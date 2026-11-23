@@ -2,7 +2,7 @@
 
 > 学习笔记库 · 长期积累的项目 / 工具 / 运维 / 安全 / 3D / AI 调研
 > 按主题分类,每个目录有自己的 README.md 索引
-> **共 108 个文档,4 个顶层分类 + 2 个 misc 专题目录**
+> **共 109 个文档,4 个顶层分类 + 2 个 misc 专题目录**
 > 🌐 在线阅读(mdBook): https://ishadowland.github.io/iswiki/
 
 ---
@@ -14,7 +14,7 @@ iswiki/
 ├── README.md
 ├── ai-vibecoding-agents/         🤖 AI coding agent / 编排 / skill(41)
 ├── developer-productivity/       ⚡ 开发者生产力 / 个人项目(8)
-├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(36)
+├── ops-cybersec-dba/             🛠️ Ops / Cybersec / DBA / 监控(37)
 ├── web-frontend-ui/              🌐 Web 前端 / UI 库 / 3D / WebGPU(19)
 └── misc/
     ├── OS-gaming-console/        🎮 掌机 / 自定义 firmware(2)
@@ -72,7 +72,7 @@ iswiki/
 
 ---
 
-## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(35)
+## 🛠️ [ops-cybersec-dba/](ops-cybersec-dba/) — Ops / Cybersec / DBA / 监控(37)
 
 | 文档 | 一句话 |
 |---|---|
@@ -179,7 +179,7 @@ iswiki/
 | 分类 | 文档数 |
 |---|---|
 | 🤖 ai-vibecoding-agents | 41 |
-| 🛠️ ops-cybersec-dba | 36 |
+| 🛠️ ops-cybersec-dba | 37 |
 | 🌐 web-frontend-ui | 19 |
 | ⚡ developer-productivity | 8 |
 | 📌 misc/OS-gaming-console | 2 |
