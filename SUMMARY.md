@@ -150,6 +150,8 @@ iswiki — 技术调研笔记索引
 
 - [strix](ops-cybersec-dba/strix.md)
 - [llmCodeAuditMethodology](ops-cybersec-dba/llmCodeAuditMethodology.md)
+- [AgenticAttackDetections](ops-cybersec-dba/AgenticAttackDetections.md)
+
 - [aiPentestHarnessesComparison](ops-cybersec-dba/aiPentestHarnessesComparison.md)
 - [pentagi](ops-cybersec-dba/pentagi.md)
 - [airecon](ops-cybersec-dba/airecon.md)
